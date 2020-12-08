@@ -60,7 +60,7 @@ window:
   #   - SimpleFullscreen
   #startup_mode: Windowed
   # Window title
-  title: Garudas Alacritty
+  title: Alacritty
 
   # Window class (Linux/BSD only):
   #class:
@@ -80,7 +80,7 @@ scrolling:
   history: 10000
 
   # Scrolling distance multiplier.
-  multiplier: 3
+  multiplier: 6
 
 # Font configuration
 font:
@@ -609,34 +609,29 @@ mouse_bindings:
   #print_events: false
 
 colors:
-  cursor:
-    text: '#fefff2'
-    cursor: '#f0cc09'
-
-  selection:
-    text: '#b5b5b5'
-    background: '#18354f'
-
+  # Default colors
   primary:
-    background: '#132738'
-    foreground: '#ffffff'
+    background: '#0A0E14'
+    foreground: '#B3B1AD'
 
+  # Normal colors
   normal:
-    black: '#000000'
-    red: '#ff0000'
-    green: '#38de21'
-    yellow: '#ffe50a'
-    blue: '#1460d2'
-    magenta: '#ff005d'
-    cyan: '#00bbbb'
-    white: '#bbbbbb'
+    black: '#01060E'
+    red: '#EA6C73'
+    green: '#91B362'
+    yellow: '#F9AF4F'
+    blue: '#53BDFA'
+    magenta: '#FAE994'
+    cyan: '#90E1C6'
+    white: '#C7C7C7'
 
+  # Bright colors
   bright:
-    black: '#555555'
-    red: '#f40e17'
-    green: '#3bd01d'
-    yellow: '#edc809'
-    blue: '#5555ff'
-    magenta: '#ff55ff'
-    cyan: '#6ae3fa'
-    white: '#ffffff'
+    black: '#686868'
+    red: '#F07178'
+    green: '#C2D94C'
+    yellow: '#FFB454'
+    blue: '#59C2FF'
+    magenta: '#FFEE99'
+    cyan: '#95E6CB'
+    white: '#FFFFFF'

@@ -5,7 +5,7 @@ set fish_greeting
 set TERM "xterm-256color"
 set EDITOR "vim"
 set VISUAL "code"   
-set -gx PATH /env/scripts /home/nabil/bin $PATH
+set -gx PATH /env/scripts /home/nabil/bin /home/nabil/.local/bin/liquidctl $PATH
 
 # Bud Spencer Settings
 set -U budspencer_nocmdhist c d ll ls m s la lt
@@ -128,7 +128,7 @@ end
 
 ### ALIASES ###
 # spark aliases
-alias clear='clear; seq 1 (tput cols) | sort -R | spark | lolcat; echo'
+# alias clear='clear; seq 1 (tput cols) | sort -R | spark | lolcat; echo'
 
 # root privileges
 # alias doas="doas --"
@@ -237,4 +237,5 @@ alias bld-sls="cd /env/slstatus; make clean && make && sudo make install"
 ### RANDOM COLOR SCRIPT ###
 # colorscript -r
 # cd ~
+starship init fish | source
 clear
