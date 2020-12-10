@@ -23,6 +23,25 @@
 !/.config/dunst/
 !/.config/dunst/dunstrc
 
+!/.config/polybar/
+!/.config/polybar/config
+
+!/.config/picom/
+!/.config/picom/picom.conf
+
+!/.config/rofi/
+!/.config/rofi/rofi.conf
+
+!/.screenlayout/
+!/.screenlayout/default.sh
+
+!/.screenlayout/
+!/.screenlayout/default.sh
+
+!/.config/bpytop/
+!/.config/bpytop/bpytop.conf
+
 !.bashrc
+!.bar.sh
 !.profile
 !.gitignore
