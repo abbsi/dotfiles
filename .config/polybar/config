@@ -58,6 +58,8 @@ icons-line2 = ${colors.c-12}
 primary = ${colors.c-03}
 secondary = ${colors.c-04}
 tertiary = ${colors.c-02b}
+alert = ${colors.c-11}
+warn = ${colors.c-07}
 
 [bar/main]
 monitor = ${env:MONITOR:HDMI-0}
@@ -89,9 +91,9 @@ font-0 = Anonymice Nerd Font:size=16:antialias=true:autohint=true;1
 font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-2 = siji:pixelsize=10;1
 
-modules-left = powermenu dwm
-modules-center = 
-modules-right = spotify-prev spotify-play-pause spotify-next pulseaudio temperature cpu memory script-disk script-updates script-mail xkeyboard date-main
+modules-left = powermenu dwm-layout dwm-title
+modules-center =  dwm-tags
+modules-right =  spotify-prev spotify-play-pause spotify-next pulseaudio temperature cpu memory script-disk script-updates script-mail xkeyboard date-main
 ;xbacklight alsa wlan battery filesystem bspwm i3 mpd eth
  
 tray-position = right
@@ -134,8 +136,9 @@ font-1 = ${bar/main.font-1}
 font-2 = ${bar/main.font-2}
 
 modules-left = ${bar/main.modules-left}
-modules-center = 
-modules-right =  spotify-git spotify-prev spotify-play-pause spotify-next date-secondary
+modules-center = ${bar/main.modules-center}
+modules-right = date-secondary
+;spotify-git spotify-prev spotify-play-pause spotify-next
 
 
 ;xbacklight alsa xkeyboard wlan battery mpd
@@ -172,7 +175,7 @@ click-left = playerctl play-pause spotify
 
 [module/spotify-next]
 type = custom/script
-exec = echo "怜"
+exec = echo "怜  "
 format = <label>
 click-left = playerctl next spotify
 
@@ -243,10 +246,9 @@ label-mounted = %{F#980B64} %{F-}%percentage_used%%
 label-unmounted = %mountpoint% not mounted
 label-unmounted-foreground = ${colors.foreground-alt}
 
-
-[module/dwm]
+[module/dwm-tags]
 type = internal/dwm
-format = <label-tags> <label-layout> <label-floating> <label-title>
+format = <label-tags> 
 
 ; Path to dwm socket (default: /tmp/dwm.sock)
 ; socket-path = /tmp/dwm.sock
@@ -254,13 +256,54 @@ format = <label-tags> <label-layout> <label-floating> <label-title>
 ; Left-click to view tag, right-click to toggle tag view
 enable-tags-click = true
 ; Scroll to cycle between available tags
-enable-tags-scroll = false
+enable-tags-scroll = true
 ; If true and enable-tags-scroll = true, scrolling will view all tags regardless if occupied
 tags-scroll-empty = false
 ; If true and enable-tags-scroll = true, scrolling will cycle through tags backwards
-tags-scroll-reverse = false
+tags-scroll-reverse = true
 ; If true and enable-tags-scroll = true, wrap active tag when scrolling
-tags-scroll-wrap = false
+tags-scroll-wrap = true
+
+; Separator in between shown tags
+label-separator = ""
+label-padding = 1
+
+; States: focused, unfocused, visible, urgent, empty
+; Available tokens:
+;   %name%
+
+; focused = Selected tag on focused monitor
+label-focused = 
+label-focused-padding = ${self.label-padding}
+label-focused-background = ${colors.background}
+label-focused-foreground = ${colors.foreground-alt}
+
+; unfocused = Unselected tag on unselected monitor
+label-unfocused = 
+label-unfocused-padding = ${self.label-padding}
+
+; visible = Unselected tag, but occupied tag on any monitor
+label-visible = 
+label-visible-padding = ${self.label-padding}
+label-visible-background = ${colors.background}
+
+; urgent = Unselected tag with window that has urgency hint set
+label-urgent = !!
+label-urgent-background = ${colors.background}
+label-urgent-foreground = ${colors.alert}
+label-urgent-padding = ${self.label-padding}
+label-urgent-underline= ${colors.alert}
+
+; empty = Unselected and unoccupied tag
+; This can be set to an empty string to hide empty tags
+label-empty = 祿
+label-empty-background = ${colors.background}
+label-empty-padding = ${self.label-padding}
+
+[module/dwm-layout]
+type = internal/dwm
+format = <label-layout>
+
 ; Left-click to set secondary layout, right-click to switch to previous layout
 enable-layout-click = false
 ; Scroll to cycle between available layouts
@@ -273,18 +316,6 @@ layout-scroll-reverse = false
 ; If enable-layout-click = true, clicking the layout symbol will switch to this layout
 secondary-layout-symbol = [M]
 
-; Separator in between shown tags
-label-separator = ""
-label-padding = 2
-
-; Title of currently focused window
-; Available tokens:
-;   %title%
-label-title = %title%
-label-title-padding = 0
-label-title-foreground = ${colors.foreground}
-label-title-maxlen = 120
-
 ; Symbol of current layout
 ; Available tokens:
 ;   %symbol%
@@ -294,40 +325,23 @@ label-layout-foreground = ${colors.c-06}
 label-layout-background = ${colors.background}
 ;label-layout-underline = ${colors.c-06}
 
-; Text to show when currently focused window is floating
-label-floating = F
+[module/dwm-title]
+type = internal/dwm
+format = <label-floating> <label-title>
 
-; States: focused, unfocused, visible, urgent, empty
+; Path to dwm socket (default: /tmp/dwm.sock)
+; socket-path = /tmp/dwm.sock
+
+; Title of currently focused window
 ; Available tokens:
-;   %name%
+;   %title%
+label-title = %title%
+label-title-padding = 0
+label-title-foreground = ${colors.foreground}
+label-title-maxlen = 60
 
-; focused = Selected tag on focused monitor
-label-focused = %name%
-label-focused-background = ${colors.background}
-label-focused-underline= ${colors.primary}
-label-focused-padding = ${self.label-padding}
-
-; unfocused = Unselected tag on unselected monitor
-label-unfocused = %name%
-label-unfocused-padding = ${self.label-padding}
-label-unfocused-underline = ${colors.foreground-alt}
-
-; visible = Unselected tag, but occupied tag on any monitor
-label-visible = %name%
-label-visible-background = ${colors.background}
-label-visible-padding = ${self.label-padding}
-label-visible-underline= ${colors.foreground-alt}
-
-; urgent = Unselected tag with window that has urgency hint set
-label-urgent = %name%
-label-urgent-background = ${colors.c-11}
-label-urgent-padding = ${self.label-padding}
-
-; empty = Unselected and unoccupied tag
-; This can be set to an empty string to hide empty tags
-label-empty = %name%
-label-empty-background = ${colors.background}
-label-empty-padding = ${self.label-padding}
+; Text to show when currently focused window is floating
+label-floating = [F]
 
 [module/cpu]
 type = internal/cpu
@@ -340,7 +354,7 @@ format-underline = ${colors.icons-line}
 
 [module/script-updates]
 type = custom/script
-exec = /env/scripts/dwm_blocks_pacupdate
+exec = pacupdate
 label = %output%
 interval = 3600
 format-prefix = " "
@@ -349,7 +363,7 @@ format-prefix-foreground = ${colors.icons-fg1}
 
 [module/script-mail]
 type = custom/script
-exec = /env/scripts/dwm_blocks_mail
+exec = mail-count
 label = %output%
 interval = 300
 format-prefix = "  "
@@ -358,7 +372,7 @@ format-prefix-foreground = ${colors.icons-fg1}
 
 [module/script-disk]
 type = custom/script
-exec = /env/scripts/dwm_blocks_disk
+exec = diskf
 tail = true
 label = %output%
 interval = 1800
@@ -429,13 +443,13 @@ label = %date% %time%
 type = internal/date
 interval = 5
 
-date = "  %B %e "
-date-alt = "  %Y-%m-%d"
+date = "%B %e"
+date-alt = "%Y-%m-%d"
 
 time = %l:%M%P
 time-alt = %l:%M%P
 
-format-prefix = "|  "
+format-prefix = " "
 format-prefix-foreground = ${colors.icons-fg2}
 format-underline = ${colors.icons-line2}
 
