@@ -5,7 +5,7 @@ set fish_greeting
 set TERM "xterm-256color"
 set EDITOR "vim"
 set VISUAL "code"   
-set -gx PATH /env/scripts /home/nabil/bin /home/nabil/.local/bin/liquidctl $PATH
+set -gx PATH /env/bin /home/nabil/bin /home/nabil/.local/bin/ $PATH
 
 # Bud Spencer Settings
 set -U budspencer_nocmdhist c d ll ls m s la lt
@@ -229,10 +229,10 @@ alias gen="/environment/mercer_docs/generate.sh"
 
 alias fixscreen="xrandr --output DP-0 --mode 2560x1440 --pos 3840x160 --rotate normal --output HDMI-0 --primary --mode 3840x1600 --pos 0x0 --rotate normal"
 alias sucode="sudo code --user-data-dir='/root/.vscode-root'"
-alias bld-dwm="cd /env/dwm; make clean && make && sudo make install"
-alias bld-blocks="cd /env/dwmblocks; make clean && make && sudo make install"
-alias bld-dmenu="cd /env/dmenu; make clean && make && sudo make install"
-alias bld-sls="cd /env/slstatus; make clean && make && sudo make install"
+alias bld-dwm="cd /env/suckless/dwm; make clean && make && sudo make install && make clean"
+alias bld-blocks="cd /env/suckless/dwmblocks; make clean && make && sudo make install && make clean"
+alias bld-dmenu="cd /env/suckless/dmenu; make clean && make && sudo make install && make clean"
+alias bld-sls="cd /env/suckless/slstatus; make clean && make && sudo make install && make clean"
 
 ### RANDOM COLOR SCRIPT ###
 # colorscript -r

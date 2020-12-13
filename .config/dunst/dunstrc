@@ -1,11 +1,11 @@
 [global]
     ### Display ###
     monitor = 0                           # Which monitor should the notifications be displayed on.
-    follow = mouse                        # [ mouse, keyboard, none ]
+    follow = none                         # [ mouse, keyboard, none ]
     geometry = "700x20-35+60"             # [{width}]x{height}[+/-{x}+/-{y}]
     indicate_hidden = yes                 # Number of messages hidden
     shrink = no                           # Shrink window if it's smaller than the width.  Will be ignored if width is 0.
-    transparency = 10                     # Range: [0; 100]
+    transparency = 5                      # Range: [0; 100]
     notification_height = 40              # will be increased if conetnet needs it
     separator_height = 1                  # Draw a line of "separator_height" pixel height between two notifications. 0 to disable
     padding = 8                           # Padding between text and separator.
@@ -26,11 +26,11 @@
     ignore_newline = no                   # Ignore newlines '\n' in notifications.
     stack_duplicates = no                 # Stack together notifications with the same content
     hide_duplicate_count = false          # Hide the count of stacked notifications with the same content
-    show_indicators = yes                 # Display indicators for URLs (U) and actions (A).
+    show_indicators = no                  # Display indicators for URLs (U) and actions (A).
     icon_position = left                  # Align icons left/right/off
     min_icon_size = 0                     # Scale small icons up to this size, set to 0 to disable.
     max_icon_size = 32                    # Scale larger icons down to this size, set to 0 to disable
-    sticky_history = yes                  # Should a notification popped up from history be sticky or timeout as if it would normally do.
+    sticky_history = no                   # Should a notification popped up from history be sticky or timeout as if it would normally do.
     history_length = 20                   # Maximum amount of notifications kept in history
     dmenu = /usr/local/bin/dmenu -p dunst:
     browser = /usr/bin/firefox -new-tab   # Browser for opening urls in context menu.
@@ -38,7 +38,7 @@
     title = Dunst                         # Define the title of the windows spawned by dunst
     class = Dunst                         # Define the class of the windows spawned by dunst
     startup_notification = false          # Print a notification on startup.
-    corner_radius = 0                     # Define the corner radius of the notification window in pixel size. If the radius is 0, you have no rounded corners.
+    corner_radius = 6                     # Define the corner radius of the notification window in pixel size. If the radius is 0, you have no rounded corners.
     ignore_dbusclose = false              # Ignore the dbus closeNotification message.
     force_xinerama = false                # Use the Xinerama extension instead of RandR for multi-monitor support.
     verbosity = mesg                      # [crit, warm, mesg, info, debug]
@@ -49,11 +49,11 @@
     progress_bar_min_width = 150          # Set the minimum width for the progress bar
     progress_bar_max_width = 300          # Set the maximum width for the progress bar
     
-    mouse_left_click = close_current               # [do_action, close_current, none, close_all]
-    mouse_middle_click = do_action, close_current  # [do_action, close_current, none, close_all]
-    mouse_right_click = close_all                  # [do_action, close_current, none, close_all]
+    mouse_left_click = close_current                # [do_action, close_current, none, close_all]
+    mouse_middle_click = do_action, close_current   # [do_action, close_current, none, close_all]
+    mouse_right_click = close_all                   # [do_action, close_current, none, close_all]
     
-    icon_path = /usr/share/icons/gnome/16x16/status/:/usr/share/icons/gnome/16x16/devices/  # Paths to default icons.
+    icon_path = /usr/share/icons/Papirus/32x32/apps # Paths to default icons.
     
     # The format of the message.  Possible variables are:
     #   %a  appname
@@ -65,7 +65,7 @@
     #   %n  progress value if set without any extra characters
     #   %%  Literal %
     # Markup is allowed
-    format = "%a\n<b>%s</b>\n%b"
+    format = "<b>%s</b>\n%b"
 
 [shortcuts]
     # Available modifiers are "ctrl", "mod1" (the alt-key), "mod2", "mod3" and "mod4" (windows-key).
@@ -104,14 +104,30 @@
     appname = notify-send
     format = "<b>%s</b>\n%b"
 
-[WhatsApp]
+[WhatsApp-1]
     appname = whatsapp-nativefier-d40211
-    format = "<b>%s</b>\n%b"
-    background =  "#DC1595"
-    frame_color = "#DC1595"
+    format = "<b>%a: %s</b>\n%b"
+    background =  "#095686"
+    frame_color = "#095686"
     foreground =  "#ffffff"
     timeout = 360
 
+[WhatsApp-2]
+    appname = whatsapp-nativefier-930aa1
+    format = "<b>%a: %s</b>\n%b"
+    background =  "#095686"
+    frame_color = "#095686"
+    foreground =  "#ffffff"
+    timeout = 360
+
+[Slack]
+    appname = "Slack"
+    format = "<b>%a: %s</b>\n%b"
+    background =  "#4E499C"
+    frame_color = "#4E499C"
+    foreground =  "#ffffff"
+    timeout = 1800
+   
 [VolumeApp]
     appname = pavolume
     background =  "#111111"

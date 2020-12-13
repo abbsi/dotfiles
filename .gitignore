@@ -24,16 +24,13 @@
 !/.config/dunst/dunstrc
 
 !/.config/polybar/
-!/.config/polybar/config
+!/.config/polybar/**
 
 !/.config/picom/
 !/.config/picom/picom.conf
 
 !/.config/rofi/
-!/.config/rofi/rofi.conf
-
-!/.screenlayout/
-!/.screenlayout/default.sh
+!/.config/rofi/*
 
 !/.screenlayout/
 !/.screenlayout/default.sh
