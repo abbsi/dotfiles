@@ -1,0 +1,3 @@
+#!/bin/bash
+# Open PRTG Dashboard
+qutebrowser "https://HomeServer.localdomain/public/mapshow.htm?id=2552&mapid=32795F8A-80C8-47DF-A24D-9BFE60EE9880"

@@ -38,7 +38,9 @@
 !/.config/bpytop/
 !/.config/bpytop/bpytop.conf
 
+!/bin/
+!/bin/*
+
 !.bashrc
-!.bar.sh
 !.profile
 !.gitignore

@@ -1,0 +1,31 @@
+#!/bin/bash
+
+declare -a options=("
+$HOME/.bashrc
+$HOME/.gitignore
+$HOME/.profile
+$HOME/.config/alacritty/alacritty.yml
+$HOME/.config/awesome/rc.lau
+$HOME/.config/bpytop/bpytop.conf
+$HOME/.config/broot/conf.toml
+$HOME/.config/dmenufm/dmenufm.conf
+$HOME/.config/dunst/dunstrc
+$HOME/.config/fish/config.fish
+$HOME/.config/picom/picom.conf
+$HOME/.config/polybar/config
+$HOME/.config/rofi/rofi.conf
+$HOME/.config/starship.toml
+$HOME/.SpaceVim.d/init.toml
+$HOME/.screenlayout/default.sh
+---
+/env/bin/m-edit-configs
+/env/bin/m-quick-cmd
+/env/bin/polybar-open
+---
+$HOME/Documents/.todo
+$HOME/Documents/.todo2
+")
+
+choice=$(echo -e "${options[@]}" | rofi -dmenu -g 2 -l 15 -i -p 'Edit File: ')
+
+[ ! $choice = "" ] && exec code $choice

@@ -1,0 +1,29 @@
+#!/bin/bash
+# Found in DT's repo: http://www.gitlab.com/dwt1/
+# Requires 'scrot' & 'xclip' & 'pinta' & 'rofi' or 'dmenu'
+
+IMG_PATH=/env/screenshots
+FILENAME="${IMG_PATH}/%Y%m%d-%s.png"
+EDIT=pinta
+CLIP='xclip -selection clipboard -target image/png -i'
+
+prog="1.quick_fullscreen
+2.delayed_fullscreen
+3.section
+4.section_clipboard
+5.edit_section
+6.edit_fullscreen"
+
+cmd=$(rofi -dmenu -p 'Choose Screenshot Type'   <<< "$prog")
+
+cd $IMG_PATH
+case ${cmd%% *} in
+
+  1.quick_fullscreen)	  scrot -d 0.5    "${FILENAME}"                 && notify-send -u low 'Scrot' 'Fullscreen taken and saved'  ;;
+  2.delayed_fullscreen)	scrot -d 4      "${FILENAME}"                 && notify-send -u low 'Scrot' 'Fullscreen taken and saved' ;;
+  3.section)	          scrot -d 0.5 -s "${FILENAME}"                 && notify-send -u low 'Scrot' 'Screenshot of section saved' ;;
+  4.section_clipboard)	scrot -d 0.5 -s "${FILENAME}" -e "$CLIP \$f"  && notify-send -u low 'Scrot' 'Screenshot of section save and copied to clipboard' ;;
+  5.edit_section)       scrot -d 0.5 -s "${FILENAME}" -e "$EDIT \$f"  && notify-send -u low 'Scrot' 'Screenshot of section edited and saved' ;;
+  6.edit_fullscreen)	  scrot -d 0.5    "${FILENAME}" -e "$EDIT \$f"  && notify-send -u low 'Scrot' 'Screenshot edited and saved' ;;
+  # *)                		exec "'${cmd}'" ;;
+esac

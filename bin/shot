@@ -1,0 +1,23 @@
+#!/bin/bash
+# requires 'scrot' and 'xclip'
+
+IMG_PATH=/env/screenshots
+FILENAME="${IMG_PATH}/%Y%m%d-%s.png"
+CLIP='xclip -selection clipboard -target image/png -i'
+
+case $1 in
+
+  select)
+    scrot -d 1 --select --line style=dash,width=2,color="red" "${FILENAME}" -e "$CLIP \$f"
+    notify-send -u low 'Scrot' 'Selection taken and saved'
+    ;;
+  focused)
+    scrot -d 1 --focused "${FILENAME}"
+    notify-send -u low 'Scrot' 'Focused Window Screenshot saved'
+    ;;
+  *)
+   scrot -d 1 "${FILENAME}"
+   notify-send -u low 'Scrot' 'Fullscreen taken and saved'
+   ;;
+
+esac

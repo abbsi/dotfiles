@@ -3,9 +3,9 @@
 status=$("$HOME"/.config/polybar/scripts/playerctl-wrapper)
 
 if [ "$status" = "No Player" ]; then
-    echo "No Player"
+    echo "..  .."
 elif [ "status" = "Stopped" ]; then
-    echo "Stopped"
+    echo "..  .."
 elif [ "$status" = "Paused"  ]; then
     polybar-msg -p "$(pgrep -f "polybar --reload main")" hook spotify-play-pause 2 1>/dev/null 2>&1
     playerctl --player=playerctld metadata --format "{{ artist }}"
