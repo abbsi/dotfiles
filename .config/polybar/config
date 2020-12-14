@@ -97,11 +97,11 @@ font-0 = Anonymice Nerd Font:size=14:antialias=true:autohint=true;1
 font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-2 = siji:pixelsize=10;1
 
-modules-left = dunst-script dunst-status menu  dwm-title
-modules-center =  dwm-layout dwm-tags
-modules-right =  spotify-git spotify-prev spotify-play-pause spotify-next pulseaudio temperature cpu memory script-disk script-updates script-mail xkeyboard date-main notifications 
+modules-left = dunst-script dunst-status menu dwm-layout dwm-tags dwm-title
+modules-center =  
+modules-right =  spotify-git spotify-prev spotify-play-pause spotify-next pulseaudio eth-up eth-down temperature cpu memory script-disk script-updates script-mail xkeyboard date-main notifications 
 ;xbacklight alsa wlan battery filesystem bspwm i3 mpd eth
- 
+
 tray-position = right
 tray-padding = 2
 tray-background = ${colors.tertiary}
@@ -352,7 +352,7 @@ format-prefix-foreground = ${colors.icons-fg1}
 type = custom/script
 exec = diskf
 tail = true
-label = %output%
+label = %output:2%
 interval = 1800
 format-underline = ${colors.icons-line}
 format-prefix = " "
@@ -361,7 +361,7 @@ format-prefix-foreground = ${colors.icons-fg}
 [module/memory]
 type = internal/memory
 interval = 2
-label = %percentage_used%%
+label = %percentage_used:2%%
 format-prefix = " "
 format-prefix-foreground = ${colors.icons-fg}
 format-underline = ${colors.icons-line}
@@ -388,7 +388,7 @@ ramp-signal-foreground = ${colors.${colors.icons-fg}}
 
 [module/eth]
 type = internal/network
-interface = enp6s0
+interface = enp7s0
 interval = 3.0
 
 label-connected = %local_ip%
@@ -400,6 +400,38 @@ format-disconnected = <label-disconnected>
 label-disconnected = %ifname% disconnected
 format-disconnected-underline = ${colors.icons-line}
 label-disconnected-foreground = ${colors.icons-fg}
+
+[module/eth-up]
+type = internal/network
+interface = enp7s0
+interval = 3.0
+udspeed-minwidth = 5
+
+label-connected = %upspeed:0%
+format-connected-prefix = " "
+format-connected-underline = ${colors.c-10}
+format-connected-prefix-foreground = ${colors.c-10}
+
+label-disconnected = 
+format-disconnected = <label-disconnected>
+format-disconnected-underline = ${colors.alert}
+label-disconnected-foreground = ${colors.alert}
+
+[module/eth-down]
+type = internal/network
+interface = enp7s0
+interval = 3.0
+udspeed-minwidth = 5
+
+label-connected = %downspeed:0%
+format-connected-prefix = " "
+format-connected-underline = ${colors.c-10}
+format-connected-prefix-foreground = ${colors.c-10}
+
+label-disconnected = 
+format-disconnected = <label-disconnected>
+format-disconnected-underline = ${colors.alert}
+label-disconnected-foreground = ${colors.alert}
 
 [module/date-main]
 type = internal/date
@@ -436,7 +468,7 @@ label = %date% %time%
 [module/temperature]
 type = internal/temperature
 ;thermal-zone = 1
-hwmon-path = /sys/devices/pci0000:00/0000:00:18.3/hwmon/hwmon2/temp2_input
+hwmon-path = /sys/class/hwmon/hwmon3/temp2_input
 warn-temperature = 55
 
 format = <ramp> <label>
