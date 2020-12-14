@@ -97,7 +97,7 @@ font-0 = Anonymice Nerd Font:size=14:antialias=true:autohint=true;1
 font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-2 = siji:pixelsize=10;1
 
-modules-left = menu dwm-title
+modules-left = dunst-script dunst-status menu  dwm-title
 modules-center =  dwm-layout dwm-tags
 modules-right =  spotify-git spotify-prev spotify-play-pause spotify-next pulseaudio temperature cpu memory script-disk script-updates script-mail xkeyboard date-main notifications 
 ;xbacklight alsa wlan battery filesystem bspwm i3 mpd eth
@@ -181,6 +181,19 @@ type = custom/script
 exec = echo "怜  "
 format = <label>
 click-left = playerctl next spotify
+
+[module/dunst-script]
+type = custom/script
+exec = ~/.config/polybar/scripts/dunst-status
+interval = 5
+
+[module/dunst-status]
+type = custom/ipc
+hook-0 = echo ""
+hook-1 = echo ""
+hook-2 = echo "罹"
+initial = 0
+click-left = playerctl play-pause spotify
 
 [module/xwindow]
 type = internal/xwindow
@@ -482,9 +495,9 @@ menu-3-1-exec = sudo poweroff
 
 ;;; Notifications
 menu-4-0 = on
-menu-4-0-exec = "dunstctl set-paused false && sleep 2; notify-send 'Notifications On' &"
+menu-4-0-exec = "dunstctl set-paused false; notify-send 'Notifications On' &"
 menu-4-1 = off
-menu-4-1-exec = "notify-send 'Notifications Off' && sleep 5; dunstctl set-paused true &"
+menu-4-1-exec = "notify-send 'Notifications Off'; dunstctl set-paused true &"
 
 ;;; Picom
 menu-5-0 = on
