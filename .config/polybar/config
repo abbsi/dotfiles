@@ -35,6 +35,8 @@ c-11  = #bd2c40
 c-12  = #BB4430
 c-13  = #EF27A6
 c-14  = #F77157
+c-15  = #9539B7
+c-16  = #1332A7
 
 dark = ${colors.c-02}
 dark-alt = ${colors.c-02a}
@@ -52,10 +54,10 @@ background-alt = ${colors.light-alt}
 foreground = ${colors.dark}
 foreground-alt = ${colors.dark-alt}
 
-icons-fg = ${colors.c-10}
-icons-line = ${colors.c-10}
-icons-fg1 = ${colors.c-06}
-icons-line1 = ${colors.c-06}
+icons-fg = ${colors.c-15}
+icons-line = ${colors.c-15}
+icons-fg1 = ${colors.c-16}
+icons-line1 = ${colors.c-16}
 icons-fg2 = ${colors.c-12}
 icons-line2 = ${colors.c-12}
 
