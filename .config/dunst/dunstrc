@@ -2,7 +2,7 @@
     ### Display ###
     monitor = 0                           # Which monitor should the notifications be displayed on.
     follow = none                         # [ mouse, keyboard, none ]
-    geometry = "700x20-35+60"             # [{width}]x{height}[+/-{x}+/-{y}]
+    geometry = "700x20+15+60"             # [{width}]x{height}[+/-{x}+/-{y}]
     indicate_hidden = yes                 # Number of messages hidden
     shrink = no                           # Shrink window if it's smaller than the width.  Will be ignored if width is 0.
     transparency = 5                      # Range: [0; 100]
