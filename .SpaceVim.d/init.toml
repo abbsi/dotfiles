@@ -11,8 +11,9 @@
     # set spacevim theme. by default colorscheme layer is not loaded,
     # if you want to use more colorscheme, please load the colorscheme
     # layer
-    colorscheme = "srcery"
-    colorscheme_bg = "dark"
+    
+    colorscheme = "vim-material"
+    colorscheme_bg = "dark"    
     # Disable guicolors in basic mode, many terminal do not support 24bit
     # true colors
     enable_guicolors = true
@@ -31,20 +32,28 @@
     filemanager = "nerdtree"
     sidebar_direction = 'left'
 
+    bootstrap_before = "myspacevim#before"
+    bootstrap_after = "myspacevim#after"
+
 # Enable autocomplete layer
-[[layers]]
-name = 'autocomplete'
-auto_completion_return_key_behavior = "nil"
-auto_completion_tab_key_behavior = "complete"
 
 [[layers]]
-name = 'shell'
-default_position = 'top'
-default_height = 30
+  name = 'autocomplete'
+  auto_completion_return_key_behavior = "nil"
+  auto_completion_tab_key_behavior = "nil"
+
+[[layers]]
+  name = 'shell'
+  default_position = 'top'
+  default_height = 30
 
 #### Custom 
 [[layers]]
   name = "lang#ruby"
+
+[[custom_plugins]]
+  repo = "hzchirs/vim-material"
+  merged = 0
 
 [[custom_plugins]]
   repo = "mhartington/oceanic-next"
