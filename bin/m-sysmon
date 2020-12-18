@@ -18,7 +18,6 @@ iotop
 iptraf-ng
 nmon
 s-tui
-ncspot
 ncdu
 stacer
 homemon
@@ -37,7 +36,6 @@ case $choice in
 	htop| \
 	nmon| \
 	ncdu| \
-	ncspot| \
 	s-tui)
         exec alacritty -e $choice
 	;;
