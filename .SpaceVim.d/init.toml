@@ -90,8 +90,8 @@
 #[[layers]]
 #  name = "chinese"
 #
-#[[layers]]
-#  name = "default"
+[[layers]]
+  name = "default"
 #
 #[[layers]]
 #  name = "tools#dash"

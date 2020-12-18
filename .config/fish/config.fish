@@ -5,7 +5,7 @@ set fish_greeting
 set TERM "xterm-256color"
 set EDITOR "vim"
 set VISUAL "code"   
-set -gx PATH /env/bin /home/nabil/bin /home/nabil/.local/bin/ $PATH
+set -gx PATH /env/bin /home/nabil/bin /home/nabil/.local/bin $PATH
 
 # Bud Spencer Settings
 set -U budspencer_nocmdhist c d ll ls m s la lt

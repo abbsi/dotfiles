@@ -156,7 +156,7 @@ key_bindings:
 colors:
   primary:
     background: "#0F111A"
-    foreground: "#a6accd"
+    foreground: "#ffffff"
   cursor:
     text: "#131513"
     cursor: "#a6accd"
@@ -168,7 +168,7 @@ colors:
     blue: "#82aaff"
     magenta: "#da70dd"
     cyan: "#89ddff"
-    white: "#a6accd"
+    white: "#e0e0e0"
   bright:
     black: "#131513"
     red: "#f07178"
@@ -177,4 +177,4 @@ colors:
     blue: "#82aaff"
     magenta: "#da70dd"
     cyan: "#89ddff"
-    white: "#f0fff0"
+    white: "#ffffff"

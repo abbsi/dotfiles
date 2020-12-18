@@ -264,7 +264,7 @@ type = internal/dwm
 format = <label-tags> 
 
 ; Path to dwm socket (default: /tmp/dwm.sock)
-; socket-path = /tmp/dwm.sock
+socket-path = /tmp/dwm.sock
 
 ; Left-click to view tag, right-click to toggle tag view
 enable-tags-click = true
@@ -414,7 +414,7 @@ bar-volume-empty-foreground = ${colors.foreground-alt}
 
 [module/eth-up]
 type = internal/network
-interface = eth1
+interface = eth0
 interval = 3.0
 
 label-connected = %upspeed:8%
@@ -429,7 +429,7 @@ label-disconnected-foreground = ${colors.alert}
 
 [module/eth-down]
 type = internal/network
-interface = eth1
+interface = eth0
 interval = 3.0
 
 label-connected = %downspeed:8%
