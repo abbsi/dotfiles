@@ -17,65 +17,52 @@
 ;==========================================================
 
 [colors]
-c-01  = #C8E0F4
-c-01a = #99c6eb
-c-02a = #0D7BBF
-c-02b = #095686
-c-02  = #04253A
-c-03  = #823021
-c-04  = #508AA8
-c-05  = #9DD1F1
+primary-dk   = #04253A
+secondary-dk = #0D7BBF
+tertiary-dk  = #095686
+primary-lt   = #C8E0F4
+secondary-lt = #99c6eb
+tertiary-lt  = #508AA8
+;;;
+nrml-black   = #131513
+nrml-red     = #f07178
+nrml-green   = #c3e88d
+nrml-yellow  = #ece700
+nrml-blue    = #82aaff
+nrml-magenta = #da70dd
+nrml-cyan    = #89ddff
+nrml-white   = #a6accd
+;;;
+brgt-black   = #131513
+brgt-red     = #bd2c40
+brgt-green   = #229660
+brgt-yellow  = #ffee00
+brgt-blue    = #82aaff
+brgt-magenta = #EF27A6
+brgt-cyan    = #9DD1F1
+brgt-white   = #eeeeee
 
-c-06  = #980B64
-c-07  = #F54B29
-c-08  = #E0A100
-c-09  = #742A1B
-c-10  = #229660
-c-11  = #bd2c40
-c-12  = #BB4430
-c-13  = #EF27A6
-c-14  = #F77157
-c-15  = #9539B7
-c-16  = #1332A7
+background     = ${colors.primary-dk}
+background-alt = ${colors.secondary-dk}
+foreground     = ${colors.primary-lt}
+foreground-alt = ${colors.secondary-lt}
 
-dark = ${colors.c-02}
-dark-alt = ${colors.c-02a}
+;background     = ${colors.primary-lt}
+;background-alt = ${colors.secondary-lt}
+;foreground     = ${colors.primary-dk}
+;foreground-alt = ${colors.secondary-dk}
 
-light = ${colors.c-01}
-light-alt = ${colors.c-01a}
-
-;background = ${colors.dark}
-;background-alt = ${colors.dark-alt}
-;foreground = ${colors.light}
-;foreground-alt = ${colors.light-alt}
-
-background = ${colors.light}
-background-alt = ${colors.light-alt}
-foreground = ${colors.dark}
-foreground-alt = ${colors.dark-alt}
-
-icons-fg = ${colors.c-15}
-icons-line = ${colors.c-15}
-icons-fg1 = ${colors.c-16}
-icons-line1 = ${colors.c-16}
-icons-fg2 = ${colors.c-12}
-icons-line2 = ${colors.c-12}
-
-primary = ${colors.c-03}
-secondary = ${colors.c-04}
-tertiary = ${colors.c-02b}
-alert = ${colors.c-11}
-warn = ${colors.c-07}
+alert = ${colors.brgt-red}
+warn = ${colors.brgt-yellow}
 
 [bar/main]
 monitor = ${env:MONITOR:HDMI-0}
 enable-ipc = true
-width = 99.8%
-height = 38
-
-offset-x = 0.1%
-offset-y = 5
-radius = 4
+width = 100%
+height = 40
+offset-x = 0
+offset-y = 0
+radius = 0
 fixed-center = true
 
 background = ${colors.background}
@@ -84,7 +71,7 @@ foreground = ${colors.foreground}
 line-size = 2
 line-color = ${colors.foreground}
 
-border-size = 10
+border-size = 0
 border-color = #00000000
 
 padding-left = 2
@@ -97,14 +84,14 @@ font-0 = Anonymice Nerd Font:size=14:antialias=true:autohint=true;1
 font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-2 = siji:pixelsize=10;1
 
-modules-left = dunst-script dunst-status menu dwm-tags dwm-layout
-modules-center = dwm-title
-modules-right = spotify-git spotify-prev spotify-play-pause spotify-next pulseaudio eth-up eth-down temperature cpu memory script-disk script-updates script-mail xkeyboard date-main notifications 
-;xbacklight alsa wlan battery filesystem bspwm i3 mpd eth
+modules-left = dunst-script dunst-status menu dwm-tags dwm-layout dwm-title
+modules-center = 
+modules-right = spotify-prev spotify-play-pause spotify-next alsa eth-up eth-down temperature cpu memory script-disk script-updates script-mail xkeyboard date-main
+;xbacklight wlan battery filesystem bspwm mpd eth pulseaudio i3 spotify-git
 
 tray-position = right
 tray-padding = 2
-tray-background = ${colors.tertiary}
+tray-background = ${colors.background-alt}
 
 override-redirect = false
 
@@ -144,48 +131,23 @@ font-2 = ${bar/main.font-2}
 modules-left = ${bar/main.modules-left}
 modules-center = ${bar/main.modules-center}
 modules-right = date-secondary
-;spotify-git spotify-prev spotify-play-pause spotify-next
-;xbacklight alsa xkeyboard wlan battery mpd
- 
-;tray-position = ${bar/main.tray-position}
-;tray-padding = ${bar/main.tray-position}
-;tray-background = 
 
 override-redirect = ${bar/main.override-redirect}
 
 cursor-click = ${bar/main.cursor-click}
 cursor-scroll = ${bar/main.cursor-scroll}
 
-[module/spotify-git]
-type = custom/script
-tail = true
-format-prefix = ""
-format = "<label>  "
-exec = ~/.config/polybar/scripts/scroll_spotify_status.sh
+[settings]
+screenchange-reload = true
+;compositing-background = xor
+;compositing-background = screen
+;compositing-foreground = source
+compositing-border = over
+pseudo-transparency = false
 
-[module/spotify-prev]
-type = custom/script
-exec = echo "玲"
-format = <label>
-click-left = playerctl previous spotify
-
-[module/spotify-play-pause]
-type = custom/ipc
-hook-0 = echo ""
-hook-1 = echo "契"
-initial = 1
-click-left = playerctl play-pause spotify
-
-[module/spotify-next]
-type = custom/script
-exec = echo "怜  "
-format = <label>
-click-left = playerctl next spotify
-
-[module/dunst-script]
-type = custom/script
-exec = ~/.config/polybar/scripts/dunst-status
-interval = 5
+[global/wm]
+margin-top = 5
+margin-bottom = 5
 
 [module/dunst-status]
 type = custom/ipc
@@ -196,33 +158,62 @@ initial = 0
 click-left = "dunstctl set-paused false; notify-send 'Notifications On' &"
 click-right = "notify-send 'Notifications Off'; sleep 2; dunstctl set-paused true &"
 
-[module/xwindow]
-type = internal/xwindow
-label = %title:0:30:...%
+[module/dunst-script]
+type = custom/script
+exec = ~/.config/polybar/scripts/dunst-status
+interval = 5
 
-[module/xkeyboard]
-type = internal/xkeyboard
-format-prefix = " "
-format-underline = ${colors.icons-line2}
-format-prefix-foreground = ${colors.icons-fg2}
-blacklist-0 = lock
+[module/menu]
+type = custom/menu
 
-label-indicator-on-numlock   = " " 
-label-indicator-off-numlock  = " "
-label-indicator-on-capslock  = "וּ "
-label-indicator-off-capslock = " "
-label-layout = ""
+expand-right = true
 
-[module/filesystem]
-type = internal/fs
-interval = 25
+format-spacing = 1
+format-background = ${colors.background}
+format-padding = 1
 
-mount-0 = /
-;mount-1 = /mnt/library1
-;mount-2 = /mnt/library2
-label-mounted = %{F#980B64} %{F-}%percentage_used%%
-label-unmounted = %mountpoint% not mounted
-label-unmounted-foreground = ${colors.foreground-alt}
+label-open = "  "
+label-open-foreground = ${colors.nrml-magenta}
+label-close =  Close
+label-close-foreground = ${colors.alert}
+label-separator = |
+label-separator-foreground = ${colors.foreground-alt}
+
+;;; Main
+menu-0-0 = power
+menu-0-0-exec = menu-open-1
+menu-0-1 = notifications
+menu-0-1-exec = menu-open-4
+menu-0-2 = picom
+menu-0-2-exec = menu-open-5
+
+;;; Power
+menu-1-0 = reboot
+menu-1-0-exec = menu-open-2
+menu-1-1 = power off
+menu-1-1-exec = menu-open-3
+
+menu-2-0 = cancel
+menu-2-0-exec = menu-open-0
+menu-2-1 = reboot
+menu-2-1-exec = sudo reboot
+
+menu-3-0 = cancel
+menu-3-0-exec = menu-open-0
+menu-3-1 = power off
+menu-3-1-exec = sudo poweroff
+
+;;; Notifications
+menu-4-0 = on
+menu-4-0-exec = "dunstctl set-paused false; notify-send 'Notifications On' &"
+menu-4-1 = off
+menu-4-1-exec = "notify-send 'Notifications Off'; dunstctl set-paused true &"
+
+;;; Picom
+menu-5-0 = on
+menu-5-0-exec = "picom && notify-send 'Picom On' &"
+menu-5-1 = off
+menu-5-1-exec = "if pgrep -x 'picom'; then killall picom; fi; notify-send 'Picom Off' &"
 
 [module/dwm-tags]
 type = internal/dwm
@@ -300,9 +291,9 @@ secondary-layout-symbol = [M]
 ;   %symbol%
 label-layout = %symbol%
 label-layout-padding = 1
-label-layout-foreground = ${colors.c-06}
+label-layout-foreground = ${colors.nrml-magenta}
 label-layout-background = ${colors.background}
-;label-layout-underline = ${colors.c-06}
+;label-layout-underline = ${colors.nrml-magenta}
 
 [module/dwm-title]
 type = internal/dwm
@@ -322,96 +313,70 @@ label-title-maxlen = 60
 ; Text to show when currently focused window is floating
 label-floating = [F]
 
-[module/cpu]
-type = internal/cpu
-label = %percentage:2%%
-interval = 2
-;format-foreground = ${colors.c-06} 
-format-prefix = " "
-format-prefix-foreground = ${colors.icons-fg}
-format-underline = ${colors.icons-line}
-
-[module/script-updates]
+[module/spotify-git]
 type = custom/script
-exec = pacupdate
-label = %output%
-interval = 360
-format-prefix = "  "
-format-underline = ${colors.icons-line1}
-format-prefix-foreground = ${colors.icons-fg1}
-
-[module/script-mail]
-type = custom/script
-exec = mail-count
-label = %output%
-interval = 300
-format-prefix = "  "
-format-underline = ${colors.icons-line1}
-format-prefix-foreground = ${colors.icons-fg1}
-
-[module/script-disk]
-type = custom/script
-exec = diskf
 tail = true
-label = %output:2%
-interval = 1800
-format-underline = ${colors.icons-line}
-format-prefix = " "
-format-prefix-foreground = ${colors.icons-fg}
+format-prefix = ""
+format = "<label>  "
+exec = ~/.config/polybar/scripts/scroll_spotify_status.sh
 
-[module/memory]
-type = internal/memory
-interval = 2
-label = %percentage_used:2%%
-format-prefix = " "
-format-prefix-foreground = ${colors.icons-fg}
-format-underline = ${colors.icons-line}
+[module/spotify-prev]
+type = custom/script
+exec = echo "玲"
+format = <label>
+click-left = playerctl previous spotify
 
-[module/wlan]
-type = internal/network
-interface = wlan0
-label-connected = %essid%
-interval = 3.0
-format-connected = <ramp-signal> <label-connected>
-format-connected-underline = ${colors.icons-line}
+[module/spotify-play-pause]
+type = custom/ipc
+hook-0 = echo ""
+hook-1 = echo "契"
+initial = 1
+click-left = playerctl play-pause spotify
 
-format-disconnected = 睊
-label-disconnected = %ifname% disconnected
-format-disconnected-underline = ${colors.icons-line}
-label-disconnected-foreground = ${colors.icons-fg}
+[module/spotify-next]
+type = custom/script
+exec = echo "怜  "
+format = <label>
+click-left = playerctl next spotify
 
-ramp-signal-0 = 直
-ramp-signal-1 = 直
-ramp-signal-2 = 直
-ramp-signal-3 = 直
-ramp-signal-4 = 直
-ramp-signal-foreground = ${colors.${colors.icons-fg}}
+[module/alsa]
+type = internal/alsa
 
-[module/eth]
-type = internal/network
-interface = eth1
-interval = 3.0
+format-volume = <label-volume> <bar-volume>
+label-volume =   %percentage:3%%
+label-volume-foreground = ${colors.foreground}
 
-label-connected = %local_ip%
-format-connected-prefix = " "
-format-connected-underline = ${colors.icons-line}
-format-connected-prefix-foreground = ${colors.icons-fg}
+;format-muted-prefix = " "
+format-muted-foreground = ${colors.alert}
+label-muted = " 婢 "
 
-format-disconnected = <label-disconnected>
-label-disconnected = %ifname% disconnected
-format-disconnected-underline = ${colors.icons-line}
-label-disconnected-foreground = ${colors.icons-fg}
+bar-volume-width = 10
+bar-volume-foreground-0 = ${colors.nrml-green}
+bar-volume-foreground-1 = ${colors.nrml-green}
+bar-volume-foreground-2 = ${colors.nrml-green}
+bar-volume-foreground-3 = ${colors.nrml-green}
+bar-volume-foreground-4 = ${colors.nrml-green}
+bar-volume-foreground-5 = ${colors.warn}
+bar-volume-foreground-6 = ${colors.alert}
+bar-volume-gradient = false
+bar-volume-indicator = "﨡"
+bar-volume-indicator-foreground =  ${colors.nrml-red}
+bar-volume-indicator-font = 1
+bar-volume-fill = 絛
+bar-volume-fill-font = 1
+bar-volume-empty = 
+bar-volume-empty-font = 1
+bar-volume-empty-foreground = ${colors.foreground-alt}
 
 [module/eth-up]
 type = internal/network
 interface = eth1
 interval = 3.0
-udspeed-minwidth = 5
 
-label-connected = %upspeed:0%
+label-connected = %upspeed:8%
 format-connected-prefix = " "
-format-connected-underline = ${colors.c-10}
-format-connected-prefix-foreground = ${colors.c-10}
+format-connected-underline = ${colors.brgt-yellow}
+format-connected-prefix-foreground = ${colors.nrml-yellow}
 
 label-disconnected = 
 format-disconnected = <label-disconnected>
@@ -422,17 +387,107 @@ label-disconnected-foreground = ${colors.alert}
 type = internal/network
 interface = eth1
 interval = 3.0
-udspeed-minwidth = 5
 
-label-connected = %downspeed:0%
+label-connected = %downspeed:8%
 format-connected-prefix = " "
-format-connected-underline = ${colors.c-10}
-format-connected-prefix-foreground = ${colors.c-10}
+format-connected-underline = ${colors.brgt-yellow}
+format-connected-prefix-foreground = ${colors.nrml-yellow}
 
 label-disconnected = 
 format-disconnected = <label-disconnected>
 format-disconnected-underline = ${colors.alert}
 label-disconnected-foreground = ${colors.alert}
+
+[module/temperature]
+type = internal/temperature
+;thermal-zone = 1
+hwmon-path = /sys/class/hwmon/hwmon3/temp2_input
+warn-temperature = 55
+
+format = <ramp> <label>
+format-underline = ${colors.nrml-red}
+format-warn = <ramp> <label-warn>
+format-warn-underline = ${self.format-underline}
+
+label = %temperature-c%
+label-warn = %temperature-c%
+label-warn-foreground = ${colors.alert}
+
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
+ramp-foreground = ${colors.nrml-red}
+
+[module/cpu]
+type = internal/cpu
+label = %percentage:2%%
+interval = 2
+;format-foreground = ${colors.nrml-magenta} 
+format-prefix = " "
+format-prefix-foreground = ${colors.nrml-red}
+format-underline = ${colors.brgt-red}
+
+[module/memory]
+type = internal/memory
+interval = 2
+label = %percentage_used:2%%
+format-prefix = " "
+format-prefix-foreground = ${colors.nrml-red}
+format-underline = ${colors.brgt-red}
+click-left = bpytop
+
+[module/script-disk]
+type = custom/script
+exec = diskf
+tail = true
+label = %output:2%
+interval = 1800
+format-underline = ${colors.brgt-red}
+format-prefix = " "
+format-prefix-foreground = ${colors.nrml-red}
+click-left = alacritty -e bpytop
+
+[module/filesystem]
+type = internal/fs
+interval = 25
+
+mount-0 = /
+;mount-1 = /mnt/library1
+;mount-2 = /mnt/library2
+label-mounted = %{F#980B64} %{F-}%percentage_used%%
+label-unmounted = %mountpoint% not mounted
+label-unmounted-foreground = ${colors.foreground-alt}
+
+[module/script-updates]
+type = custom/script
+exec = pacupdate
+label = %output%
+interval = 360
+format-prefix = "  "
+format-underline = ${colors.brgt-blue}
+format-prefix-foreground = ${colors.nrml-blue}
+
+[module/script-mail]
+type = custom/script
+exec = mail-count
+label = %output%
+interval = 300
+format-prefix = "  "
+format-underline = ${colors.brgt-blue}
+format-prefix-foreground = ${colors.nrml-blue}
+
+[module/xkeyboard]
+type = internal/xkeyboard
+format-prefix = " "
+format-underline = ${colors.brgt-magenta}
+format-prefix-foreground = ${colors.nrml-magenta}
+blacklist-0 = lock
+
+label-indicator-on-numlock   = " " 
+label-indicator-off-numlock  = " "
+label-indicator-on-capslock  = "וּ "
+label-indicator-off-capslock = " "
+label-layout = ""
 
 [module/date-main]
 type = internal/date
@@ -445,8 +500,8 @@ time = %l:%M%P
 time-alt = %l:%M%P
 
 format-prefix = 
-format-prefix-foreground = ${colors.icons-fg2}
-format-underline = ${colors.icons-line2}
+format-prefix-foreground = ${colors.nrml-magenta}
+format-underline = ${colors.brgt-magenta}
 
 label = %date% %time%
 
@@ -461,156 +516,89 @@ time = %l:%M%P
 time-alt = %l:%M%P
 
 format-prefix = " "
-format-prefix-foreground = ${colors.icons-fg2}
-format-underline = ${colors.icons-line2}
+format-prefix-foreground = ${colors.nrml-magenta}
+format-underline = ${colors.brgt-magenta}
 
 label = %date% %time%
 
-[module/temperature]
-type = internal/temperature
-;thermal-zone = 1
-hwmon-path = /sys/class/hwmon/hwmon3/temp2_input
-warn-temperature = 55
+[module/i3]
+type = internal/i3
+format = <label-state> <label-mode>
+index-sort = true
+wrapping-scroll = false
 
-format = <ramp> <label>
-format-underline = ${colors.icons-fg}
-format-warn = <ramp> <label-warn>
-format-warn-underline = ${self.format-underline}
+;; Only show workspaces on the same output as the bar
+pin-workspaces = true
 
-label = %temperature-c%
-label-warn = %temperature-c%
-label-warn-foreground = ${colors.c-11}
+label-mode-padding = 2
+label-mode-foreground = ${colors.foreground}
+label-mode-background = ${colors.background}
 
-ramp-0 = 
-ramp-1 = 
-ramp-2 = 
-ramp-foreground = ${colors.icons-fg}
+;; focused = Active workspace on focused monitor
+label-focused = %index%
+label-focused-background = ${colors.nrml-magenta}
+label-focused-underline= ${colors.nrml-magenta}
+label-focused-padding = 2
 
-[module/menu]
-type = custom/menu
+;; unfocused = Inactive workspace on any monitor
+label-unfocused = %index%
+label-unfocused-padding = 2
 
-expand-right = true
+;; visible = Active workspace on unfocused monitor
+label-visible = %index%
+label-visible-background = ${self.label-focused-background}
+label-visible-underline = ${self.label-focused-underline}
+label-visible-padding = ${self.label-focused-padding}
 
-format-spacing = 1
-format-background = ${colors.background-alt}
-format-padding = 1
+;; urgent = Workspace with urgency hint set
+label-urgent = %index%
+label-urgent-background = ${colors.alert}
+label-urgent-padding = 2
 
-label-open = "  "
-label-open-foreground = ${colors.c-11}
-label-close =  Close
-label-close-foreground = ${colors.c-11}
-label-separator = |
-label-separator-foreground = ${colors.foreground-alt}
+;; Separator in between workspaces
+ label-separator = |
 
-;;; Main
-menu-0-0 = power
-menu-0-0-exec = menu-open-1
-menu-0-1 = notifications
-menu-0-1-exec = menu-open-4
-menu-0-2 = picom
-menu-0-2-exec = menu-open-5
+ ;;;;;;;;;;;;;;;;;;;;; Disabled Modules ;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;;; Power
-menu-1-0 = reboot
-menu-1-0-exec = menu-open-2
-menu-1-1 = power off
-menu-1-1-exec = menu-open-3
+;[module/xwindow]
+;type = internal/xwindow
+;label = %title:0:30:...%
 
-menu-2-0 = cancel
-menu-2-0-exec = menu-open-0
-menu-2-1 = reboot
-menu-2-1-exec = sudo reboot
-
-menu-3-0 = cancel
-menu-3-0-exec = menu-open-0
-menu-3-1 = power off
-menu-3-1-exec = sudo poweroff
-
-;;; Notifications
-menu-4-0 = on
-menu-4-0-exec = "dunstctl set-paused false; notify-send 'Notifications On' &"
-menu-4-1 = off
-menu-4-1-exec = "notify-send 'Notifications Off'; dunstctl set-paused true &"
-
-;;; Picom
-menu-5-0 = on
-menu-5-0-exec = "picom && notify-send 'Picom On' &"
-menu-5-1 = off
-menu-5-1-exec = "if pgrep -x 'picom'; then killall picom; fi; notify-send 'Picom Off' &"
-
-[settings]
-screenchange-reload = true
-;compositing-background = xor
-;compositing-background = screen
-;compositing-foreground = source
-compositing-border = over
-pseudo-transparency = false
-
-[global/wm]
-margin-top = 5
-margin-bottom = 5
-
-[module/pulseaudio]
-type = internal/pulseaudio
-
-format-volume = <label-volume> <bar-volume>
-label-volume =   %percentage%%
-label-volume-foreground = ${root.foreground}
-
-label-muted = " 婢 "
-label-muted-foreground = ${colors.alert}
-
-bar-volume-width = 10
-bar-volume-foreground-0 = #55aa55
-bar-volume-foreground-1 = #55aa55
-bar-volume-foreground-2 = #55aa55
-bar-volume-foreground-3 = #55aa55
-bar-volume-foreground-4 = #55aa55
-bar-volume-foreground-5 = #f5a70a
-bar-volume-foreground-6 = #ff5555
-bar-volume-gradient = true
-bar-volume-indicator = "﨡"
-bar-volume-indicator-foreground =  ${colors.icons-fg}
-bar-volume-indicator-font = 2
-bar-volume-fill = 絛
-bar-volume-fill-font = 2
-bar-volume-empty = 
-bar-volume-empty-font = 2
-bar-volume-empty-foreground = ${colors.foreground}
-
-; vim:ft=dosini
-
-;;;;;;;;;;;;;;;;;;;;; Disabled Modules ;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-;[module/alsa]
-;type = internal/alsa
+;[module/wlan]
+;type = internal/network
+;interface = wlan0
+;label-connected = %essid%
+;interval = 3.0
+;format-connected = <ramp-signal> <label-connected>
+;format-connected-underline = ${colors.brgt-red}
 ;
-;format-volume = <label-volume> <bar-volume>
-;label-volume = VOL
-;label-volume-foreground = ${root.foreground}
+;format-disconnected = 睊
+;label-disconnected = %ifname% disconnected
+;format-disconnected-underline = ${colors.brgt-red}
+;label-disconnected-foreground = ${colors.nrml-red}
 ;
-;format-muted-prefix = " "
-;format-muted-foreground = ${colors.foreground-alt}
-;label-muted = sound muted
+;ramp-signal-0 = 直
+;ramp-signal-1 = 直
+;ramp-signal-2 = 直
+;ramp-signal-3 = 直
+;ramp-signal-4 = 直
+;ramp-signal-foreground = ${colors.${colors.nrml-red}}
 ;
-;bar-volume-width = 10
-;bar-volume-foreground-0 = #55aa55
-;bar-volume-foreground-1 = #55aa55
-;bar-volume-foreground-2 = #55aa55
-;bar-volume-foreground-3 = #55aa55
-;bar-volume-foreground-4 = #55aa55
-;bar-volume-foreground-5 = #f5a70a
-;bar-volume-foreground-6 = #ff5555
-;bar-volume-gradient = false
-;bar-volume-indicator = |
-;bar-volume-indicator-font = 2
-;bar-volume-fill = ─
-;bar-volume-fill-font = 2
-;bar-volume-empty = ─
-;bar-volume-empty-font = 2
-;bar-volume-empty-foreground = ${colors.foreground-alt}
-
-
+;[module/eth]
+;type = internal/network
+;interface = eth1
+;interval = 3.0
+;
+;label-connected = %local_ip%
+;format-connected-prefix = " "
+;format-connected-underline = ${colors.brgt-red}
+;format-connected-prefix-foreground = ${colors.nrml-red}
+;
+;format-disconnected = <label-disconnected>
+;label-disconnected = %ifname% disconnected
+;format-disconnected-underline = ${colors.brgt-red}
+;label-disconnected-foreground = ${colors.nrml-red}
+;
 ;[module/xbacklight]
 ;type = internal/xbacklight
 ;
@@ -619,11 +607,11 @@ bar-volume-empty-foreground = ${colors.foreground}
 ;
 ;bar-width = 10
 ;bar-indicator = |
-;bar-indicator-foreground = ${colors.c-01}
+;bar-indicator-foreground = ${colors.foreground}
 ;bar-indicator-font = 2
 ;bar-fill = ─
 ;bar-fill-font = 2
-;bar-fill-foreground = ${colors.c-04}
+;bar-fill-foreground = ${colors.background}
 ;bar-empty = ─
 ;bar-empty-font = 2
 ;bar-empty-foreground = ${colors.foreground-alt}
@@ -637,15 +625,15 @@ bar-volume-empty-foreground = ${colors.foreground}
 ;type = internal/bspwm
 ;
 ;label-focused = %index%
-;label-focused-background = ${colors.c-06}
-;label-focused-underline= ${colors.c-06}
+;label-focused-background = ${colors.nrml-magenta}
+;label-focused-underline= ${colors.nrml-magenta}
 ;label-focused-padding = 2
 ;
 ;label-occupied = %index%
 ;label-occupied-padding = 2
 ;
 ;label-urgent = %index%!
-;label-urgent-background = ${colors.c-11}
+;label-urgent-background = ${colors.alert}
 ;label-urgent-padding = 2
 ;
 ;label-empty = %index%
@@ -654,44 +642,36 @@ bar-volume-empty-foreground = ${colors.foreground}
 
 ; Separator in between workspaces
 ;label-separator = x
-
-;[module/i3]
-;type = internal/i3
-;format = <label-state> <label-mode>
-;index-sort = true
-;wrapping-scroll = false
 ;
-;; Only show workspaces on the same output as the bar
-;;pin-workspaces = true
+;[module/pulseaudio]
+;type = internal/pulseaudio
 ;
-;label-mode-padding = 2
-;label-mode-foreground = #COLOR
-;label-mode-background = ${colors.primary}
+;format-volume = <label-volume> <bar-volume>
+;label-volume =   %percentage%%
+;label-volume-foreground = ${colors.foreground}
 ;
-;; focused = Active workspace on focused monitor
-;label-focused = %index%
-;label-focused-background = ${colors.c-06}
-;label-focused-underline= ${colors.c-06}
-;label-focused-padding = 2
+;;format-muted-prefix = " "
+;label-muted = " 婢 "
+;label-muted-foreground = ${colors.alert}
 ;
-;; unfocused = Inactive workspace on any monitor
-;label-unfocused = %index%
-;label-unfocused-padding = 2
+;bar-volume-width = 10
+;bar-volume-foreground-0 = ${colors.nrml-green}
+;bar-volume-foreground-1 = ${colors.nrml-green}
+;bar-volume-foreground-2 = ${colors.nrml-green}
+;bar-volume-foreground-3 = ${colors.nrml-green}
+;bar-volume-foreground-4 = ${colors.nrml-green}
+;bar-volume-foreground-5 = ${colors.warn}
+;bar-volume-foreground-6 = ${colors.alert}
+;bar-volume-gradient = true
+;bar-volume-indicator = "﨡"
+;bar-volume-indicator-foreground =  ${colors.nrml-red}
+;bar-volume-indicator-font = 2
+;bar-volume-fill = 絛
+;bar-volume-fill-font = 2
+;bar-volume-empty = 
+;bar-volume-empty-font = 2
+;bar-volume-empty-foreground = ${colors.foreground}
 ;
-;; visible = Active workspace on unfocused monitor
-;label-visible = %index%
-;label-visible-background = ${self.label-focused-background}
-;label-visible-underline = ${self.label-focused-underline}
-;label-visible-padding = ${self.label-focused-padding}
-;
-;; urgent = Workspace with urgency hint set
-;label-urgent = %index%
-;label-urgent-background = ${colors.c-11}
-;label-urgent-padding = 2
-;
-;; Separator in between workspaces
-;; label-separator = |
-
 ;[module/battery]
 ;type = internal/battery
 ;battery = BAT0
@@ -724,3 +704,5 @@ bar-volume-empty-foreground = ${colors.foreground}
 ;animation-discharging-2 = 
 ;animation-discharging-foreground = ${colors.foreground-alt}
 ;animation-discharging-framerate = 750
+
+; vim:ft=dosini
