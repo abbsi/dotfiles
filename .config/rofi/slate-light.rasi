@@ -2,8 +2,13 @@
   background-color: #C8E0F4;
   border-color: #93b1c8;
   text-color: #04253A;
+  selection-color: #095686;
   spacing: 0;
-  width: 1800px;
+  width: 1200px;
+}
+
+window {
+  background-color: transparent;
 }
 
 inputbar {
@@ -17,9 +22,9 @@ prompt {
 }
 
 textbox {
-  background-color: #C8E0F4;
+  background-color: @background-color;
   border: 0 0 1px 0;
-  border-color: #073958;
+  border-color: @border-color;
   padding: 8px 16px;
 }
 
@@ -34,10 +39,11 @@ listview {
 }
 
 element {
-  border: 0 0 1px 0;
-  padding: 8px;
+  border: 0 0 0px 0;
+  margin: 0 0 0 10px;
+  padding: 4px 10px 4px 10px;
 }
 
 element selected {
-  background-color: #508AA8;
+  background-color: @selection-color;
 }

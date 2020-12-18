@@ -1,4 +1,8 @@
 #!/usr/bin/env bash
+# Requires 'entr'
+# Run this script while in the Rofi direcotry using this command: /bin/ls | entr -r ./run_rofi.sh
+# Script will open rofi if a file is modified/saved
+
 options="one
 two
 three"

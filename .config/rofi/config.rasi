@@ -1,17 +1,33 @@
 configuration {
-modi: "window,run,ssh,drun,file-browser,keys,combi";
-/*	width: 50;*/
-lines: 30;
-columns: 2;
-font: "Source Code Pro 14";
-bw: 10;
+modi: "window,run,ssh,drun,file-browser";
+lines: 20;
+columns: 3;
+font: "Ubuntu 16";
 location: 2;
 padding: 5;
-yoffset: 50;
-/*	xoffset: 0;*/
+yoffset: 40;
 fixed-num-lines: false;
 show-icons: true;
 terminal: "alacritty";
+icon-theme: "Papirus";
+drun-show-actions: false;
+drun-display-format: "{name}";
+disable-history: false;
+scroll-method: 0;
+window-format: "{w}    {c}   {t}";
+theme: "slate";
+window-thumbnail: true;
+display-window: "Window";
+display-windowcd: "Windowcd";
+display-run: "Run";
+display-ssh: "SSH";
+display-drun: "Desktop Run";
+display-combi: "Combi";
+display-keys: "Keys";
+display-file-browser: "File Browser"; 
+/*	width: 50;*/
+/* bw: 10; */
+/*	xoffset: 0;*/
 /*	ssh-client: "ssh";*/
 /*	ssh-command: "{terminal} -e {ssh-client} {host} [-p {port}]";*/
 /*	run-command: "{cmd}";*/
@@ -19,15 +35,12 @@ terminal: "alacritty";
 /*	run-shell-command: "{terminal} -e {cmd}";*/
 /*	window-command: "wmctrl -i -R {window}";*/
 /*	window-match-fields: "all";*/
-icon-theme: "Papirus";
 /*	drun-match-fields: "name,generic,exec,categories,keywords";*/
 /*	drun-categories: ;*/
-drun-show-actions: false;
 /*	drun-display-format: "{name} [<span weight='light' size='small'><i>({generic})</i></span>]";*/
 /*	drun-url-launcher: "xdg-open";*/
-disable-history: false;
 /*	ignored-prefixes: "";*/
-sort: true;
+/* sort: true; */
 /*	sorting-method: "normal";*/
 /*	case-sensitive: false;*/
 /*	cycle: true;*/
@@ -50,12 +63,9 @@ sort: true;
 /*	dpi: -1;*/
 /*	threads: 0;*/
 /*	scrollbar-width: 8;*/
-scroll-method: 0;
 /*	fake-background: "screenshot";*/
-/*	window-format: "{w}    {c}   {t}";*/
 /*	click-to-exit: true;*/
 /*	show-match: true;*/
-theme: "slate";
 /*	color-normal: ;*/
 /*	color-urgent: ;*/
 /*	color-active: ;*/
@@ -64,19 +74,10 @@ theme: "slate";
 /*	combi-hide-mode-prefix: false;*/
 /*	matching-negate-char: '-' /* unsupported */;*/
 /*	cache-dir: ;*/
-/*	window-thumbnail: false;*/
 /*	drun-use-desktop-cache: false;*/
 /*	drun-reload-desktop-cache: false;*/
 /*	normalize-match: false;*/
 /*	pid: "/run/user/1000/rofi.pid";*/
-/*	display-window: ;*/
-/*	display-windowcd: ;*/
-/*	display-run: ;*/
-/*	display-ssh: ;*/
-/*	display-drun: ;*/
-/*	display-combi: ;*/
-/*	display-keys: ;*/
-/*  display-file-browser: ; */
 /*	kb-primary-paste: "Control+V,Shift+Insert";*/
 /*	kb-secondary-paste: "Control+v,Insert";*/
 /*	kb-clear-line: "Control+w";*/
