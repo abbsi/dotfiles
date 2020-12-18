@@ -11,6 +11,9 @@
 !/.config/broot/
 !/.config/broot/conf.toml
 
+!/.config/i3/
+!/.config/i3/config
+
 !/.config/dmenufm/
 !/.config/dmenufm/dmenufm.conf
 
@@ -18,7 +21,7 @@
 !/.config/fish/config.fish
 
 !/.SpaceVim.d/
-!/.SpaceVim.d/init.toml
+!/.SpaceVim.d/**
 
 !/.config/dunst/
 !/.config/dunst/dunstrc
