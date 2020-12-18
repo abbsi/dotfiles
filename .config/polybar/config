@@ -16,6 +16,11 @@
 ;
 ;==========================================================
 
+[monitors]
+left  = ${env:MONITOR:HDMI-0}
+main  = ${env:MONITOR:DP-2}
+right = ${env:MONITOR:DP-0}
+
 [colors]
 primary-dk   = #04253A
 secondary-dk = #0D7BBF
@@ -56,7 +61,7 @@ alert = ${colors.brgt-red}
 warn = ${colors.brgt-yellow}
 
 [bar/main]
-monitor = ${env:MONITOR:HDMI-0}
+monitor = ${monitors.main}
 enable-ipc = true
 width = 100%
 height = 40
@@ -98,8 +103,47 @@ override-redirect = false
 cursor-click = pointer
 cursor-scroll = ns-resize
 
-[bar/secondary]
-monitor = ${env:MONITOR:DP-0}
+[bar/right]
+monitor = ${monitors.right}
+enable-ipc = ${bar/main.enable-ipc}
+width = ${bar/main.width}
+height = ${bar/main.height}
+
+offset-x = ${bar/main.offset-x}
+offset-y = ${bar/main.offset-y}
+radius = ${bar/main.radius}
+fixed-center = ${bar/main.fixed-center}
+
+background = ${bar/main.background}
+foreground = ${bar/main.foreground}
+
+line-size = ${bar/main.line-size}
+line-color = ${bar/main.line-color}
+
+border-size = ${bar/main.border-size}
+border-color = #00000000
+
+padding-left = ${bar/main.padding-left}
+padding-right = ${bar/main.padding-right}
+
+module-margin-left = ${bar/main.module-margin-left}
+module-margin-right = ${bar/main.module-margin-right}
+
+font-0 = ${bar/main.font-0}
+font-1 = ${bar/main.font-1}
+font-2 = ${bar/main.font-2}
+
+modules-left = ${bar/main.modules-left}
+modules-center = ${bar/main.modules-center}
+modules-right = date-secondary
+
+override-redirect = ${bar/main.override-redirect}
+
+cursor-click = ${bar/main.cursor-click}
+cursor-scroll = ${bar/main.cursor-scroll}
+
+[bar/left]
+monitor = ${monitors.left}
 enable-ipc = ${bar/main.enable-ipc}
 width = ${bar/main.width}
 height = ${bar/main.height}
@@ -142,8 +186,8 @@ screenchange-reload = true
 ;compositing-background = xor
 ;compositing-background = screen
 ;compositing-foreground = source
-compositing-border = over
-pseudo-transparency = false
+;compositing-border = over
+;pseudo-transparency = false
 
 [global/wm]
 margin-top = 5
@@ -172,7 +216,7 @@ format-spacing = 1
 format-background = ${colors.background}
 format-padding = 1
 
-label-open = "  "
+label-open = "  "
 label-open-foreground = ${colors.nrml-magenta}
 label-close =  Close
 label-close-foreground = ${colors.alert}
