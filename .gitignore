@@ -32,6 +32,9 @@
 !/.config/picom/
 !/.config/picom/picom.conf
 
+!/.config/pavolume/
+!/.config/pavolume/pavolume.conf
+
 !/.config/rofi/
 !/.config/rofi/*
 
@@ -43,6 +46,9 @@
 
 !/bin/
 !/bin/*
+
+!/.dwm/
+!/.dwm/*
 
 !.bashrc
 !.profile
