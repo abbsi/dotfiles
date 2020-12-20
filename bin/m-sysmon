@@ -12,6 +12,7 @@ declare -a options=("bashtop
 bpytop
 glances
 gtop
+gotop
 htop
 iftopp
 iotop
@@ -33,6 +34,7 @@ case $choice in
 	bpytop| \
 	glances| \
 	gtop| \
+	gotop| \
 	htop| \
 	nmon| \
 	ncdu| \

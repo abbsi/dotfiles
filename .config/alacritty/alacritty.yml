@@ -156,7 +156,7 @@ key_bindings:
 colors:
   primary:
     background: "#0F111A"
-    foreground: "#ffffff"
+    foreground: "#8F93A2"
   cursor:
     text:       "#131513"
     cursor:     "#a6accd"

@@ -104,17 +104,9 @@
     appname = notify-send
     format = "<b>%s</b>\n%b"
 
-[WhatsApp-1]
-    appname = whatsapp-nativefier-d40211
-    format = "<b>%a: %s</b>\n%b"
-    background =  "#095686"
-    frame_color = "#095686"
-    foreground =  "#ffffff"
-    timeout = 7
-
-[WhatsApp-2]
+[WhatsApp]
     appname = whatsapp-nativefier-930aa1
-    format = "<b>%a: %s</b>\n%b"
+    format = "WhatsApp\n<b>%s</b>\n%b"
     background =  "#095686"
     frame_color = "#095686"
     foreground =  "#ffffff"
