@@ -4,68 +4,8 @@
 set fish_greeting
 set TERM "xterm-256color"
 set EDITOR "vim"
-set VISUAL "code"   
-set -gx PATH /env/bin /home/nabil/bin /home/nabil/.local/bin $PATH
-
-# Bud Spencer Settings
-set -U budspencer_nocmdhist c d ll ls m s la lt
-set -U budspencer_no_cd_bookmark
-set -U budspencer_night 000000 083743 D7005F fdf6e3 3792DD cb4b16 dc121f af005f 6c71c4 FFFFFF 2aa198 859900
-set -U budspencer_day 000000 333333 666666 ffffff ffff00 ff6600 ff0000 ff0033 3300ff 00aaff 00ffff 00ff00
-set -U budspencer_colors $budspencer_night
-
-function legend
-  echo '
-    ↑: git repository is ahead origin
-    ↓: git repository is behind origin
-    +: changes have been added to git index
-    –: files have been deleted in work tree
-    ✱: files have been modified in work tree
-    →: files have been renamed in git index
-    ═: there are unmerged commits
-    ●: there are untracked (new) files
-    ✭: there are stashed commits
-       
-    ✻: keep track of this shell session, can be toggled with # to show the number of the session within the sessions list
-    ⌘: present working directory is in bookmark list, can be toggled with # to show the number of the bookmark
-    V: vi is parent process
-    R: ranger is parent process
-    ⚙: there are background jobs, can be toggled with # to show the amount of background jobs
-    : no write permissions in present working directory
-    ⚔: there are tasks scheduled for this week, can be toggled with # to show the amount of weekly tasks
-    ⚑: there are appointments for today, can be toggled with # to show the amount of appointments
-    ✔: last command succeeded, can be toggled with # to show the status value
-    ✘: last command failed, can be toggled with # to show the status value
-    ⚡: superuser indicator'
-end
-
-######  Bob the fish Settings
-# set -g theme_display_git yes
-# set -g theme_display_git_untracked yes
-# set -g theme_display_git_ahead_verbose yes
-# set -g theme_git_worktree_support yes
-# set -g theme_display_vagrant yes
-# set -g theme_display_docker_machine yes
-# set -g theme_display_hg yes
-# set -g theme_display_virtualenv yes
-# set -g theme_display_ruby yes
-# set -g theme_display_user yes
-# set -g theme_display_vi yes
-# set -g theme_display_date no
-# set -g theme_display_cmd_duration yes
-# set -g theme_title_display_process yes
-# set -g theme_title_display_path no
-# set -g theme_title_use_abbreviated_path no
-# set -g theme_date_format "+%H:%M"
-# set -g theme_avoid_ambiguous_glyphs yes
-# set -g theme_powerline_fonts yes
-# set -g theme_nerd_fonts no
-# set -g theme_show_exit_status yes
-# set -g default_user nabil
-# set -g theme_color_scheme dark
-# set -g fish_prompt_pwd_dir_length 3
-# set -g theme_project_dir_length 1
-
+set VISUAL "code"
+set -gx PATH $HOME/bin $HOME/.local/bin $PATH
 # Spark functions
 function letters
     cat $argv | awk -vFS='' '{for(i=1;i<=NF;i++){ if($i~/[a-zA-Z]/) { w[tolower($i)]++} } }END{for(i in w) print i,w[i]}' | sort | cut -c 3- | spark | lolcat
@@ -139,14 +79,6 @@ alias ...='cd ../..'
 alias .3='cd ../../..'
 alias .4='cd ../../../..'
 alias .5='cd ../../../../..'
-
-# vim and emacs
-alias em='/usr/bin/emacs -nw'
-alias emacs="emacsclient -c -a 'emacs'"
-alias doomsync="~/.emacs.d/bin/doom sync"
-alias doomdoctor="~/.emacs.d/bin/doom doctor"
-alias doomupgrade="~/.emacs.d/bin/doom upgrade"
-alias doompurge="~/.emacs.d/bin/doom purge"
 
 # broot
 alias br='broot -dhp'
@@ -227,15 +159,45 @@ alias tofish="sudo chsh $USER -s /bin/fish && echo 'Now log out.'"
 
 alias gen="/environment/mercer_docs/generate.sh"
 
-alias fixscreen="xrandr --output DP-0 --mode 2560x1440 --pos 3840x160 --rotate normal --output HDMI-0 --primary --mode 3840x1600 --pos 0x0 --rotate normal"
 alias sucode="sudo code --user-data-dir='/root/.vscode-root'"
 alias bld-dwm="cd /env/suckless/dwm; make clean && make && sudo make install && make clean"
 alias bld-blocks="cd /env/suckless/dwmblocks; make clean && make && sudo make install && make clean"
 alias bld-dmenu="cd /env/suckless/dmenu; make clean && make && sudo make install && make clean"
 alias bld-sls="cd /env/suckless/slstatus; make clean && make && sudo make install && make clean"
 
-### RANDOM COLOR SCRIPT ###
-# colorscript -r
-# cd ~
 starship init fish | source
-clear
+
+###### Bud Spencer Settings
+# set -U budspencer_nocmdhist c d ll ls m s la lt
+# set -U budspencer_no_cd_bookmark
+# set -U budspencer_night 000000 083743 D7005F fdf6e3 3792DD cb4b16 dc121f af005f 6c71c4 FFFFFF 2aa198 859900
+# set -U budspencer_day 000000 333333 666666 ffffff ffff00 ff6600 ff0000 ff0033 3300ff 00aaff 00ffff 00ff00
+# set -U budspencer_colors $budspencer_night
+
+######  Bob the fish Settings
+# set -g theme_display_git yes
+# set -g theme_display_git_untracked yes
+# set -g theme_display_git_ahead_verbose yes
+# set -g theme_git_worktree_support yes
+# set -g theme_display_vagrant yes
+# set -g theme_display_docker_machine yes
+# set -g theme_display_hg yes
+# set -g theme_display_virtualenv yes
+# set -g theme_display_ruby yes
+# set -g theme_display_user yes
+# set -g theme_display_vi yes
+# set -g theme_display_date no
+# set -g theme_display_cmd_duration yes
+# set -g theme_title_display_process yes
+# set -g theme_title_display_path no
+# set -g theme_title_use_abbreviated_path no
+# set -g theme_date_format "+%H:%M"
+# set -g theme_avoid_ambiguous_glyphs yes
+# set -g theme_powerline_fonts yes
+# set -g theme_nerd_fonts no
+# set -g theme_show_exit_status yes
+# set -g default_user nabil
+# set -g theme_color_scheme dark
+# set -g fish_prompt_pwd_dir_length 3
+# set -g theme_project_dir_length 1
+
