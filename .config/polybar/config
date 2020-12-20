@@ -23,9 +23,10 @@ right = ${env:MONITOR:DP-0}
 
 [colors]
 # polybar has the format of ARGB (first two sets of values is the opacity value)
-primary-dk   = #5504253A
-secondary-dk = #440D7BBF
+primary-dk   = #5504253A 
+secondary-dk = #440D7BBF 
 tertiary-dk  = #095686
+
 primary-lt   = #C8E0F4
 secondary-lt = #99c6eb
 tertiary-lt  = #508AA8
