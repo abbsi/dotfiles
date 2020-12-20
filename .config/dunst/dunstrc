@@ -110,7 +110,7 @@
     background =  "#095686"
     frame_color = "#095686"
     foreground =  "#ffffff"
-    timeout = 360
+    timeout = 7
 
 [WhatsApp-2]
     appname = whatsapp-nativefier-930aa1
@@ -118,7 +118,7 @@
     background =  "#095686"
     frame_color = "#095686"
     foreground =  "#ffffff"
-    timeout = 360
+    timeout = 7
 
 [Slack]
     appname = "Slack"
@@ -126,7 +126,7 @@
     background =  "#4E499C"
     frame_color = "#4E499C"
     foreground =  "#ffffff"
-    timeout = 1800
+    timeout = 600
    
 [VolumeApp]
     appname = pavolume
