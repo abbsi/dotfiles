@@ -8,7 +8,7 @@
  */
 
 configuration {
-	font:							"Noto Sans 10";
+	font:							"Source Code Pro 14";
     show-icons:                     true;
 	icon-theme: 					"Papirus";
     display-drun: 					"";
@@ -20,6 +20,7 @@ configuration {
 }
 
 /* -- Light-- */
+/* 
 * {
     background:                     #F5F5F5FF;
     background-alt:              	#00000000;
@@ -27,17 +28,18 @@ configuration {
     foreground:                     #000000A6;
     accent:			            	#80808066;
 }
+*/
 
 /* -- Dark -- */
-/*
+
 * {
-    background:                     #3E4148FF;
+    background:                     #04253AFF;
     background-alt:                 #00000000;
     background-bar:                 #363A3FFF;
     foreground:                     #F5F5F5FF;
     accent:			            	#00000066;
 }
-*/
+
 
 window {
     transparency:                   "real";

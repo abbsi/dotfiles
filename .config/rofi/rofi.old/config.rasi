@@ -1,30 +1,5 @@
 configuration {
-modi: "window,run,ssh,drun,file-browser";
-lines: 20;
-columns: 3;
-font: "Ubuntu 16";
-location: 2;
-padding: 5;
-yoffset: 40;
-fixed-num-lines: false;
-show-icons: true;
-terminal: "alacritty";
-icon-theme: "Papirus";
-drun-show-actions: false;
-drun-display-format: "{name}";
-disable-history: false;
-scroll-method: 0;
-window-format: "{w}    {c}   {t}";
-theme: "slate";
-window-thumbnail: true;
-display-window: "Window";
-display-windowcd: "Windowcd";
-display-run: "Run";
-display-ssh: "SSH";
-display-drun: "Desktop Run";
-display-combi: "Combi";
-display-keys: "Keys";
-display-file-browser: "File Browser"; 
+
 /*	width: 50;*/
 /* bw: 10; */
 /*	xoffset: 0;*/

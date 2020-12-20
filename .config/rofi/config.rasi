@@ -1,6 +1,32 @@
 /** Basic config file **/
 
 configuration {
-  show-icons:         true;
-  icon-theme:         "Papirus";
+  show-icons: true;
+  icon-theme: "Papirus";
+  modi: "window,run,ssh,drun,file-browser";
+  lines: 20;
+  columns: 3;
+  font: "Ubuntu 16";
+  terminal: "alacritty";
+  drun-show-actions: false;
+  location: 2;
+  yoffset: 40;
+  padding: 5;
+  theme: "default";
+  drun-display-format: "{name}";
+  disable-history: false;
+  window-thumbnail: true;
+  fixed-num-lines: false;
+  /*
+  scroll-method: 0;
+  window-format: "{w}    {c}   {t}";
+  display-window: "Window";
+  display-windowcd: "Windowcd";
+  display-run: "Run";
+  display-ssh: "SSH";
+  display-drun: "Desktop Run";
+  display-combi: "Combi";
+  display-keys: "Keys";
+  display-file-browser: "File Browser"; 
+  */
 }
