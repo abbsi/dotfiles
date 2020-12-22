@@ -166,6 +166,8 @@ alias bld-dmenu="cd /env/suckless/dmenu; make clean && sudo make install"
 alias bld-sls="cd /env/suckless/slstatus; make clean && sudo make install"
 alias bld-tab="cd /env/suckless/tabbed; make clean && sudo make install"
 
+alias sx="sxiv -t *"
+
 starship init fish | source
 
 ###### Bud Spencer Settings

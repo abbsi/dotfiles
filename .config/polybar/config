@@ -555,7 +555,7 @@ label = %date% %time%
 type = internal/date
 interval = 5
 
-date = "%B %e"
+date = "%A, %B %e"
 date-alt = "%Y-%m-%d"
 
 time = %l:%M%P
