@@ -1,0 +1,34 @@
+#!/bin/sh
+while read file
+do
+  case "$1" in
+    "w") setbg "$file" & ;;
+    "c")
+      [ -z "$destdir" ] && destdir="$(sed "s/\s.*#.*$//;/^\s*$/d" ${XDG_CONFIG_HOME:-$HOME/.config}/sxiv/image-dirs | awk '{print $2}' | rofi -dmenu -l 20 -i -p "Copy file(s) to where?" | sed "s|~|$HOME|g")"
+      [ ! -d "$destdir" ] && notify-send "$destdir is not a directory, cancelled." && exit
+      cp -i "$file" "$destdir" # && notify-send -i "$(readlink -f "$file")" "$file copied to $destdir." &
+      ;;
+    "m")
+      [ -z "$destdir" ] && destdir="$(sed "s/\s.*#.*$//;/^\s*$/d" ${XDG_CONFIG_HOME:-$HOME/.config}/sxiv/image-dirs | awk '{print $2}' | rofi -dmenu -l 20 -i -p "Move file(s) to where?" | sed "s|~|$HOME|g")"
+      [ ! -d "$destdir" ] && notify-send "$destdir is not a directory, cancelled." && exit
+      mv -i "$file" "$destdir" # && notify-send -i "$(readlink -f "$file")" "$file moved to $destdir." &
+      ;;
+    "d")
+      mv "$file" /mnt/library2/01-library/wallpapers/TRASH ## && notify-send "$file deleted."
+      ;;
+    "r")
+      convert -rotate 90 "$file" "$file" ;;
+    "R")
+      convert -rotate -90 "$file" "$file" ;;
+    "f")
+      convert -flop "$file" "$file" ;;
+    "y")
+      echo -n "$file" | tr -d '\n' | xclip -selection clipboard &&
+      notify-send "$file copied to clipboard" & ;;
+    "Y")
+      readlink -f "$file" | tr -d '\n' | xclip -selection clipboard &&
+      notify-send "$(readlink -f "$file") copied to clipboard" & ;;
+    "g")	ifinstalled gimp && setsid -f gimp "$file" ;;
+    "i")	notify-send "File information" "$(mediainfo "$file")" ;;
+  esac
+done
