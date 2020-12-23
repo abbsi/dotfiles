@@ -21,3 +21,4 @@ PATH="$HOME/bin${PATH:+:${PATH}}"
 eval "$(starship init bash)"
 
 source /home/nabil/.config/broot/launcher/bash/br
+source /usr/share/nvm/init-nvm.sh
