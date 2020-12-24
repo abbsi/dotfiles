@@ -3,8 +3,10 @@
 * {
   al:      #00000000;
   bg:      #04253Aff;
+  bar:     #135279FF;
+  accent:  #24355Aff;
   se:      #2D142Cff;
-  fg:      #ffffffA6;
+  fg:      #ffffffD6;
   ac:      #EE4540ff;
   red:     #EC7875ff;
   green:   #61C766ff;
