@@ -9,7 +9,7 @@ configuration {
   font: "Ubuntu 16";
   terminal: "alacritty";
   drun-show-actions: false;
-  location: 2;
+  location: 3;
   yoffset: 40;
   padding: 5;
   theme: "default";

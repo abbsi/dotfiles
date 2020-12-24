@@ -12,7 +12,7 @@ window:
     x: 1
     y: 1
   dynamic_padding: true
-  decorations: none
+  decorations: full
   title: Alacritty
   gtk_theme_variant: dark
 

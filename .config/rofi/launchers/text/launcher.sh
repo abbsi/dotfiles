@@ -11,7 +11,7 @@
 # style_1     style_2     style_3     style_4     style_5     style_6     style_7
 
 theme="style_1"
-color="black"
+color="custom"
 
 dir="$HOME/.config/rofi/launchers/text"
 styles=($(ls -p --hide="colors.rasi" $dir/styles))
@@ -24,6 +24,6 @@ sed -i -e "s/@import .*/@import \"$color\"/g" $dir/styles/colors.rasi
 # theme="${themes[$(( $RANDOM % 7 ))]}"
 
 rofi -no-lazy-grab -show run \
--modi run,drun,window \
+-modi run,window,windowcd,file-browser \
 -theme $dir/"$theme"
 

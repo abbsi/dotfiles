@@ -16,7 +16,8 @@ configuration {
     disable-history:                false;
     fullscreen:                     false;
 	hide-scrollbar: 				true;
-	sidebar-mode: 					false;
+    sidebar-mode: 					false;
+    window-format:                  "{c}";
 }
 
 /* -- Light-- */
@@ -48,7 +49,7 @@ window {
 	border:							0px;
 	border-color:					@border;
     border-radius:                  0px;
-	width:							32%;
+	width:							1800px;
     location:                       north;
     x-offset:                       10px;
     y-offset:                       50px;
@@ -114,7 +115,7 @@ element {
 }
 
 element-icon {
-    size:                           64px;
+    size:                           256px;
     border:                         0px;
 }
 

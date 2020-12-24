@@ -10,7 +10,7 @@
 configuration {
     lines:							10;
     columns:						2;
-    font: 							"Iosevka Nerd Font 12";
+    font: 							"Anonymice Nerd Font 18";
     bw: 							0;
     location: 						0;
     padding: 						0;
@@ -22,7 +22,7 @@ configuration {
     fullscreen: 					false;
     fake-transparency: 				false;
     scroll-method: 					1;
-    window-format: 					"[{w}] ··· {c} ···   {t}";
+    window-format: 					"{c} | {t}";
     click-to-exit: 					true;
     show-match: 					false;
     combi-hide-mode-prefix: 		false;
@@ -32,6 +32,7 @@ configuration {
     display-ssh: 					"";
     display-drun: 					"";
     display-combi: 					"";
+    display-file-browser:			"";
 }
 
 @import "styles/colors.rasi"
@@ -97,6 +98,11 @@ listview {
 element {
     border: 						0px;
     padding: 						1px;
+}
+
+element-icon {
+    size:                           16px;
+    border:                         0px;
 }
 element normal.normal {
     background-color: 				@bg;
