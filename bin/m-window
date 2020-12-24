@@ -1,3 +1,2 @@
 #!/bin/sh
-
-$($HOME/.config/rofi/bin/window)
+$($HOME/.config/rofi/window.sh)

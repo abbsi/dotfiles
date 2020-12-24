@@ -1,16 +1,7 @@
-/*
- *
- * Author  : Aditya Shakya
- * Mail    : adi1090x@gmail.com
- * Github  : @adi1090x
- * Twitter : @adi1090x
- *
- */
-
 configuration {
     lines:							10;
     columns:						2;
-    font: 							"Anonymice Nerd Font 18";
+    font: 							"Anonymice Nerd Font 14";
     bw: 							0;
     location: 						0;
     padding: 						0;
@@ -26,16 +17,16 @@ configuration {
     click-to-exit: 					true;
     show-match: 					false;
     combi-hide-mode-prefix: 		false;
-    display-window: 				"";
-    display-windowcd: 				"";
-    display-run: 					"";
-    display-ssh: 					"";
-    display-drun: 					"";
-    display-combi: 					"";
-    display-file-browser:			"";
+    display-window: 				" ";
+    display-windowcd: 				" ";
+    display-run: 					" ";
+    display-ssh: 					" ";
+    display-drun: 					" ";
+    display-combi: 					" ";
+    display-file-browser:			" ";
 }
 
-@import "styles/colors.rasi"
+@import "color_scheme.rasi"
 
 * {
     background-color:             	@bg;

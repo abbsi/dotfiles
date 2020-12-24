@@ -1,12 +1,3 @@
-/*
- *
- * Author  : Aditya Shakya
- * Mail    : adi1090x@gmail.com
- * Github  : @adi1090x
- * Twitter : @adi1090x
- *
- */
-
 configuration {
 	font:							"Source Code Pro 14";
     show-icons:                     true;
@@ -20,27 +11,15 @@ configuration {
     window-format:                  "{c}";
 }
 
-/* -- Light-- */
-/* 
-* {
-    background:                     #F5F5F5FF;
-    background-alt:              	#00000000;
-    background-bar:                 #D7D7D7FF;
-    foreground:                     #000000A6;
-    accent:			            	#80808066;
-}
-*/
-
-/* -- Dark -- */
+@import "color_scheme.rasi"
 
 * {
-    background:                     #04253AFF;
-    background-alt:                 #00000000;
-    background-bar:                 #095686FF;
-    foreground:                     #F5F5F5FF;
-    accent:			            	#00000066;
+    background:                     @bg;
+    background-alt:                 @al;
+    background-bar:                 @bar;
+    foreground:                     @fg;
+    accent:			            	@accent;
 }
-
 
 window {
     transparency:                   "real";
