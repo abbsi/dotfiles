@@ -9,8 +9,8 @@ configuration {
   font: "Ubuntu 16";
   terminal: "alacritty";
   drun-show-actions: false;
-  location: 3;
-  yoffset: 40;
+  location: 2;
+  yoffset: 60;
   padding: 5;
   theme: "default";
   drun-display-format: "{name}";

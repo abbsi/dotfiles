@@ -1,9 +1,9 @@
 configuration {
     lines:							10;
-    columns:						2;
+    columns:						3;
     font: 							"Anonymice Nerd Font 14";
     bw: 							0;
-    location: 						0;
+    location: 						1;
     padding: 						0;
     fixed-num-lines: 				true;
     show-icons: 					true;
@@ -35,10 +35,12 @@ configuration {
 window {
     border: 						0px;
     border-color: 					@ac;
-    border-radius: 					12px;
+    border-radius: 					0px;
     padding: 						40;
-    width: 							50%;
-    height: 						50%;
+    width:							1342px;
+    location:                       northwest;
+    x-offset:                       20px;
+    y-offset:                       59px;
 }
 
 prompt {

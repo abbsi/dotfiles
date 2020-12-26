@@ -8,7 +8,8 @@ configuration {
     fullscreen:                     false;
 	hide-scrollbar: 				true;
     sidebar-mode: 					false;
-    window-format:                  "{c}";
+    window-format:                  "{t}";
+    fixed-num-lines: 				true;
 }
 
 @import "color_scheme.rasi"
@@ -18,7 +19,7 @@ configuration {
     background-alt:                 @al;
     background-bar:                 @bar;
     foreground:                     @fg;
-    accent:			            	@accent;
+    
 }
 
 window {
@@ -29,7 +30,7 @@ window {
 	border-color:					@border;
     border-radius:                  0px;
 	width:							1800px;
-    location:                       north;
+    location:                       center;
     x-offset:                       10px;
     y-offset:                       50px;
 }
@@ -45,10 +46,10 @@ prompt {
 entry {
     background-color:               @background-alt;
     text-color:                     @foreground;
-    placeholder-color:              @foreground;
-    expand:                         true;
+    placeholder-color:              @accent;
+    expand:                         false;
     horizontal-align:               0;
-    placeholder:                    "";
+    placeholder:                    "Enter Window Title";
     padding:                        -0.00% 0% 0% 0%;
     blink:                          false;
 }

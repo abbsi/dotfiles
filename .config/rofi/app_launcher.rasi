@@ -27,10 +27,10 @@ window {
 	border:							0px;
 	border-color:					@border;
     border-radius:                  0px;
-	width:							1800px;
-    location:                       north;
-    x-offset:                       10px;
-    y-offset:                       50px;
+	width:							1342px;
+    location:                       northwest;
+    x-offset:                       20px;
+    y-offset:                       59px;
 }
 
 prompt {
