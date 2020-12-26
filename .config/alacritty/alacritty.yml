@@ -48,7 +48,7 @@ bell:
   duration: 1
   color: '#ffffff'
 
-background_opacity: 0.95
+background_opacity: 0.85
 
 selection:
   semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
@@ -63,9 +63,6 @@ cursor:
   thickness: 0.20
 
 live_config_reload: true
-
-shell:
-  program: /usr/bin/fish
 
 working_directory: /env
 
@@ -152,6 +149,7 @@ key_bindings:
   #- { key: Add,      mods: Control,                 action: IncreaseFontSize }
   #- { key: Subtract, mods: Control,                 action: DecreaseFontSize }
   #- { key: Minus,    mods: Control,                 action: DecreaseFontSize }
+
 
 colors:
   primary:
