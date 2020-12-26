@@ -1,0 +1,146 @@
+;;;;;;;;;;;;;;;;;;;;; Disabled Modules ;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[module/xwindow]
+type = internal/xwindow
+label = %title:0:30:...%
+
+[module/wlan]
+type = internal/network
+interface = wlan0
+label-connected = %essid%
+interval = 3.0
+format-connected = <ramp-signal> <label-connected>
+format-connected-underline = ${colors.brgt-red}
+
+format-disconnected = 睊
+label-disconnected = %ifname% disconnected
+format-disconnected-underline = ${colors.brgt-red}
+label-disconnected-foreground = ${colors.nrml-red}
+
+ramp-signal-0 = 直
+ramp-signal-1 = 直
+ramp-signal-2 = 直
+ramp-signal-3 = 直
+ramp-signal-4 = 直
+ramp-signal-foreground = ${colors.${colors.nrml-red}}
+
+[module/eth]
+type = internal/network
+interface = eth1
+interval = 3.0
+
+label-connected = %local_ip%
+format-connected-prefix = " "
+format-connected-underline = ${colors.brgt-red}
+format-connected-prefix-foreground = ${colors.nrml-red}
+
+format-disconnected = <label-disconnected>
+label-disconnected = %ifname% disconnected
+format-disconnected-underline = ${colors.brgt-red}
+label-disconnected-foreground = ${colors.nrml-red}
+
+[module/xbacklight]
+type = internal/xbacklight
+
+format = <label> <bar>
+label = BL
+
+bar-width = 10
+bar-indicator = |
+bar-indicator-foreground = ${colors.foreground-1}
+bar-indicator-font = 2
+bar-fill = ─
+bar-fill-font = 2
+bar-fill-foreground = ${colors.background-1}
+bar-empty = ─
+bar-empty-font = 2
+bar-empty-foreground = ${colors.foreground-2}
+
+[module/backlight-acpi]
+inherit = module/xbacklight
+type = internal/backlight
+card = intel_backlight
+
+[module/bspwm]
+type = internal/bspwm
+
+label-focused = %index%
+label-focused-background = ${colors.nrml-magenta}
+label-focused-underline= ${colors.nrml-magenta}
+label-focused-padding = 2
+
+label-occupied = %index%
+label-occupied-padding = 2
+
+label-urgent = %index%!
+label-urgent-background = ${colors.alert}
+label-urgent-padding = 2
+
+label-empty = %index%
+label-empty-foreground = ${colors.foreground-2}
+label-empty-padding = 2
+
+Separator in between workspaces
+label-separator = x
+
+[module/pulseaudio]
+type = internal/pulseaudio
+
+format-volume = <label-volume> <bar-volume>
+label-volume =   %percentage%%
+label-volume-foreground = ${colors.foreground-1}
+
+;format-muted-prefix = " "
+label-muted = " 婢 "
+label-muted-foreground = ${colors.alert}
+
+bar-volume-width = 10
+bar-volume-foreground-0 = ${colors.nrml-green}
+bar-volume-foreground-1 = ${colors.nrml-green}
+bar-volume-foreground-2 = ${colors.nrml-green}
+bar-volume-foreground-3 = ${colors.nrml-green}
+bar-volume-foreground-4 = ${colors.nrml-green}
+bar-volume-foreground-5 = ${colors.warn}
+bar-volume-foreground-6 = ${colors.alert}
+bar-volume-gradient = true
+bar-volume-indicator = "﨡"
+bar-volume-indicator-foreground =  ${colors.nrml-red}
+bar-volume-indicator-font = 2
+bar-volume-fill = 絛
+bar-volume-fill-font = 2
+bar-volume-empty = 
+bar-volume-empty-font = 2
+bar-volume-empty-foreground = ${colors.foreground-1}
+
+[module/battery]
+type = internal/battery
+battery = BAT0
+adapter = ADP1
+full-at = 98
+
+format-charging = <animation-charging> <label-charging>
+format-charging-underline = #COLOR
+
+format-discharging = <animation-discharging> <label-discharging>
+format-discharging-underline = ${self.format-charging-underline}
+
+format-full-prefix = " "
+format-full-prefix-foreground = ${colors.foreground-2}
+format-full-underline = ${self.format-charging-underline}
+
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-foreground = ${colors.foreground-2}
+
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-foreground = ${colors.foreground-2}
+animation-charging-framerate = 750
+
+animation-discharging-0 = 
+animation-discharging-1 = 
+animation-discharging-2 = 
+animation-discharging-foreground = ${colors.foreground-2}
+animation-discharging-framerate = 750

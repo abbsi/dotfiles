@@ -1,0 +1,333 @@
+[module/menu]
+type = custom/menu
+expand-right = true
+label-open = "  "
+label-close = "  "
+label-separator = " | "
+
+; Format
+format-spacing = 1
+format-padding = 2
+label-open-foreground = ${colors.foreground-1}
+label-close-foreground = ${colors.alert}
+label-separator-foreground = ${colors.foreground-1}
+format-background = ${colors.background-1}
+
+;;; Main
+menu-0-0 = power
+menu-0-0-exec = menu-open-1
+menu-0-1 = notifications
+menu-0-1-exec = menu-open-2
+menu-0-2 = picom
+menu-0-2-exec = menu-open-3
+
+;;; Power
+menu-1-0 = reboot
+menu-1-0-exec = sudo reboot
+menu-1-1 = power off
+menu-1-1-exec = sudo poweroff
+
+;;; Notifications
+menu-2-0 = on
+menu-2-0-exec = "dunstctl set-paused false; notify-send 'Notifications On' &"
+menu-2-1 = off
+menu-2-1-exec = "notify-send 'Notifications Off'; dunstctl set-paused true &"
+
+;;; Picom
+menu-3-0 = on
+menu-3-0-exec = "picom && notify-send 'Picom On' &"
+menu-3-1 = off
+menu-3-1-exec = "if pgrep -x 'picom'; then killall picom; fi; notify-send 'Picom Off' &"
+
+[module/dunst-status]
+inherit = module
+type = custom/ipc
+hook-0 = echo "  "
+hook-1 = echo "  " 
+hook-2 = echo " 罹 "
+initial = 0
+click-left = "dunstctl set-paused false; notify-send 'Notifications On' &"
+click-right = "notify-send 'Notifications Off'; sleep 2; dunstctl set-paused true &"
+
+; Formats
+format-foreground = ${colors.foreground-1}
+format-background = ${colors.background-1}
+
+[module/dunst-script]
+type = custom/script
+exec = ~/.config/polybar/scripts/dunst-status.sh
+interval = 5
+
+[module/script-updates]
+inherit = module
+type = custom/script
+exec = pacupdate
+label = %output%
+interval = 360
+format-prefix = "  "
+click-left = alacritty -e sudo pacman -Syu
+
+; Format
+format-background = ${colors.background-1}
+format-foreground = ${colors.foreground-1}
+;format-prefix-foreground = ${colors.foreground-1}
+
+[module/script-mail]
+inherit = module
+type = custom/script
+exec = mail-count
+label = %output%
+interval = 300
+format-prefix = "  "
+
+; Format
+format-foreground = ${colors.foreground-1}
+format-background = ${colors.background-1}
+;format-prefix-foreground = ${colors.foreground-1}
+
+[module/spotify-git]
+type = custom/script
+tail = true
+format-prefix = "  "
+format = "  <label>  "
+exec = ~/.config/polybar/scripts/scroll_spotify_status.sh
+
+; Formant
+format-foreground = ${colors.background-1}
+format-background = ${colors.wtransparent}
+
+[module/spotify-prev]
+type = custom/script
+exec = echo "  玲  "
+format = <label>
+format-background = ${colors.background-2}
+click-left = playerctl previous spotify
+
+[module/spotify-play-pause]
+type = custom/ipc
+hook-0 = echo "    "
+hook-1 = echo "  契  "
+initial = 1
+format-background = ${colors.background-2}
+click-left = playerctl play-pause spotify
+margin-left = 0
+
+[module/spotify-next]
+type = custom/script
+exec = echo "  怜  "
+format = <label>
+format-background = ${colors.background-2}
+click-left = playerctl next spotify
+
+[module/alsa]
+inherit = module
+type = internal/alsa
+
+format-volume = " <label-volume> <bar-volume> "
+format-volume-background = ${colors.background-2}
+formar-volume-padding = 1
+
+label-volume = "    %percentage:3%%"
+label-volume-foreground = ${colors.foreground-2}
+
+;format-muted-prefix = " "
+format-muted-foreground = ${colors.foreground-2}
+format-muted-background = ${colors.background-2}
+label-muted = "  婢  "
+
+bar-volume-width = 10
+bar-volume-foreground-0 = ${colors.nrml-green}
+bar-volume-foreground-1 = ${colors.nrml-green}
+bar-volume-foreground-2 = ${colors.nrml-green}
+bar-volume-foreground-3 = ${colors.nrml-green}
+bar-volume-foreground-4 = ${colors.nrml-green}
+bar-volume-foreground-5 = ${colors.warn}
+bar-volume-foreground-6 = ${colors.alert}
+bar-volume-gradient = false
+bar-volume-indicator = "﨡"
+bar-volume-indicator-foreground =  ${colors.nrml-red}
+bar-volume-indicator-font = 1
+bar-volume-fill = 絛
+bar-volume-fill-font = 1
+bar-volume-empty = 
+bar-volume-empty-font = 2
+bar-volume-empty-foreground = ${colors.foreground-2}
+
+[module/eth-up]
+inherit = module
+type = internal/network
+interface = eth0
+interval = 3.0
+format-connected-background = ${colors.background-3}
+label-connected = "%upspeed:8% "
+format-connected-prefix = "  "
+;format-connected-underline = ${colors.brgt-yellow}
+format-connected-prefix-foreground = ${colors.foreground-3}
+
+label-disconnected = "  "
+format-disconnected = <label-disconnected>
+format-disconnected-underline = ${colors.alert}
+label-disconnected-foreground = ${colors.alert}
+
+
+[module/eth-down]
+inherit = module
+type = internal/network
+interface = eth0
+interval = 3.0
+format-connected-background = ${colors.background-3}
+label-connected = "%downspeed:8% "
+format-connected-prefix = "  "
+;format-connected-underline = ${colors.brgt-yellow}
+format-connected-prefix-foreground = ${colors.foreground-3}
+
+label-disconnected = "  "
+format-disconnected = <label-disconnected>
+format-disconnected-underline = ${colors.alert}
+label-disconnected-foreground = ${colors.alert}
+
+[module/temperature]
+inherit = module
+type = internal/temperature
+;thermal-zone = 1
+hwmon-path = /sys/class/hwmon/hwmon3/temp2_input
+base-temperature = 38
+warn-temperature = 60
+
+
+format = <ramp> <label>
+format-background = ${colors.background-4}
+format-warn = <ramp> <label-warn>
+format-warn-background = ${colors.alert}
+format-warn-padding = 10
+label = %temperature-c%
+label-warn = %temperature-c%
+label-warn-foreground = ${colors.brgt-white}
+
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
+ramp-foreground = ${colors.foreground-4}
+
+[module/cpu]
+inherit = module
+type = internal/cpu
+label = %percentage:2%%
+interval = 2
+format-background = ${colors.background-4}
+;format-foreground = ${colors.nrml-magenta} 
+format-prefix = " "
+format-prefix-foreground = ${colors.foreground-4}
+;format-underline = ${colors.brgt-red}
+
+[module/memory]
+inherit = module
+type = internal/memory
+interval = 3
+label = %percentage_used:2%%
+format-prefix = " "
+format-background = ${colors.background-4}
+format-prefix-foreground = ${colors.foreground-4}
+
+[module/mem-bar]
+inherit = module
+type = internal/memory
+interval = 5
+format = <bar-used>
+format-prefix = " "
+format-background = ${colors.wtransparent}
+format-prefix-foreground = ${colors.background-1}
+
+bar-used-indicator = ┼
+bar-used-indicator-foreground = ${colors.background-1}
+bar-used-width = 35
+bar-used-foreground-0 = ${colors.background-1}
+bar-used-foreground-1 = ${colors.background-4}
+bar-used-foreground-2 = #f5a70a
+bar-used-foreground-3 = #ff5555
+bar-used-fill = 絛
+bar-used-empty = 
+bar-used-empty-foreground = ${colors.background-5}
+
+bar-volume-fill = 
+bar-volume-fill-font = 1
+bar-volume-empty = 
+
+[module/script-disk]
+inherit = module
+type = custom/script
+exec = diskf
+tail = true
+label = %output:2%
+interval = 1800
+;format-underline = ${colors.brgt-red}
+format-prefix = " "
+format-background = ${colors.background-4}
+format-prefix-foreground = ${colors.foreground-4}
+click-left = alacritty -e bpytop
+
+[module/filesystem]
+inherit = module
+type = internal/fs
+interval = 25
+
+mount-0 = /
+;mount-1 = /mnt/library1
+;mount-2 = /mnt/library2
+label-mounted = %{F#980B64} %{F-}%percentage_used%%
+label-unmounted = %mountpoint% not mounted
+label-unmounted-foreground = ${colors.foreground-2}
+
+[module/xkeyboard]
+inherit = module
+type = internal/xkeyboard
+format-prefix = " "
+;format-underline = ${colors.brgt-magenta}
+format-background = ${colors.background-5}
+format-prefix-foreground = ${colors.foreground-5}
+format-foreground = ${colors.foreground-5}
+blacklist-0 = lock
+
+label-indicator-on-numlock   = "" 
+label-indicator-off-numlock  = " "
+label-indicator-on-capslock  = "וּ "
+label-indicator-off-capslock = "  "
+label-layout = ""
+
+[module/date-main]
+inherit = module
+type = internal/date
+interval = 5
+
+date = ""
+date-alt = "  %Y-%m-%d"
+
+time = %l:%M%P
+time-alt = %l:%M%P
+
+format-prefix = " "
+format-prefix-foreground = ${colors.foreground-5}
+format-background = ${colors.background-5}
+format-foreground = ${colors.foreground-5}
+;format-underline = ${colors.brgt-magenta}
+
+label = %date% %time%
+
+[module/date-secondary]
+inherit = module
+type = internal/date
+interval = 5
+
+date = "%A, %B %e"
+date-alt = "%Y-%m-%d"
+
+time = %l:%M%P
+time-alt = %l:%M%P
+
+format-prefix = " "
+format-prefix-foreground = ${colors.nrml-magenta}
+format-underline = ${colors.brgt-magenta}
+
+label = %date% %time%
+
+; vim:ft=dosini

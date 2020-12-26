@@ -1,0 +1,22 @@
+1-dk = #691166
+2-dk = #841680
+3-dk = #9e1a9a
+4-dk = #b91eb4
+5-dk = #d322cd
+1-lt = #dd55d9
+2-lt = #e680e3
+3-lt = #eeaaec
+4-lt = #f7d5f6
+5-lt = #ffffff
+
+foreground-1 = ${colors.1-dk}
+foreground-2 = ${colors.2-dk}
+foreground-3 = ${colors.3-dk}
+foreground-4 = ${colors.4-dk}
+foreground-5 = ${colors.5-dk}
+
+background-1 = ${colors.1-lt}
+background-2 = ${colors.2-lt}
+background-3 = ${colors.3-lt}
+background-4 = ${colors.4-lt}
+background-5 = ${colors.5-lt}
