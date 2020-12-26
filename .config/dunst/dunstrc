@@ -2,27 +2,27 @@
     ### Display ###
     monitor = 0                           # Which monitor should the notifications be displayed on.
     follow = none                         # [ mouse, keyboard, none ]
-    geometry = "700x20+10+50"             # [{width}]x{height}[+/-{x}+/-{y}]
+    geometry = "1342x15+20+58"             # [{width}]x{height}[+/-{x}+/-{y}]
     indicate_hidden = yes                 # Number of messages hidden
     shrink = no                           # Shrink window if it's smaller than the width.  Will be ignored if width is 0.
     transparency = 5                      # Range: [0; 100]
-    notification_height = 40              # will be increased if conetnet needs it
+    notification_height = 38              # will be increased if conetnet needs it
     separator_height = 1                  # Draw a line of "separator_height" pixel height between two notifications. 0 to disable
     padding = 8                           # Padding between text and separator.
     horizontal_padding = 8                # Horizontal padding.
-    frame_width = 2                       # Defines width in pixels of frame around the notification window. Set to 0 to disable.
+    frame_width = 0                       # Defines width in pixels of frame around the notification window. Set to 0 to disable.
     frame_color = "#DDDDDD"               # Defines color of the frame around the notification window.
-    separator_color = foregournd          # [ auto, foreground, frame, anything ]
-    sort = yes                            # Sort messages by urgency.
+    separator_color = auto                # [ auto, foreground, frame, anything ]
+    sort = no                             # Sort messages by urgency.
     idle_threshold = 120                  # Don't remove messages, if the user is idle (no mouse or keyboard input) for longer than idle_threshold seconds.
-    font = Sans Serif 12       
+    font = Sans Serif 10       
     line_height = 0                       # The spacing between lines.
     markup = full                         # [ full, strip, no ]
     alignment = left                      # [ left, center, right ] 
     vertical_alignment = center           # [ top, center, bottom ]
     show_age_threshold = -1               # Show age of message if message is older than show_age_threshold seconds. Set to -1 to disable.
-    word_wrap = yes                       # Split notifications into multiple lines if they don't fit into geometry.
-    ellipsize = middle                    # [start, middle and end]
+    word_wrap = no                        # Split notifications into multiple lines if they don't fit into geometry.
+    ellipsize = end                       # [start, middle and end]
     ignore_newline = no                   # Ignore newlines '\n' in notifications.
     stack_duplicates = no                 # Stack together notifications with the same content
     hide_duplicate_count = false          # Hide the count of stacked notifications with the same content
@@ -38,7 +38,7 @@
     title = Dunst                         # Define the title of the windows spawned by dunst
     class = Dunst                         # Define the class of the windows spawned by dunst
     startup_notification = false          # Print a notification on startup.
-    corner_radius = 6                     # Define the corner radius of the notification window in pixel size. If the radius is 0, you have no rounded corners.
+    corner_radius = 0                     # Define the corner radius of the notification window in pixel size. If the radius is 0, you have no rounded corners.
     ignore_dbusclose = false              # Ignore the dbus closeNotification message.
     force_xinerama = false                # Use the Xinerama extension instead of RandR for multi-monitor support.
     verbosity = mesg                      # [crit, warm, mesg, info, debug]
@@ -65,7 +65,7 @@
     #   %n  progress value if set without any extra characters
     #   %%  Literal %
     # Markup is allowed
-    format = "<b>%s</b>\n%b"
+    format = "%s | %b"
 
 [shortcuts]
     # Available modifiers are "ctrl", "mod1" (the alt-key), "mod2", "mod3" and "mod4" (windows-key).
@@ -75,15 +75,15 @@
     context = ctrl+shift+period # Context menu.
 
 [urgency_low]
-    background =  "#BBBBBB"
-    foreground =  "#333333"
-    timeout = 1
+    background =  "#333333"
+    foreground =  "#FFFFFF"
+    timeout = 2
     #icon = /path/to/icon
 
 [urgency_normal]
-    background =  "#DDDDDD"
-    foreground =  "#333333"
-    timeout = 4
+    background =  "#05293E"
+    foreground =  "#FFFFFF"
+    timeout = 5
     #icon = /path/to/icon
 
 [urgency_critical]
@@ -91,34 +91,33 @@
     foreground =  "#ffffff"
     frame_color = "#D7005F"
     timeout = 0
-    icon = /usr/share/icons/Adwaita/32x32/legacy/dialog-warning.png
+    #icon = /usr/share/icons/Adwaita/32x32/legacy/dialog-warning.png
 
 [SpotifyColor]
     appname = Spotify
     background =  "#00A75F"
     foreground =  "#ffffff"
     frame_color = "#00A75F"
-    timeout = 2
+    timeout = 3
 
 [notify-send]
     appname = notify-send
-    format = "<b>%s</b>\n%b"
 
 [WhatsApp]
     appname = whatsapp-nativefier-930aa1
-    format = "WhatsApp\n<b>%s</b>\n%b"
+    format = "Whatsapp | %s | %b"
     background =  "#095686"
     frame_color = "#095686"
     foreground =  "#ffffff"
-    timeout = 7
+    timeout = 10
 
 [Slack]
     appname = "Slack"
-    format = "<b>%a: %s</b>\n%b"
+    format = "Slack | %s | %b"
     background =  "#4E499C"
     frame_color = "#4E499C"
     foreground =  "#ffffff"
-    timeout = 600
+    timeout = 10
    
 [VolumeApp]
     appname = pavolume
@@ -127,8 +126,6 @@
     format = "%s"
     alignment = center
     
-
-
 # Experimental features that may or may not work correctly. Do not expect them
 # to have a consistent behaviour across releases.
 [experimental]
