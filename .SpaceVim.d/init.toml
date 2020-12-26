@@ -6,13 +6,24 @@
 # License: GPLv3
 #=============================================================================
 
+# To apply term's opacity to SpaceVim add the following to ~/.Spacevim/config/init.vim
+# -----
+# func! s:transparent_background()
+#   highlight Normal guibg=NONE ctermbg=NONE
+#   highlight NonText guibg=NONE ctermbg=NONE
+#   highlight EndOfBuffer guibg=NONE ctermbg=NONE
+# endf
+# autocmd ColorScheme * call s:transparent_background()
+# -----
+
 # All SpaceVim option below [option] section
 [options]
     # set spacevim theme. by default colorscheme layer is not loaded,
     # if you want to use more colorscheme, please load the colorscheme
     # layer
     
-    colorscheme = "vim-material"
+    # colorscheme = "vim-material"
+    colorscheme = "material"
     colorscheme_bg = "dark"    
     # Disable guicolors in basic mode, many terminal do not support 24bit
     # true colors
@@ -35,6 +46,10 @@
     bootstrap_before = "myspacevim#before"
     bootstrap_after = "myspacevim#after"
 
+#    highlight Normal guibg=NONE ctermbg=NONE
+#    highlight NonText guibg=NONE ctermbg=NONE
+#    highlight EndOfBuffer guibg=NONE ctermbg=NONE
+
 # Enable autocomplete layer
 
 [[layers]]
@@ -51,9 +66,9 @@
 [[layers]]
   name = "lang#ruby"
 
-[[custom_plugins]]
-  repo = "hzchirs/vim-material"
-  merged = 0
+#[[custom_plugins]]
+#  repo = "hzchirs/vim-material"
+#  merged = 0
 
 [[custom_plugins]]
   repo = "mhartington/oceanic-next"
@@ -62,6 +77,9 @@
 [[custom_plugins]]
   repo = "liuchengxu/space-vim-dark"
   merged = 0
+
+[[custom_plugins]]
+  name = "dracula/vim"
 
 [[layers]]
   name = "git"
