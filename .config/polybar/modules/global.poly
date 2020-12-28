@@ -79,6 +79,7 @@ exec = mail-count
 label = %output%
 interval = 300
 format-prefix = "  "
+click-left = ~/.config/polybar/scripts/focus-app.sh thunderbird Thunderbird left
 
 ; Format
 format-foreground = ${colors.foreground-1}
