@@ -157,8 +157,8 @@ alias tobash="sudo chsh $USER -s /bin/bash && echo 'Now log out.'"
 alias tozsh="sudo chsh $USER -s /bin/zsh && echo 'Now log out.'"
 alias tofish="sudo chsh $USER -s /bin/fish && echo 'Now log out.'"
 
-alias gen="/environment/mercer_docs/generate.sh"
-
+alias sx="sxiv -t *"
+alias ud="sudo updatedb"
 alias sucode="sudo code --user-data-dir='/root/.vscode-root'"
 alias bld-dwm="cd /env/suckless/dwm; make clean && sudo make install"
 alias bld-blocks="cd /env/suckless/dwmblocks; make clean && sudo make install"
@@ -166,7 +166,6 @@ alias bld-dmenu="cd /env/suckless/dmenu; make clean && sudo make install"
 alias bld-sls="cd /env/suckless/slstatus; make clean && sudo make install"
 alias bld-tab="cd /env/suckless/tabbed; make clean && sudo make install"
 
-alias sx="sxiv -t *"
 
 starship init fish | source
 

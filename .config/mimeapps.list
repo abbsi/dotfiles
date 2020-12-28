@@ -153,6 +153,7 @@ x-scheme-handler/mmsh=vlc.desktop
 x-scheme-handler/rtmp=vlc.desktop
 x-scheme-handler/rtp=vlc.desktop
 x-scheme-handler/rtsp=vlc.desktop
+x-scheme-handler/slack=slack.desktop
 
 [Added Associations]
 application/octet-stream=notepadqq.desktop;
