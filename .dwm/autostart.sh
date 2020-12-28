@@ -3,6 +3,7 @@
 picom &
 nitrogen --restore &
 numlockx &
+mpd-mpris -port 6601 &
 
 # https://github.com/jD91mZM2/xidlehook
 xidlehook \
