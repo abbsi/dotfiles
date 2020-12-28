@@ -58,7 +58,8 @@ inherit = bar/base
 monitor = ${monitors.main}
 width = 35%
 offset-x = 64.5%
-modules-right = mem-bar eth-up eth-down temperature cpu memory script-disk xkeyboard date-main
+modules-left = mem-bar 
+modules-right = eth-up eth-down temperature cpu memory script-disk xkeyboard date-main
 tray-position = right
 tray-padding = 2
 tray-background = ${colors.background-1}
@@ -83,7 +84,7 @@ screenchange-reload = true
 ;compositing-background = screen
 ;compositing-foreground = source
 ;compositing-border = over
-pseudo-transparency = false
+pseudo-transparency = true
 
 [global/wm]
 margin-top = 5
