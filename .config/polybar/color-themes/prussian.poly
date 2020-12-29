@@ -1,14 +1,3 @@
-1-dk = #1a1a40
-2-dk = #21264c
-3-dk = #273158
-4-dk = #2e3c64
-5-dk = #344770
-1-lt = #4e73a0
-2-lt = #718eb3
-3-lt = #93a9c5
-4-lt = #b5c4d8
-5-lt = #d7dfea
-
 col-bl = #000000
 col-wh = #FFFFFF
 
@@ -16,16 +5,16 @@ transparent    = #00000000
 transparent-dk = #44000000
 transparent-lt = #44FFFFFF
 
-dk-01 = #1a1a40
-dk-02 = #21264c
-dk-03 = #273158
-dk-04 = #2e3c64
-dk-05 = #344770
-lt-01 = #4e73a0
-lt-02 = #718eb3
-lt-03 = #93a9c5
-lt-04 = #b5c4d8
-lt-05 = #d7dfea
+dk-01 = #031926
+dk-02 = #05293e
+dk-03 = #063956
+dk-04 = #08496e
+dk-05 = #095886
+lt-01 = #2784b9
+lt-02 = #629bbc
+lt-03 = #8fb5cc
+lt-04 = #b7d2e1
+lt-05 = #e0edf5
 
 foreground-1 = ${colors.lt-03}
 background-1 = ${colors.dk-01}

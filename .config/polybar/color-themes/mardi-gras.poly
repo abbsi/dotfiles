@@ -1,22 +1,32 @@
-1-dk = #691166
-2-dk = #841680
-3-dk = #9e1a9a
-4-dk = #b91eb4
-5-dk = #d322cd
-1-lt = #dd55d9
-2-lt = #e680e3
-3-lt = #eeaaec
-4-lt = #f7d5f6
-5-lt = #ffffff
+col-bl = #000000
+col-wh = #FFFFFF
 
-foreground-1 = ${colors.1-dk}
-foreground-2 = ${colors.2-dk}
-foreground-3 = ${colors.3-dk}
-foreground-4 = ${colors.4-dk}
-foreground-5 = ${colors.5-dk}
+transparent    = #00000000
+transparent-dk = #44000000
+transparent-lt = #44FFFFFF
 
-background-1 = ${colors.1-lt}
-background-2 = ${colors.2-lt}
-background-3 = ${colors.3-lt}
-background-4 = ${colors.4-lt}
-background-5 = ${colors.5-lt}
+dk-01 = #691166
+dk-02 = #841680
+dk-03 = #9e1a9a
+dk-04 = #b91eb4
+dk-05 = #d322cd
+lt-01 = #dd55d9
+lt-02 = #e680e3
+lt-03 = #eeaaec
+lt-04 = #f7d5f6
+lt-05 = #ffffff
+
+foreground-1 = ${colors.lt-03}
+background-1 = ${colors.dk-01}
+
+foreground-2 = ${colors.lt-03}
+background-2 = ${colors.dk-02}
+
+foreground-3 = ${colors.lt-04}
+background-3 = ${colors.dk-03}
+
+foreground-4 = ${colors.lt-03}
+background-4 = ${colors.dk-02}
+
+foreground-5 = ${colors.lt-03}
+background-5 = ${colors.dk-01}

@@ -17,7 +17,3 @@ brgt-blue    = #005fd7
 brgt-magenta = #EF27A6
 brgt-cyan    = #9DD1F1
 brgt-white   = #eeeeee
-
-transparent = #00000000
-btransparent = #33000000
-wtransparent = #33FFFFFF

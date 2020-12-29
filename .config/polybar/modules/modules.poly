@@ -95,7 +95,7 @@ exec = ~/.config/polybar/scripts/scroll_spotify_status.sh
 
 ; Formant
 format-foreground = ${colors.background-1}
-format-background = ${colors.wtransparent}
+format-background = ${module.default-bg}
 
 [module/spotify-prev]
 type = custom/script
@@ -236,7 +236,7 @@ type = internal/memory
 interval = 5
 format = <bar-used>
 format-prefix = " "
-format-background = ${colors.wtransparent}
+format-background = ${module.default-bg}
 format-prefix-foreground = ${colors.background-1}
 
 bar-used-indicator = ┼
@@ -310,7 +310,6 @@ format-prefix = " "
 format-prefix-foreground = ${colors.foreground-5}
 format-background = ${colors.background-5}
 format-foreground = ${colors.foreground-5}
-;format-underline = ${colors.brgt-magenta}
 
 label = %date% %time%
 
@@ -326,8 +325,9 @@ time = %l:%M%P
 time-alt = %l:%M%P
 
 format-prefix = " "
-format-prefix-foreground = ${colors.nrml-magenta}
-format-underline = ${colors.brgt-magenta}
+format-prefix-foreground = ${colors.foreground-5}
+format-background = ${colors.background-5}
+format-foreground = ${colors.foreground-5}
 
 label = %date% %time%
 

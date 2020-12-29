@@ -2,8 +2,10 @@
 inherit = module
 type = internal/dwm
 format = <label-tags>  <label-layout>
+bg = ${module.default-bg}
+
 ;format-padding = 1
-bg = ${colors.wtransparent}
+
 ; Path to dwm socket (default: /tmp/dwm.sock)
 socket-path = /tmp/dwm.sock
 
@@ -30,7 +32,7 @@ label-padding = 2
 label-focused = ""
 label-focused-padding = ${self.label-padding}
 label-focused-background = ${self.bg}
-label-focused-foreground = ${colors.background-1}
+label-focused-foreground = ${colors.brgt-magenta}
 ;label-focused-underline = ${colors.foreground-2}
 
 ; unfocused = Unselected tag on unselected monitor
@@ -82,7 +84,7 @@ secondary-layout-symbol = [M]
 label-layout = %symbol%
 label-layout-padding = 1
 label-layout-foreground = ${colors.background-3}
-;label-layout-background = ${colors.transparent}
+;label-layout-background = ${module.default-bg}
 ;label-layout-underline = ${colors.nrml-magenta}
 
 [module/dwm-title]
