@@ -161,10 +161,12 @@ alias sx="sxiv -t *"
 alias ud="sudo updatedb"
 alias sucode="sudo code --user-data-dir='/root/.vscode-root'"
 alias bld-dwm="cd /env/suckless/dwm; make clean && sudo make install"
-alias bld-blocks="cd /env/suckless/dwmblocks; make clean && sudo make install"
-alias bld-dmenu="cd /env/suckless/dmenu; make clean && sudo make install"
-alias bld-sls="cd /env/suckless/slstatus; make clean && sudo make install"
-alias bld-tab="cd /env/suckless/tabbed; make clean && sudo make install"
+alias bld-blocks="cd /env/suckless/dwmblocks; sudo make install && sudo make clean"
+alias bld-dmenu="cd /env/suckless/dmenu; sudo make install && sudo make clean"
+alias bld-sls="cd /env/suckless/slstatus; sudo make install && sudo make clean"
+alias bld-tab="cd /env/suckless/tabbed; sudo make install && sudo make clean"
+alias bld-slock="cd /env/suckless/slock; sudo make install && sudo make clean"
+alias bld-st="cd /env/suckless/slock; sudo make install && sudo make clean"
 
 
 starship init fish | source
