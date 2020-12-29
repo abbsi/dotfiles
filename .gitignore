@@ -45,5 +45,7 @@
 !/.screenlayout/default.sh
 !/.SpaceVim.d/
 !/.SpaceVim.d/**
+!/.wallpapers/
+!/.wallpapers/**
 !/bin/
 !/bin/*
