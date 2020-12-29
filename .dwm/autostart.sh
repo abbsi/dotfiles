@@ -4,6 +4,7 @@ picom &
 nitrogen --restore &
 numlockx &
 mpd-mpris -port 6601 &
+ympd --p 6601 -w 8080 &
 
 # https://github.com/jD91mZM2/xidlehook
 brgt1="--brightness .6"
