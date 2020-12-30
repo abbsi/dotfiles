@@ -27,28 +27,32 @@ label-padding = 2
 ; States: focused, unfocused, visible, urgent, empty
 ; Available tokens:
 ;   %name%
-
+; 綠祿  ⭘ 
 ; focused = Selected tag on focused monitor
-label-focused = ""
+label-focused = "綠" 
+label-focused-font = 3
 label-focused-padding = ${self.label-padding}
 label-focused-background = ${self.bg}
-label-focused-foreground = ${colors.brgt-magenta}
+label-focused-foreground = ${colors.background-5}
 ;label-focused-underline = ${colors.foreground-2}
 
 ; unfocused = Unselected tag on unselected monitor
-label-unfocused = ""
+label-unfocused = "綠"
+label-unfocused-font = 3
 label-unfocused-padding = ${self.label-padding}
 label-unfocused-background = ${self.bg}
-label-unfocused-foreground = ${colors.background-5}
+label-unfocused-foreground = ${colors.background-3}
 
 ; visible = Unselected tag, but occupied tag on any monitor
-label-visible = ""
+label-visible = "祿"
+label-visible-font = 3
 label-visible-padding = ${self.label-padding}
 label-visible-background = ${self.bg}
-label-visible-foreground = ${colors.background-2}
+label-visible-foreground = ${colors.background-3}
 
 ; urgent = Unselected tag with window that has urgency hint set
-label-urgent = ""
+label-urgent = "𥉉"
+label-urgent-font = 3
 label-urgent-background = ${self.bg}
 label-urgent-foreground = ${colors.alert}
 label-urgent-padding = ${self.label-padding}
@@ -56,10 +60,11 @@ label-urgent-underline= ${colors.alert}
 
 ; empty = Unselected and unoccupied tag
 ; This can be set to an empty string to hide empty tags
-label-empty = "祿"
+label-empty = ""
+label-empty-font = 3
 label-empty-background = ${self.bg}
 label-empty-padding = ${self.label-padding}
-label-empty-foreground = ${colors.background-2}
+label-empty-foreground = ${colors.background-3}
 
 ;[module/dwm-layout]
 ;inherit = module

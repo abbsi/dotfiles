@@ -151,7 +151,7 @@ bar-volume-indicator-font = 1
 bar-volume-fill = 絛
 bar-volume-fill-font = 1
 bar-volume-empty = 
-bar-volume-empty-font = 2
+bar-volume-empty-font = 1
 bar-volume-empty-foreground = ${colors.foreground-2}
 
 [module/eth-up]
@@ -306,7 +306,7 @@ date-alt = "  %Y-%m-%d"
 time = %l:%M%P
 time-alt = %l:%M%P
 
-format-prefix = " "
+format-prefix = " "
 format-prefix-foreground = ${colors.foreground-5}
 format-background = ${colors.background-5}
 format-foreground = ${colors.foreground-5}

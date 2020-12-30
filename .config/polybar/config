@@ -7,7 +7,7 @@ main  = ${env:MONITOR:DP-2}
 right = ${env:MONITOR:DP-0}
 
 [colors]
-include-file = $HOME/.config/polybar/color-themes/whites.poly
+include-file = $HOME/.config/polybar/color-themes/grayscale.poly
 include-file = $HOME/.config/polybar/basic-colors.poly
 alert = ${colors.brgt-red}
 warn = ${colors.brgt-yellow}
@@ -35,6 +35,8 @@ padding-right = 0
 module-margin-left = 0
 module-margin-right = 0
 font-0 = Anonymice Nerd Font:size=13:antialias=true:autohint=true;1
+font-1 = Anonymice Nerd Font:size=16:antialias=true:autohint=true;1
+font-2 = Anonymice Nerd Font:size=18:antialias=true:autohint=true;1
 override-redirect = false
 cursor-click = pointer
 cursor-scroll = ns-resize
@@ -49,8 +51,8 @@ modules-left = menu dunst-script dunst-status script-updates script-mail alsa sp
 [bar/main2]
 inherit = bar/base
 monitor = ${monitors.main}
-width = 14%
-offset-x = 43%
+width = 16%
+offset-x = 42%
 background = ${module.default-bg}
 border-color = ${colors.transparent}
 modules-center = dwm-tags
