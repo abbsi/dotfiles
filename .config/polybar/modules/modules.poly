@@ -157,7 +157,7 @@ bar-volume-empty-foreground = ${colors.foreground-2}
 [module/eth-up]
 inherit = module
 type = internal/network
-interface = eth0
+interface = ${env:INET_IFACE}
 interval = 3.0
 format-connected-background = ${colors.background-3}
 label-connected = "%upspeed:8% "
@@ -174,7 +174,7 @@ label-disconnected-foreground = ${colors.alert}
 [module/eth-down]
 inherit = module
 type = internal/network
-interface = eth0
+interface = ${env:INET_IFACE}
 interval = 3.0
 format-connected-background = ${colors.background-3}
 label-connected = "%downspeed:8% "
@@ -191,7 +191,7 @@ label-disconnected-foreground = ${colors.alert}
 inherit = module
 type = internal/temperature
 ;thermal-zone = 1
-hwmon-path = /sys/class/hwmon/hwmon2/temp2_input
+hwmon-path = ${env:HWMON_PATH}
 base-temperature = 38
 warn-temperature = 60
 
