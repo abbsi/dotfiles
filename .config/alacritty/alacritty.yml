@@ -9,8 +9,8 @@ window:
   #  x: 0
   #  y: 0
   padding:
-    x: 1
-    y: 1
+    x: 5
+    y: 5
   dynamic_padding: true
   decorations: full
   title: Alacritty
@@ -48,7 +48,7 @@ bell:
   duration: 1
   color: '#ffffff'
 
-background_opacity: 0.85
+background_opacity: 0.80
 
 selection:
   semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"

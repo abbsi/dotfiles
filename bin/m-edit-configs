@@ -1,29 +1,24 @@
 #!/bin/bash
 
-declare -a options=(".bashrc
+declare -a options=
+("Documents/.todo
+Documents/.todo2
+--
+.bashrc
 .gitignore
-.profile
 .config/alacritty/alacritty.yml
-.config/awesome/rc.lau
-.config/bpytop/bpytop.conf
-.config/broot/conf.toml
-.config/dmenufm/dmenufm.conf
 .config/dunst/dunstrc
 .config/fish/config.fish
 .config/picom/picom.conf
 .config/polybar/config
-.config/rofi/rofi.conf
+.config/rofi/config.rasi
 .config/starship.toml
 .SpaceVim.d/init.toml
-.screenlayout/default.sh
--
+--
 bin/m-edit-configs
 bin/m-quick-cmd
 bin/polybar-open
--
-Documents/.todo
-Documents/.todo2
-")
+--")
 
 choice=$(echo -e "${options[@]}" | rofi -dmenu -g 2 -l 15 -i -p 'Edit File: ')
 
