@@ -1,3 +1,0 @@
-#!/bin/sh
-
-$($HOME/.config/rofi/app_launcher.sh)

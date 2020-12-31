@@ -1,0 +1,21 @@
+configuration {
+  sidebar-mode:            false;
+  lines:                   3;
+  columns:                 6;
+  fullscreen:              true;
+}
+
+element {
+  orientation:             vertical;
+  padding:                 15px 5px;
+}
+
+element-text {
+  horizontal-align:        0.5;
+  vertical-align:          0.5;
+  margin:                  0.5% 0.5% 0.5% 0.5%;
+}
+
+element-icon {
+  size:                    175px;
+}

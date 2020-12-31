@@ -1,32 +1,251 @@
-/** Basic config file **/
-
+/** Global Configuration **/
 configuration {
-  show-icons: true;
-  icon-theme: "Papirus";
-  modi: "window,run,ssh,drun,file-browser";
-  lines: 20;
-  columns: 3;
-  font: "Ubuntu 16";
-  terminal: "alacritty";
-  drun-show-actions: false;
-  location: 2;
-  yoffset: 60;
-  padding: 5;
-  theme: "default";
-  drun-display-format: "{name}";
-  disable-history: false;
-  window-thumbnail: true;
-  fixed-num-lines: false;
-  /*
-  scroll-method: 0;
-  window-format: "{w}    {c}   {t}";
-  display-window: "Window";
-  display-windowcd: "Windowcd";
-  display-run: "Run";
-  display-ssh: "SSH";
-  display-drun: "Desktop Run";
-  display-combi: "Combi";
-  display-keys: "Keys";
-  display-file-browser: "File Browser"; 
-  */
+  modi:                    "run,file-browser,ssh,drun,window,combi,keys";
+  terminal:                "alacritty";
+  font:                    "JetBrainsMonoExtraBold Nerd Font 14";
+  fixed-num-lines:         true;
+  lines:                   20;
+  columns:                 2;
+  location:                0;
+  yoffset:                 80;
+  xoffset:                 15;
+  width:                   60%;
+  padding:                 5;
+  icon-theme:              "Flat-Remix-Blue";
+  show-icons:              true;
+  window-thumbnail:        true;
+  drun-show-actions:       true;
+  disable-history:         false;
+  sidebar-mode:            true;
+  separator-style:         "none";
+  hide-scrollbar:          true;
+  fullscreen:              false;
+  fake-transparency:       false;
+  scroll-method:           2;
+  window-format:           "{w}{c} | {t}";
+  click-to-exit:           true;
+  show-match:              true;
+  combi-hide-mode-prefix:  false;
+  display-window:          " ";
+  display-windowcd:        " ";
+  display-run:             " ";
+  display-ssh:             " ";
+  display-drun:            " ";
+  display-combi:           " ";
+  display-file-browser:    " ";
+  display-keys:            " ";
+  drun-display-format:     "{name}";
+  
+}
+
+/** Global Default Theme **/
+
+* {
+   background-color:       transparent;
+
+   background:             #5B607155;
+   background-alt:         #ffffff13;
+
+   foreground:             #DADADA;  
+   foreground-alt:         #FFFFFF;              
+   
+   accent:                 #a05755;
+   
+   urgent:                 #e2215b;
+   active:                 #745fd1;
+
+   green:                  #A3BE8C;
+   red:                    #FF2200;
+
+   radius:                 20px;
+      
+   /* Set border to 1 for visual aid */
+   zone-border:            0px;
+   zone-view-1:            #e0d85e;
+   zone-view-2:            #aeca67;
+   zone-view-3:            #66c8c0;
+   zone-view-4:            #6a6ac3;
+   zone-view-5:            #bb5d5d;
+   zone-view-6:            #c26795;
+   zone-view-7:            #9e549e;
+   zone-view-8:            #703260;
+   zone-view-9:            #465a35;
+   zone-view-a:            #111111;
+   
+   text-color:             @foreground;
+}
+
+window {
+  border:                  @zone-border;
+  border-color:            @zone-view-1;
+  border-radius:           15px;
+  padding:                 20;
+  background-color:        @background;
+  children:                [inputbar, message, listview, sidebar];
+}
+
+inputbar {
+  children:                [ prompt, textbox-prompt, entry, case-indicator, num-filtered-rows, textbox-sep, num-rows ];
+  text-color:              @text-color;
+  padding:                 5px;
+  
+  border:                  @zone-border;
+  border-color:            @zone-view-4;
+}
+
+/* Entry Icon */
+prompt {
+  text-color:              @text-color;
+  padding:                 10px 0px;
+  vertical-align:          0.5;
+
+  border:                  @zone-border;
+  border-color:            @zone-view-2;
+}
+
+textbox-prompt {
+  str: 							       "";
+  expand:                  false;
+  vertical-align:          0.5;
+}
+
+/* User the grave key to toggle case sensitivity */
+textbox-sep, num-filtered-rows, num-rows, case-indicator {
+  text-color:              @foreground;
+  expand:                  false;
+  str:                     "/";
+  vertical-align:          0.5;
+}
+
+entry {
+  text-color:              @accent;
+  padding:                 10px 10px;
+  
+  placeholder:             "";
+  placeholder-color:       @foreground-alt;
+  
+  horizontal-align:        0;
+  blink:                   true;
+
+  border:                  @zone-border;
+  border-color:            @zone-view-3;
+}
+
+message {
+  border: 						     0px;
+  border-radius:			     @radius;
+  border-color: 			     @foreground;
+  padding: 						     10px 20px;
+  background-color:        @background;
+  text-color:              @accent;
+}
+
+mainbox {
+  padding:                 0px 5px;
+  
+  border:                  @zone-border;
+  border-color:            @zone-view-5;
+}
+
+mode-switcher {
+  padding:                 10px 0 10px 0;
+  
+  expand:                  false;
+  
+  border:                  @zone-border;
+  border-color:            @zone-view-6;
+}
+
+listview {
+  fixed-height:            0;
+  
+  padding:                 5px 0px 0px 0px;
+
+  border:                  @zone-border;
+  border-color:            @zone-view-7;
+}
+
+element {
+  padding:                 5px;
+  border-radius:           @radius;
+  border:                  @zone-border;
+  border-color:            @zone-view-8;
+}
+
+element-text {
+  expand:                  true;
+  highlight:               bold #a05755;
+}
+
+element-icon {
+  size:                    22px;
+  border:                  0px;
+  padding:                 0px 5px;
+}
+
+/* Highlited Selected Entry */
+element selected.normal {
+  background-color:        @background;
+  text-color:              @foreground-alt;
+}
+
+/* Highlighted Entry with an Active State (e.g Active Window) */
+element selected.active {
+  background-color:        @background;
+  text-color:              @foreground-alt;
+}
+
+element selected.urgent {
+  background-color:        @background;
+  text-color:              @foreground-alt;
+}
+
+element normal.normal, element alternate.normal {
+  background-color:        transparent;
+  border:                  @zone-border;
+  border-color:            @zone-view-9;
+}
+
+element normal.active, element alternate.active {
+  background-color:        transparent;
+  border:                  3px;
+  border-color:            @active; 
+}
+
+element normal.urgent, element alternate.urgent {
+  background-color:        transparent;
+  border:                  3px;
+  border-color:            @urgent; 
+}
+
+sidebar {
+  border:                  @zone-border;
+  border-color:            @zone-view-9;
+  padding:                 10px 0px;
+}
+
+/* Modi buttons in sidebar view */
+button {
+  padding:                 5px;
+  font:                    "JetBrainsMonoExtraBold Nerd Font 16";
+  text-color:              @text-color;
+  border-radius:           @radius;
+  border:                  1px;
+  border-color:            @foreground;
+  margin:                  0px 30px;
+}
+
+button selected {
+  text-color: 					   @accent;
+  border:                  2px;
+  background-color:        @background;
+  border-color: 			     @accent;
+}
+
+error-message {
+  background-color:      darkred/10%;
+  border-color:          darkred;
+  border-radius:           @radius;
+  border:                  2px;
+  padding:                 0.5em;
 }
