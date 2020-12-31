@@ -30,7 +30,7 @@ foreground = ${colors.foreground-1}
 line-size = 0
 line-color = ${colors.foreground-1}
 border-size = 15
-border-bottom = 0
+border-bottom-size = 0
 border-color = ${colors.transparent}
 padding-left = 0
 padding-right = 0
@@ -48,7 +48,7 @@ inherit = bar/base
 monitor = ${monitors.main}
 width = 35%
 offset-x = 0
-modules-left = menu dunst-script dunst-status script-updates script-mail alsa spotify-prev spotify-play-pause spotify-next spotify-git
+modules-left = menu dunst-script dunst-status script-updates script-mail firefox code alsa spotify-prev spotify-play-pause spotify-next spotify-git
 
 [bar/main2]
 inherit = bar/base

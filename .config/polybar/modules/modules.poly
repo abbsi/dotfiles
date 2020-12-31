@@ -85,6 +85,27 @@ click-left = ~/.config/polybar/scripts/focus-app.sh thunderbird Thunderbird left
 format-foreground = ${colors.foreground-1}
 format-background = ${colors.background-1}
 
+[module/firefox]
+inherit = module
+type = custom/script
+exec = echo '  '
+interval = 5000
+click-left = firefox
+
+; Format
+format-foreground = ${colors.foreground-1}
+format-background = ${colors.background-1}
+
+[module/code]
+inherit = module
+type = custom/script
+exec = echo '  '
+interval = 5000
+click-left = code
+
+; Format
+format-foreground = ${colors.foreground-1}
+format-background = ${colors.background-1}
 
 [module/spotify-git]
 type = custom/script
@@ -94,7 +115,7 @@ format = "  <label>  "
 exec = ~/.config/polybar/scripts/scroll_spotify_status.sh
 
 ; Formant
-format-foreground = ${colors.background-1}
+format-foreground = ${colors.foreground-1}
 format-background = ${module.default-bg}
 
 [module/spotify-prev]
@@ -232,7 +253,7 @@ format-background = ${colors.background-5}
 format-prefix-foreground = ${colors.foreground-5}
 format-foreground = ${colors.foreground-5}
 
-bar-used-indicator = ┼
+bar-used-indicator = +
 bar-used-indicator-foreground = ${colors.foreground-5}
 bar-used-width = 30
 bar-used-foreground-0 = ${colors.foreground-1}

@@ -88,7 +88,7 @@ secondary-layout-symbol = "  "
 ;   %symbol%
 label-layout = %symbol%
 label-layout-padding = 1
-label-layout-foreground = ${colors.tag-fg}
+label-layout-foreground = ${colors.tags-fg}
 ;label-layout-background = ${module.default-bg}
 ;label-layout-underline = ${colors.nrml-magenta}
 
