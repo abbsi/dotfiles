@@ -1,8 +1,8 @@
 !SXIV COLORS
-Sxiv.font:       Source Code Pro:size=16
-Sxiv.foreground: #095686
-Sxiv.background: #222222
-Sxiv.mark:       #FF2246
+Sxiv.font:         Source Code Pro:size=16
+Sxiv.foreground:   #095686
+Sxiv.background:   #0F111A
+Sxiv.mark:         #FF2246
 
 !ST Resources
 st.font:           Source Code Pro:size=12
