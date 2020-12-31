@@ -1,7 +1,7 @@
 [module/dwm-tags]
 inherit = module
 type = internal/dwm
-format = <label-tags>  <label-layout>
+format = <label-tags><label-layout><label-floating>
 bg = ${module.default-bg}
 
 ;format-padding = 1
@@ -27,13 +27,13 @@ label-padding = 2
 ; States: focused, unfocused, visible, urgent, empty
 ; Available tokens:
 ;   %name%
-; 綠祿  ⭘ 
+; 綠祿  ⭘ 
 ; focused = Selected tag on focused monitor
 label-focused = "綠" 
 label-focused-font = 3
 label-focused-padding = ${self.label-padding}
 label-focused-background = ${self.bg}
-label-focused-foreground = ${colors.background-5}
+label-focused-foreground = ${colors.tags-fg}
 ;label-focused-underline = ${colors.foreground-2}
 
 ; unfocused = Unselected tag on unselected monitor
@@ -41,14 +41,14 @@ label-unfocused = "綠"
 label-unfocused-font = 3
 label-unfocused-padding = ${self.label-padding}
 label-unfocused-background = ${self.bg}
-label-unfocused-foreground = ${colors.background-3}
+label-unfocused-foreground = ${colors.tags-fg}
 
 ; visible = Unselected tag, but occupied tag on any monitor
-label-visible = "祿"
+label-visible = ""
 label-visible-font = 3
 label-visible-padding = ${self.label-padding}
 label-visible-background = ${self.bg}
-label-visible-foreground = ${colors.background-3}
+label-visible-foreground = ${colors.tags-fg}
 
 ; urgent = Unselected tag with window that has urgency hint set
 label-urgent = "𥉉"
@@ -60,11 +60,11 @@ label-urgent-underline= ${colors.alert}
 
 ; empty = Unselected and unoccupied tag
 ; This can be set to an empty string to hide empty tags
-label-empty = ""
+label-empty = ""
 label-empty-font = 3
 label-empty-background = ${self.bg}
 label-empty-padding = ${self.label-padding}
-label-empty-foreground = ${colors.background-3}
+label-empty-foreground = ${colors.tags-fg}
 
 ;[module/dwm-layout]
 ;inherit = module
@@ -72,7 +72,7 @@ label-empty-foreground = ${colors.background-3}
 ;format = 
 
 ; Left-click to set secondary layout, right-click to switch to previous layout
-enable-layout-click = false
+enable-layout-click = true
 ; Scroll to cycle between available layouts
 enable-layout-scroll = false
 ; Wrap when scrolling and reaching begining/end of layouts
@@ -81,21 +81,24 @@ layout-scroll-wrap = false
 layout-scroll-reverse = false
 
 ; If enable-layout-click = true, clicking the layout symbol will switch to this layout
-secondary-layout-symbol = [M]
+secondary-layout-symbol = "  "
 
 ; Symbol of current layout
 ; Available tokens:
 ;   %symbol%
 label-layout = %symbol%
 label-layout-padding = 1
-label-layout-foreground = ${colors.background-3}
+label-layout-foreground = ${colors.tag-fg}
 ;label-layout-background = ${module.default-bg}
 ;label-layout-underline = ${colors.nrml-magenta}
+
+; Text to show when currently focused window is floating
+label-floating = [F]
 
 [module/dwm-title]
 inherit = module
 type = internal/dwm
-format = <label-floating> <label-title>
+format = <label-title>
 
 ; Path to dwm socket (default: /tmp/dwm.sock)
 ; socket-path = /tmp/dwm.sock
@@ -107,6 +110,3 @@ label-title = %title%
 label-title-padding = 0
 label-title-foreground = ${colors.foreground-1}
 label-title-maxlen = 60
-
-; Text to show when currently focused window is floating
-label-floating = [F]

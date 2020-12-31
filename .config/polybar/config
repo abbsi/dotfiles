@@ -7,7 +7,7 @@ main  = ${env:MONITOR:DP-2}
 right = ${env:MONITOR:DP-0}
 
 [colors]
-include-file = $HOME/.config/polybar/color-themes/grayscale.poly
+include-file = $HOME/.config/polybar/color-themes/space-cadet.poly
 include-file = $HOME/.config/polybar/basic-colors.poly
 alert = ${colors.brgt-red}
 warn = ${colors.brgt-yellow}
@@ -21,22 +21,24 @@ default-fg = ${colors.nrml-white}
 ; Values to inherit
 monitor-strict = true
 enable-ipc = true
-offset-y = 1%
-height = 40
+offset-y = 0
+height = 50
 radius = 0
 fixed-center = true
 background = ${module.default-bg}
 foreground = ${colors.foreground-1}
 line-size = 0
 line-color = ${colors.foreground-1}
-border-size = 1
+border-size = 15
+border-bottom = 0
+border-color = ${colors.transparent}
 padding-left = 0
 padding-right = 0
 module-margin-left = 0
 module-margin-right = 0
-font-0 = Anonymice Nerd Font:size=13:antialias=true:autohint=true;1
-font-1 = Anonymice Nerd Font:size=16:antialias=true:autohint=true;1
-font-2 = Anonymice Nerd Font:size=18:antialias=true:autohint=true;1
+font-0 = JetBrainsMonoExtraBold Nerd Font:size=13:antialias=true:autohint=true;1
+font-1 = JetBrainsMonoExtraBold Nerd Font:size=16:antialias=true:autohint=true;1
+font-2 = JetBrainsMonoExtraBold Nerd Font:size=18:antialias=true:autohint=true;1
 override-redirect = false
 cursor-click = pointer
 cursor-scroll = ns-resize
@@ -45,7 +47,7 @@ cursor-scroll = ns-resize
 inherit = bar/base
 monitor = ${monitors.main}
 width = 35%
-offset-x = 0.5%
+offset-x = 0
 modules-left = menu dunst-script dunst-status script-updates script-mail alsa spotify-prev spotify-play-pause spotify-next spotify-git
 
 [bar/main2]
@@ -54,14 +56,14 @@ monitor = ${monitors.main}
 width = 16%
 offset-x = 42%
 background = ${module.default-bg}
-border-color = ${colors.transparent}
+
 modules-center = dwm-tags
 
 [bar/main3]
 inherit = bar/base
 monitor = ${monitors.main}
 width = 35%
-offset-x = 64.5%
+offset-x = 65%
 modules-right = eth-up eth-down temperature cpu memory script-disk xkeyboard date-main
 tray-position = right
 tray-padding = 2
@@ -70,8 +72,8 @@ tray-background = ${colors.background-1}
 [bar/right]
 inherit = bar/base
 monitor = ${monitors.left}
-width = 98%
-offset-x = 1%
+width = 100%
+offset-x = 0%
 modules-left = mem-bar 
 modules-center = ${bar/main2.modules-center}
 modules-right = date-secondary
@@ -79,8 +81,8 @@ modules-right = date-secondary
 [bar/left]
 inherit = bar/base
 monitor = ${monitors.right}
-width = 98%
-offset-x = 1%
+width = 100%
+offset-x = 0%
 modules-left = mem-bar 
 modules-center = ${bar/main2.modules-center}
 modules-right = date-secondary

@@ -41,3 +41,5 @@ background-4 = ${colors.dk-02}
 
 foreground-5 = ${colors.lt-03}
 background-5 = ${colors.dk-01}
+
+tags-fg = ${colors.lt-03}
