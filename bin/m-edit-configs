@@ -1,7 +1,7 @@
 #!/bin/bash
+editor="code"
 
-declare -a options=
-("Documents/.todo
+declare -a options=("Documents/.todo
 Documents/.todo2
 --
 .bashrc
@@ -22,4 +22,4 @@ bin/polybar-open
 
 choice=$(echo -e "${options[@]}" | rofi -dmenu -g 2 -l 15 -i -p 'Edit File: ')
 
-[ ! $choice = "" ] && exec code $HOME/$choice
+[ ! $choice = "" ] && exec $editor $HOME/$choice
