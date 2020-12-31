@@ -1,9 +1,13 @@
-#! /bin/bash 
+#!/bin/bash 
+# Script to get the number of unread messages in Thunderbird
+# Working as of Version 78.6.0
+# Replace the $inbox_path below to the inbox you wish to monitor
+# Script will open thunderbird if it is closed
 
-SERVICE="thunderbird"
-if pgrep -x "$SERVICE" >/dev/null
+inbox_path="$HOME/.thunderbird/arw2ndxl.default-release/ImapMail/imap.gmail.com/INBOX.msf"
+
+if pgrep -x "thunderbird" >/dev/null
 then
-  inbox_path="/home/nabil/.thunderbird/arw2ndxl.default-release/ImapMail/imap.gmail.com/INBOX.msf"
   mail="$(grep 'A2=[0-9]' ${inbox_path} | tail -n 1 | awk 'match($0, /A2=[0-9]+/) { print substr( $0, RSTART + 3, RLENGTH - 3 ) }')"
   echo -e "$mail"
 else
