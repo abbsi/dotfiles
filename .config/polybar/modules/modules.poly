@@ -70,7 +70,7 @@ click-left = alacritty -e sudo pacman -Syu
 ; Format
 format-background = ${colors.background-1}
 format-foreground = ${colors.foreground-1}
-;format-prefix-foreground = ${colors.foreground-1}
+
 
 [module/script-mail]
 inherit = module
@@ -84,7 +84,7 @@ click-left = ~/.config/polybar/scripts/focus-app.sh thunderbird Thunderbird left
 ; Format
 format-foreground = ${colors.foreground-1}
 format-background = ${colors.background-1}
-;format-prefix-foreground = ${colors.foreground-1}
+
 
 [module/spotify-git]
 type = custom/script
@@ -131,7 +131,6 @@ formar-volume-padding = 1
 label-volume = "    %percentage:3%%"
 label-volume-foreground = ${colors.foreground-2}
 
-;format-muted-prefix = " "
 format-muted-foreground = ${colors.foreground-2}
 format-muted-background = ${colors.background-2}
 label-muted = "  婢  "
@@ -162,14 +161,12 @@ interval = 3.0
 format-connected-background = ${colors.background-3}
 label-connected = "%upspeed:8% "
 format-connected-prefix = "  "
-;format-connected-underline = ${colors.brgt-yellow}
 format-connected-prefix-foreground = ${colors.foreground-3}
 
 label-disconnected = "  "
 format-disconnected = <label-disconnected>
 format-disconnected-underline = ${colors.alert}
 label-disconnected-foreground = ${colors.alert}
-
 
 [module/eth-down]
 inherit = module
@@ -179,7 +176,6 @@ interval = 3.0
 format-connected-background = ${colors.background-3}
 label-connected = "%downspeed:8% "
 format-connected-prefix = "  "
-;format-connected-underline = ${colors.brgt-yellow}
 format-connected-prefix-foreground = ${colors.foreground-3}
 
 label-disconnected = "  "
@@ -190,11 +186,9 @@ label-disconnected-foreground = ${colors.alert}
 [module/temperature]
 inherit = module
 type = internal/temperature
-;thermal-zone = 1
 hwmon-path = ${env:HWMON_PATH}
 base-temperature = 38
 warn-temperature = 60
-
 
 format = <ramp> <label>
 format-background = ${colors.background-4}
@@ -216,10 +210,8 @@ type = internal/cpu
 label = %percentage:2%%
 interval = 2
 format-background = ${colors.background-4}
-;format-foreground = ${colors.nrml-magenta} 
 format-prefix = " "
 format-prefix-foreground = ${colors.foreground-4}
-;format-underline = ${colors.brgt-red}
 
 [module/memory]
 inherit = module
@@ -236,23 +228,20 @@ type = internal/memory
 interval = 5
 format = <bar-used>
 format-prefix = " "
-format-background = ${module.default-bg}
-format-prefix-foreground = ${colors.background-1}
+format-background = ${colors.background-5}
+format-prefix-foreground = ${colors.foreground-5}
+format-foreground = ${colors.foreground-5}
 
 bar-used-indicator = ┼
-bar-used-indicator-foreground = ${colors.background-1}
-bar-used-width = 35
-bar-used-foreground-0 = ${colors.background-1}
-bar-used-foreground-1 = ${colors.background-4}
+bar-used-indicator-foreground = ${colors.foreground-5}
+bar-used-width = 30
+bar-used-foreground-0 = ${colors.foreground-1}
+bar-used-foreground-1 = ${colors.foreground-3}
 bar-used-foreground-2 = #f5a70a
 bar-used-foreground-3 = #ff5555
 bar-used-fill = 絛
 bar-used-empty = 
-bar-used-empty-foreground = ${colors.background-5}
-
-bar-volume-fill = 
-bar-volume-fill-font = 1
-bar-volume-empty = 
+bar-used-empty-foreground = ${colors.foreground-5}
 
 [module/script-disk]
 inherit = module
@@ -261,7 +250,6 @@ exec = diskf
 tail = true
 label = %output:2%
 interval = 1800
-;format-underline = ${colors.brgt-red}
 format-prefix = " "
 format-background = ${colors.background-4}
 format-prefix-foreground = ${colors.foreground-4}
@@ -273,9 +261,7 @@ type = internal/fs
 interval = 25
 
 mount-0 = /
-;mount-1 = /mnt/library1
-;mount-2 = /mnt/library2
-label-mounted = %{F#980B64} %{F-}%percentage_used%%
+label-mounted = " %percentage_used%%"
 label-unmounted = %mountpoint% not mounted
 label-unmounted-foreground = ${colors.foreground-2}
 
@@ -283,7 +269,6 @@ label-unmounted-foreground = ${colors.foreground-2}
 inherit = module
 type = internal/xkeyboard
 format-prefix = " "
-;format-underline = ${colors.brgt-magenta}
 format-background = ${colors.background-5}
 format-prefix-foreground = ${colors.foreground-5}
 format-foreground = ${colors.foreground-5}
