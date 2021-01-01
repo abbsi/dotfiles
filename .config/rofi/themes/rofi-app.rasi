@@ -2,6 +2,11 @@ configuration {
   sidebar-mode:            false;
   lines:                   5;
   columns:                 4;
+  
+}
+
+entry {
+  placeholder:             "Open Application";
 }
 
 element {
@@ -11,10 +16,13 @@ element {
 
 element-text {
   horizontal-align:        0.5;
-  vertical-align:          0.5;
-  margin:                  0.5% 0.5% 0.5% 0.5%;
+  margin:                  0.5%;
 }
 
 element-icon {
   size:                    64px;
+}
+
+sidebar {
+  enabled:                 false;
 }

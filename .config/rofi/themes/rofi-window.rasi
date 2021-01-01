@@ -2,6 +2,11 @@ configuration {
   sidebar-mode:            false;
   lines:                   3;
   columns:                 4;
+  
+}
+
+entry {
+  placeholder:             "Select Window";
 }
 
 element {
@@ -11,10 +16,14 @@ element {
 
 element-text {
   horizontal-align:        0.5;
-  vertical-align:          0.5;
-  margin:                  0.5% 0.5% 0.5% 0.5%;
+  margin:                  0.5%;
+  expand:                  false;
 }
 
 element-icon {
   size:                    300px;
+}
+
+sidebar {
+  enabled:                 false;
 }

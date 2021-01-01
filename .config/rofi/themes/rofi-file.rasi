@@ -5,6 +5,10 @@ configuration {
   fullscreen:              true;
 }
 
+entry {
+  placeholder:             "Search Files";
+}
+
 element {
   orientation:             vertical;
   padding:                 15px 5px;
@@ -12,10 +16,13 @@ element {
 
 element-text {
   horizontal-align:        0.5;
-  vertical-align:          0.5;
-  margin:                  0.5% 0.5% 0.5% 0.5%;
+  margin:                  0.5%;
 }
 
 element-icon {
   size:                    175px;
+}
+
+sidebar {
+  enabled:                 false;
 }

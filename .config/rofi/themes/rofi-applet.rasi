@@ -1,0 +1,28 @@
+configuration {
+  sidebar-mode:            false;
+  show-icons:              false;
+}
+
+window {
+  children:                [message, listview];
+  width:                   30%;
+}
+
+message {
+  horizontal-align:        0.5;
+}
+
+listview {
+  vertical-align:          0.5;
+}
+
+element {
+  padding:                 40px 40px;
+}
+
+/* TODO: Fix text veritcal alignment */
+element-text {
+  horizontal-align:        0.5;
+  font:                    "JetBrainsMonoExtraBold Nerd Font 30";
+  padding:                 -1.5% 0 0 0; /* hack for now */
+}

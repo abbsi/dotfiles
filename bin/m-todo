@@ -10,10 +10,10 @@ file="$HOME/Documents/.todo"
 doneFile="$HOME/Documents/.todo-done"
 touch "$file"
 height=$(wc -l "$file" | awk '{print $1}')
-prompt="Add/delete a task: "
+prompt=" "
 
 $(sort -o "$file" "$file")
-cmd=$(rofi -dmenu -l "$height" -p "$prompt" "$@" < "$file")
+cmd=$(rofi -i -dmenu -l "$height" -p "$prompt" "$@" < "$file")
 while [ -n "$cmd" ]; do
  	if grep -q "^$cmd\$" "$file"; then
 		echo "$(date '+%Y.%m.%d -') $cmd" >> $doneFile	 

@@ -7,14 +7,16 @@
 #
 
 file="$HOME/Documents/.todo2"
+
 touch "$file"
 height=$(wc -l "$file" | awk '{print $1}')
-prompt="Add/delete a item: "
+prompt=" "
 
 $(sort -o "$file" "$file")
-cmd=$(rofi -dmenu -l "$height" -p "$prompt" "$@" < "$file")
+cmd=$(rofi -i -dmenu -l "$height" -p "$prompt" "$@" < "$file")
 while [ -n "$cmd" ]; do
  	if grep -q "^$cmd\$" "$file"; then
+		
 		grep -v "^$cmd\$" "$file" > "$file.$$"
 		mv "$file.$$" "$file"
         height=$(( height - 1 ))

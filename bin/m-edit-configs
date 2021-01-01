@@ -20,6 +20,6 @@ bin/m-quick-cmd
 bin/polybar-open
 --")
 
-choice=$(echo -e "${options[@]}" | rofi -dmenu -g 2 -l 15 -i -p 'Edit File: ')
+choice=$(echo -e "${options[@]}" | rofi -dmenu -i -p ' ')
 
 [ ! $choice = "" ] && exec $editor $HOME/$choice

@@ -14,22 +14,20 @@ glances
 gtop
 gotop
 htop
-iftopp
-iotop
-iptraf-ng
-nmon
+nmon\0color\x1fred
 s-tui
 ncdu
+-- Root --
+iftop
+iotop
 stacer
-homemon
-quit")
+iptraf-ng-not-working
+-- Browser --
+homemon")
 
-choice=$(echo -e "${options[@]}" | rofi -dmenu -g 2 -l 8 -i -p 'Monitors: ')
+choice=$(echo -e "${options[@]}" | rofi -dmenu -g 2 -l 9 -i -p ' ')
 
 case $choice in
-	quit)
-		echo "Program terminated." && exit 1
-	;;
 	bashtop| \
 	bpytop| \
 	glances| \
@@ -37,15 +35,17 @@ case $choice in
 	gotop| \
 	htop| \
 	nmon| \
-	ncdu| \
 	s-tui)
         exec alacritty -e $choice
+	;;
+	ncdu)
+	      exec alacritty -e ncdu --exclude=/mnt /run/rimeshift /
 	;;
 	iftop| \
 	iotop| \
 	stacer| \
 	iptraf-ng)
-        exec alacritty -e gksu $choice
+        sudo alacritty -e $choice
 	;;
 	homemon)
         exec homemon

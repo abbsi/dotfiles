@@ -13,7 +13,7 @@ Pulse-Audio-Control
 ALSA-Mixer
 "
 
-cmd=$(rofi -dmenu -g 2 -l 20 -p 'Open Application'   <<< "$prog")
+cmd=$(rofi -i -dmenu -p 'Open Application' <<< "$prog")
 
 case ${cmd%% *} in
 
