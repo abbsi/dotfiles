@@ -1,7 +1,7 @@
 /** Global Configuration **/
 configuration {
   modi:                    "run,file-browser,ssh,drun,window,combi,keys";
-  terminal:                "alacritty";
+  terminal:                "kitty";
   run-command:             "fish -c '{cmd}'";
   run-list-command:        "fish -c functions";
   font:                    "JetBrainsMonoExtraBold Nerd Font 14";
