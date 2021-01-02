@@ -63,7 +63,9 @@ inherit = module
 type = custom/script
 exec = pacupdate
 label = %output%
-interval = 360
+
+; Script is further delayed to every 12 hours.
+interval = 3600
 format-prefix = "  "
 click-left = alacritty -e sudo pacman -Syu
 
