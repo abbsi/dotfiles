@@ -1,17 +1,26 @@
 #!/bin/bash
+# Script that checks for updates, but time delayed against a temporary file's time stamp
 
+delayTime=43200
+
+# check if temp file exists
 if [ ! -f /tmp/update.count ]; then
+  # if file does not exist, then timestamp is 0 and run the update since elapsed time will be > than delay time
   timeStamp=0
 else
+  # else, get the file's time stamp
   timeStamp=$(date +%s -r /tmp/update.count)
 fi
 
+# Calculate time elapsed
 currentTime=$(date +%s)
 elapsedSeconds=$((currentTime - timeStamp))
 
-if [ $elapsedSeconds -gt 360 ]; then
+# If more than delay time, then run the update and store count in temporary file
+if [ $elapsedSeconds -gt $delayTime ]; then
   cupd=$(checkupdates | wc -l)
   echo $cupd > /tmp/update.count
 fi 
-  
+
+# Output the number of updates
 cat /tmp/update.count
