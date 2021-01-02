@@ -170,3 +170,4 @@ application/xhtml+xml=firefox.desktop;
 application/x-extension-xhtml=firefox.desktop;
 application/x-extension-xht=firefox.desktop;
 application/x-shellscript=visual-studio-code.desktop;
+text/x-chdr=firefox.desktop;

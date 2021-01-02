@@ -3,8 +3,8 @@
 picom &
 nitrogen --restore &
 numlockx &
-mpd-mpris -port 6601 &
-ympd --p 6601 -w 8080 &
+# mpd-mpris -port 6601 &
+# ympd --p 6601 -w 8080 &
 
 # https://github.com/jD91mZM2/xidlehook
 brgt1="--brightness .6"
@@ -32,7 +32,7 @@ xidlehook \
     "slock" \
     "xrandr $monLt $brgtF $monCt $brgtF $monRt $brgtF" &
     
-dunstify -u low "Completed DWM Autostart.sh" &
+dunstify -u low "Completed Autostart.sh" &
 
 ## Alterntive Options for status bars or auto locking
 # slstatus &

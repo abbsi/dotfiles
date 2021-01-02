@@ -8,16 +8,16 @@ CLIP='xclip -selection clipboard -target image/png -i'
 case $1 in
 
   select)
-    scrot -d 0.25 --select --line style=dash,width=2,color="red" "${FILENAME}" -e "$CLIP \$f"
+    scrot -d 0.75 --select "${FILENAME}" -e "$CLIP \$f"
     notify-send -u low 'Scrot' 'Selection taken and saved'
     ;;
   focused)
-    scrot -d 0.25 --focused "${FILENAME}"
+    scrot -d 0.75 --focused "${FILENAME}" -e "$CLIP \$f"
     notify-send -u low 'Scrot' 'Focused Window Screenshot saved'
     ;;
   *)
-   scrot -d 0.25 "${FILENAME}"
-   notify-send -u low 'Scrot' 'Fullscreen taken and saved'
-   ;;
+    scrot -d 0.75 "${FILENAME}" -e "$CLIP \$f"
+    notify-send -u low 'Scrot' 'Fullscreen taken and saved'
+    ;;
 
 esac
