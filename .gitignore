@@ -1,4 +1,5 @@
 *
+*.o
 !.bashrc
 !.gitignore
 !.profile
@@ -49,5 +50,11 @@
 !/.SpaceVim.d/**
 !/.wallpapers/
 !/.wallpapers/**
+!/.xmonad/
+!/.xmonad/*.hs
+!/.xmonad/xmobar/
+!/.xmonad/xmobar/*
+!/.xmonad/xpm/
+!/.xmonad/xpm/*
 !/bin/
 !/bin/*
