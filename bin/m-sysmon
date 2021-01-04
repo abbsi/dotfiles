@@ -39,7 +39,7 @@ case $choice in
         exec alacritty -e $choice
 	;;
 	ncdu)
-	      exec alacritty -e ncdu --exclude=/mnt /run/rimeshift /
+	      exec alacritty -e ncdu --exclude={/mnt,/run/timeshift} /
 	;;
 	iftop| \
 	iotop| \
