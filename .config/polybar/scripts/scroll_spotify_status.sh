@@ -3,7 +3,7 @@
 sleep 5 # Give polybar a chance to start up. Keeps exiting without this.
 
 # see man zscroll for documentation of the following parameters
-zscroll -l 55 \
+zscroll -l 30 \
         --delay 0.75 \
         --match-command "$HOME/.config/polybar/scripts/playerctl-wrapper.sh" \
         --match-text "Playing" "--before-text '  ' --scroll 1" \

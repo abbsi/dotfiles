@@ -7,7 +7,7 @@ main  = ${env:MONITOR:DP-2}
 right = ${env:MONITOR:DP-0}
 
 [colors]
-include-file = $HOME/.config/polybar/color-themes/space-cadet.poly
+include-file = $HOME/.config/polybar/color-themes/xrdb.poly
 include-file = $HOME/.config/polybar/basic-colors.poly
 alert = ${colors.brgt-red}
 warn = ${colors.brgt-yellow}
@@ -53,8 +53,8 @@ modules-left = menu dunst-script dunst-status script-updates script-mail firefox
 [bar/main2]
 inherit = bar/base
 monitor = ${monitors.main}
-width = 16%
-offset-x = 42%
+width = 20%
+offset-x = 40%
 background = ${module.default-bg}
 
 modules-center = dwm-tags

@@ -10,7 +10,6 @@ dk-02 = #363636
 dk-03 = #4d4d4d
 dk-04 = #646464
 dk-05 = #7a7a7a
-
 lt-01 = #8f8f8f
 lt-02 = #a6a6a6
 lt-03 = #bdbdbd
@@ -31,3 +30,5 @@ background-4 = ${colors.dk-02}
 
 foreground-5 = ${colors.lt-03}
 background-5 = ${colors.dk-01}
+
+tags-fg = ${colors.lt-03}

@@ -117,7 +117,7 @@ format = "  <label>  "
 exec = ~/.config/polybar/scripts/scroll_spotify_status.sh
 
 ; Formant
-format-foreground = ${colors.foreground-1}
+format-foreground = ${colors.tags-fg}
 format-background = ${module.default-bg}
 
 [module/spotify-prev]
