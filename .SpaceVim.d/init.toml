@@ -23,7 +23,7 @@
     # layer
     
     # colorscheme = "vim-material"
-    colorscheme = "material"
+    colorscheme = "wal"
     colorscheme_bg = "dark"    
     # Disable guicolors in basic mode, many terminal do not support 24bit
     # true colors
@@ -76,6 +76,14 @@
 
 [[custom_plugins]]
   repo = "liuchengxu/space-vim-dark"
+  merged = 0
+
+[[custom_plugins]]
+  repo = "vimwiki/vimwiki"
+  merged = 0
+
+[[custom_plugins]]
+  repo = "dylanaraps/wal.vim"
   merged = 0
 
 [[custom_plugins]]

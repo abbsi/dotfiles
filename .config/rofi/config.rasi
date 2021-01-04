@@ -39,39 +39,54 @@ configuration {
 /** Global Default Theme **/
 
 * {
-   background-color:       transparent;
 
-   background:             #5B607133;
-   background-alt:         #FFFFFF55;
+  normal-background: transparent;
+  normal-foreground: @foreground;
+  active-background: #AAAAAA;
+  active-foreground: @foreground;
+  urgent-background: #CCCCCC;
+  urgent-foreground: @foreground;
 
-   foreground:             #AAAAAA;  
-   foreground-alt:         #FFFFFF;              
-   
-   accent:                 #ff5047;
-   
-   urgent:                 #e2215b;
-   active:                 #745fd1;
+  alternate-normal-background: transparent;
+  alternate-normal-foreground: @foreground;
+  alternate-active-background: @background;
+  alternate-active-foreground: @foreground;
+  alternate-urgent-background: @background;
+  alternate-urgent-foreground: @foreground;
 
-   green:                  #A3BE8C;
-   red:                    #FF2200;
+  selected-normal-background: #888888;
+  selected-normal-foreground: @foreground;
+  selected-active-background: #BBBBBB;
+  selected-active-foreground: @foreground;
+  selected-urgent-background: #DDDDDD;
+  selected-urgent-foreground: @foreground;
 
-   border-radius:          20px;
-      
-   /* Set border to 1 for visual aid */
-   zone-border:            0px;
-   zone-view-1:            #e0d85e;
-   zone-view-2:            #aeca67;
-   zone-view-3:            #66c8c0;
-   zone-view-4:            #6a6ac3;
-   zone-view-5:            #bb5d5d;
-   zone-view-6:            #c26795;
-   zone-view-7:            #9e549e;
-   zone-view-8:            #703260;
-   zone-view-9:            #465a35;
-   zone-view-a:            #111111;
-   text-color:             @foreground;
-   
+  background-color:   transparent;
+  background:         #777777CC;
+  background-faded:   #77777733;
+  foreground:         #EEEEEE;
+  foreground-faded:   #11111133;
+  border-color:       @background;
+  accent:             #FF4455;
+
+  border-radius:          20px;
+     
+  /* Set border to 1 for visual aid */
+  zone-border:            0px;
+  zone-view-1:            #e0d85e;
+  zone-view-2:            #aeca67;
+  zone-view-3:            #66c8c0;
+  zone-view-4:            #6a6ac3;
+  zone-view-5:            #bb5d5d;
+  zone-view-6:            #c26795;
+  zone-view-7:            #9e549e;
+  zone-view-8:            #703260;
+  zone-view-9:            #465a35;
+  zone-view-a:            #111111;
+  text-color:             @foreground;
 }
+
+@import "~/.cache/wal/colors-rofi-dark.rasi"
 
 window {
   children:                [inputbar, message, listview, sidebar];
@@ -90,7 +105,7 @@ inputbar {
   
   padding:                 5px;
   
-  text-color:              @text-color;
+  text-color:              @normal-foreground;
   
   border:                  @zone-border;
   border-color:            @zone-view-4;
@@ -100,7 +115,7 @@ inputbar {
 prompt {
   padding:                 10px 5px;
   
-  text-color:              @text-color;
+  text-color:              @normal-foreground;
   vertical-align:          0.5;
   horizontal-align:        0.5;
 
@@ -191,8 +206,7 @@ element-text {
   horizontal-align:        0;
   vertical-align:          0.5;
   margin:                  0% 0%;
-  highlight:               bold#ff5047;
-
+  
   border:                  @zone-border;
   border-color:            @zone-view-9;
 }
@@ -206,45 +220,71 @@ element-icon {
   border-color:            @zone-view-9;
 }
 
-/* Highlited Selected Entry */
-element selected.normal {
-  text-color:              @foreground-alt;
-  background-color:        @background-alt;
-}
-
-/* Highlighted Entry with an Active State (e.g Active Window) */
-element selected.active {
-  text-color:              @active;
-  background-color:        @background-alt;
-}
-
-element selected.urgent {
-  text-color:              @urgent;
-  background-color:        @background-alt;
-}
-
-element normal.normal, element alternate.normal {
-  background-color:        transparent;
+element normal.normal {
+  text-color:              @normal-foreground;
+  background-color:        @normal-background;
   
   border:                  @zone-border;
   border-color:            @zone-view-9;
 }
 
-element normal.active, element alternate.active {
-  text-color:              @active;
-  background-color:        transparent;
+element normal.active {
+  text-color:              @active-foreground;
+  background-color:        @active-background;
   
   border:                  3px;
-  border-color:            @active; 
+  border-color:            @active-foreground; 
 }
 
-element normal.urgent, element alternate.urgent {
-  text-color:              @urgent;
-  background-color:        transparent;
+element normal.urgent {
+  text-color:              @urgent-foreground;
+  background-color:        @urgent-background;
   
   border:                  3px;
-  border-color:            @urgent; 
+  border-color:            @urgent-foreground; 
 }
+
+element alternate.normal {
+  text-color:              @alternate-normal-foreground;
+  background-color:        @alternate-normal-background;
+  
+  border:                  @zone-border;
+  border-color:            @zone-view-9;
+}
+
+element alternate.active {
+  text-color:              @alternate-active-foreground;
+  background-color:        @alternate-active-background;
+  
+  border:                  3px;
+  border-color:            @alternate-active-foreground; 
+}
+
+element alternate.urgent {
+  text-color:              @alternate-urgent-foreground;
+  background-color:        @alternate-urgent-background;
+  
+  border:                  3px;
+  border-color:            @alternate-urgent-foreground; 
+}
+
+/* Highlited Selected Entry */
+element selected.normal {
+  text-color:              @selected-normal-foreground;
+  background-color:        @selected-normal-background;
+}
+
+/* Highlighted Entry with an Active State (e.g Active Window) */
+element selected.active {
+  text-color:              @selected-active-foreground;
+  background-color:        @selected-active-background;
+}
+
+element selected.urgent {
+  text-color:              @selected-urgent-foreground;
+  background-color:        @selected-urgent-background;
+}
+
 
 
 /* Modi buttons in sidebar view */

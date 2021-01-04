@@ -1,0 +1,61 @@
+* {{
+  normal-background: transparent;
+  normal-foreground: @foreground;
+  active-background: {color2};
+  active-foreground: @foreground;
+  urgent-background: {color1};
+  urgent-foreground: @foreground;
+
+  alternate-normal-background: transparent;
+  alternate-normal-foreground: @foreground;
+  alternate-active-background: @background;
+  alternate-active-foreground: @foreground;
+  alternate-urgent-background: @background;
+  alternate-urgent-foreground: @foreground;
+
+  selected-normal-background: {color2};
+  selected-normal-foreground: @foreground;
+  selected-active-background: {color1};
+  selected-active-foreground: @foreground;
+  selected-urgent-background: {color3};
+  selected-urgent-foreground: @foreground;
+
+  background-color:   transparent;
+  
+  background:         {background}CC;
+  background-faded:   {foreground}33;
+  foreground:         {foreground};
+  foreground-faded:   {background}33;
+  
+  border-color:       @background;
+  accent:             {color2};
+
+}}
+
+#element-text {{
+  highlight:               bold {color2};
+}}
+
+/*
+f:  {foreground}
+b:  {background}
+0:  {color0}
+1:  {color1}
+2:  {color2}
+3:  {color3}
+4:  {color4}
+5:  {color5}
+6:  {color6}
+7:  {color7}
+8:  {color8}
+9:  {color9}
+10: {color10}
+11: {color11}
+12: {color12}
+13: {color13}
+14: {color14}
+15: {color15}
+
+{color0} {color1} {color2} {color3} {color4} {color5} {color6} {color7}
+{color8} {color9} {color10} {color11} {color12} {color13} {color14} {color15}
+*/

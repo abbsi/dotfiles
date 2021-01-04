@@ -3,6 +3,7 @@
 picom &
 nitrogen --restore &
 numlockx &
+wal -R
 # mpd-mpris -port 6601 &
 # ympd --p 6601 -w 8080 &
 

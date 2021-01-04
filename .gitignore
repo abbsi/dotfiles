@@ -38,6 +38,9 @@
 !/.config/sxiv/
 !/.config/sxiv/exec/
 !/.config/sxiv/exec/key-handler
+!/.config/wal/
+!/.config/wal/templates/
+!/.config/wal/templates/*
 !/.config/starship.toml
 !/.config/mimeapps.list
 !/.dwm/

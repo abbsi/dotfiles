@@ -168,6 +168,8 @@ alias bld-tab="cd /env/suckless/tabbed; sudo make install && sudo make clean"
 alias bld-slock="cd /env/suckless/slock; sudo make install && sudo make clean"
 alias bld-st="cd /env/suckless/slock; sudo make install && sudo make clean"
 
+# Load PyWal Theme
+cat ~/.cache/wal/sequences
 
 starship init fish | source
 
