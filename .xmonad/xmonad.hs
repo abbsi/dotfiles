@@ -6,6 +6,9 @@
   -- Move DWM autostart script
   -- Fix Trayer alignment and position
   -- Icon Root relative instead of absolute
+  -- See why sometimes a workspace stays highlighted as if visible
+  -- Explore implementing this https://hackage.haskell.org/package/xmonad-contrib-0.16/docs/XMonad-Layout-IndependentScreens.html
+  -- Should label 'NSP' disappear after closing the scratch pad
   
 -- Base
 import XMonad
@@ -91,6 +94,9 @@ myModMask = mod4Mask -- Sets modkey to super/windows key
 myTerminal :: String
 myTerminal = "kitty " -- Sets default terminal
 
+myScratchTerminal :: String
+myScratchTerminal = "kitty --name scratchpad -o initial_window_width=2300 -o initial_window_height=1100 -o background=#2b2e3b -o background_opacity=0.5 "
+
 myBrowser :: String
 myBrowser = "firefox " -- Sets qutebrowser as browser for tree select
 
@@ -140,7 +146,7 @@ mygridConfig colorizer = (buildDefaultGSConfig myColorizer)
 myScratchPads :: [NamedScratchpad]
 myScratchPads = [ NS "terminal" spawnTerm findTerm manageTerm ]
   where
-    spawnTerm  = myTerminal ++ " --name scratchpad"
+    spawnTerm  = myScratchTerminal
     findTerm   = resource =? "scratchpad"
     manageTerm = customFloating $ W.RationalRect l t w h
                where
@@ -163,61 +169,57 @@ tall     = renamed [Replace "tall"]
            $ addTabs shrinkText myTabTheme
            $ subLayout [] (smartBorders Simplest)
            $ limitWindows 12
-           $ mySpacing 8
-           $ ResizableTall 1 (3/100) (1/2) []
-magnify  = renamed [Replace "magnify"]
-           $ windowNavigation
-           $ addTabs shrinkText myTabTheme
-           $ subLayout [] (smartBorders Simplest)
-           $ magnifier
-           $ limitWindows 12
-           $ mySpacing 8
+           $ mySpacing 15
            $ ResizableTall 1 (3/100) (1/2) []
 monocle  = renamed [Replace "monocle"]
            $ windowNavigation
            $ addTabs shrinkText myTabTheme
            $ subLayout [] (smartBorders Simplest)
            $ limitWindows 20 Full
-floats   = renamed [Replace "floats"]
-           $ windowNavigation
-           $ addTabs shrinkText myTabTheme
-           $ subLayout [] (smartBorders Simplest)
-           $ limitWindows 20 simplestFloat
-grid     = renamed [Replace "grid"]
-           $ windowNavigation
-           $ addTabs shrinkText myTabTheme
-           $ subLayout [] (smartBorders Simplest)
-           $ limitWindows 12
-           $ mySpacing 8
-           $ mkToggle (single MIRROR)
-           $ Grid (16/10)
-spirals  = renamed [Replace "spirals"]
-           $ windowNavigation
-           $ addTabs shrinkText myTabTheme
-           $ subLayout [] (smartBorders Simplest)
-           $ mySpacing' 8
-           $ spiral (6/7)
 threeCol = renamed [Replace "threeCol"]
            $ windowNavigation
            $ addTabs shrinkText myTabTheme
            $ subLayout [] (smartBorders Simplest)
            $ limitWindows 7
-           $ mySpacing' 4
+           $ mySpacing' 15
            $ ThreeCol 1 (3/100) (1/2)
-threeRow = renamed [Replace "threeRow"]
+tabs     = renamed [Replace "tabs"]
+           $ tabbed shrinkText myTabTheme
+floats   = renamed [Replace "floats"]
            $ windowNavigation
            $ addTabs shrinkText myTabTheme
            $ subLayout [] (smartBorders Simplest)
-           $ limitWindows 7
-           $ mySpacing' 4
-           -- Mirror takes a layout and rotates it by 90 degrees.
-           -- So we are applying Mirror to the ThreeCol layout.
-           $ Mirror
-           $ ThreeCol 1 (3/100) (1/2)
-tabs     = renamed [Replace "tabs"]
-           -- I cannot add spacing to this layout because it will
-           -- add spacing between window and tabs which looks bad.
-           $ tabbed shrinkText myTabTheme
+           $ limitWindows 20 simplestFloat
+-- magnify  = renamed [Replace "magnify"]
+--           $ windowNavigation
+--           $ addTabs shrinkText myTabTheme
+--           $ subLayout [] (smartBorders Simplest)
+--           $ magnifier
+--           $ limitWindows 12
+--           $ mySpacing 8
+--           $ ResizableTall 1 (3/100) (1/2) []
+-- grid     = renamed [Replace "grid"]
+--            $ windowNavigation
+--            $ addTabs shrinkText myTabTheme
+--            $ subLayout [] (smartBorders Simplest)
+--            $ limitWindows 12
+--            $ mySpacing 8
+--            $ mkToggle (single MIRROR)
+--            $ Grid (16/10)
+-- spirals  = renamed [Replace "spirals"]
+--            $ windowNavigation
+--            $ addTabs shrinkText myTabTheme
+--            $ subLayout [] (smartBorders Simplest)
+--            $ mySpacing' 8
+--            $ spiral (6/7)
+-- threeRow = renamed [Replace "threeRow"]
+--            $ windowNavigation
+--            $ addTabs shrinkText myTabTheme
+--            $ subLayout [] (smartBorders Simplest)
+--            $ limitWindows 7
+--            $ mySpacing' 4
+--            $ Mirror
+--            $ ThreeCol 1 (3/100) (1/2)
 
 myTabTheme = def { fontName            = myFont
                  , activeColor         = "#46d9ff"
@@ -242,17 +244,17 @@ myLayoutHook = avoidStruts $ mouseResize $ windowArrange $ T.toggleLayouts float
                $ mkToggle (NBFULL ?? NOBORDERS ?? EOT) myDefaultLayout
              where
                myDefaultLayout =     tall
-                                 ||| magnify
-                                 ||| noBorders monocle
-                                 ||| floats
-                                 ||| noBorders tabs
-                                 ||| grid
-                                 ||| spirals
+                                 ||| monocle
                                  ||| threeCol
-                                 ||| threeRow
+                                 ||| tabs
+                                 ||| floats
+                                 --- ||| magnify
+                                 --- ||| grid
+                                 --- ||| spirals
+                                 --- ||| threeRow
 
--- myWorkspaces = [" dev ", " www ", " sys ", " doc ", " vbox ", " chat ", " mus ", " vid ", " gfx "]
 myWorkspaces = [" 1 ", " 2 ", " 3 ", " 4 ", " 5 ", " 6 ", " 7 ", " 8 ", " 9 "]
+-- myWorkspaces = [" dev ", " www ", " sys ", " doc ", " vbox ", " chat ", " mus ", " vid ", " gfx "]
 
 xmobarEscape :: String -> String
 xmobarEscape = concatMap doubleLts
@@ -288,6 +290,7 @@ myManageHook = composeAll
      , className =? "Thunderbird"                         --> doShift ( myWorkspaces !! 8 )
      , className =? "mpv"                                 --> doShift ( myWorkspaces !! 7 )
      , resource  =? "Dialog"                              --> doFloat  
+     , className =? "Xmessage"  --> doFloat
      ] <+> namedScratchpadManageHook myScratchPads
 
 myLogHook :: X ()
@@ -297,13 +300,13 @@ myLogHook = fadeInactiveLogHook fadeAmount
 myKeys :: [(String, X ())]
 myKeys =
     --Xmonad
-        [ ("M-C-r",            spawn "xmonad --recompile") -- Recompiles xmonad
-        , ("M-C-S-q",          spawn "xmonad --restart") -- Restarts xmonad
+        [ ("M-C-r",            spawn ("xmonad --recompile")) -- Recompiles xmonad
+        , ("M-C-S-q",          spawn ("xmonad --restart")) -- Restarts xmonad
         , ("M-S-q",            io exitSuccess) -- Quits xmonad
 
     --Kill windows
-        , ("M-q",               kill1)                         -- Kill the currently focused client
-        , ("M-S-w",             killAll)                     -- Kill all windows on current workspace
+        , ("M-q",               kill1) -- Kill the currently focused client
+        , ("M-S-w",             killAll) -- Kill all windows on current workspace
 
     --Launchers
         , ("M-S-<Return>",      spawn (myTerminal)) -- Spawn Terminal
@@ -322,57 +325,57 @@ myKeys =
         , ("M-c e",             spawn ("m-edit-configs"))
         
     --OK Workspaces
-        , ("M-]",               nextScreen)  -- Switch focus to next monitor
-        , ("M-[",               prevScreen)  -- Switch focus to prev monitor
-        , ("M-S-]",             shiftTo Next nonNSP >> moveTo Next nonNSP)       -- Shifts focused window to next ws
-        , ("M-S-[",             shiftTo Prev nonNSP >> moveTo Prev nonNSP)  -- Shifts focused window to prev ws
+        , ("M-]",               nextScreen) -- Switch focus to next monitor
+        , ("M-[",               prevScreen) -- Switch focus to prev monitor
+        , ("M-S-]",             shiftTo Next nonNSP >> moveTo Next nonNSP) -- Shifts focused window to next ws
+        , ("M-S-[",             shiftTo Prev nonNSP >> moveTo Prev nonNSP) -- Shifts focused window to prev ws
 
     -- Floating windows
         , ("M-S-<Space>",       sendMessage (T.Toggle "floats")) -- Toggles my 'floats' layout
-        , ("M-t",               withFocused $ windows . W.sink)  -- Push floating window back to tile
-        , ("M-S-t",             sinkAll)                       -- Push ALL floating windows to tile
+        , ("M-t",               withFocused $ windows . W.sink) -- Push floating window back to tile
+        , ("M-S-t",             sinkAll) -- Push ALL floating windows to tile
 
     -- Increase/decrease spacing (gaps)
-        , ("M-d",               decWindowSpacing 4)           -- Decrease window spacing
-        , ("M-i",               incWindowSpacing 4)           -- Increase window spacing
-        , ("M-S-d",             decScreenSpacing 4)         -- Decrease screen spacing
-        , ("M-S-i",             incScreenSpacing 4)         -- Increase screen spacing
+        , ("M-d",               decWindowSpacing 4) -- Decrease window spacing
+        , ("M-i",               incWindowSpacing 4) -- Increase window spacing
+        , ("M-S-d",             decScreenSpacing 4) -- Decrease screen spacing
+        , ("M-S-i",             incScreenSpacing 4) -- Increase screen spacing
 
     -- Grid Select (CTR-g followed by a key)
-        , ("M-g t",             goToSelected $ mygridConfig myColorizer)  -- goto selected window
+        , ("M-g t",             goToSelected $ mygridConfig myColorizer) -- goto selected window
         , ("M-g b",             bringSelected $ mygridConfig myColorizer) -- bring selected window
 
     -- Windows navigation
         , ("M-<Home>",          windows W.focusMaster)  -- Move focus to the master window
         , ("M-S-<Home>",        windows W.swapMaster) -- Swap the focused window and the master window
-        , ("M-<Down>",          windows W.focusDown)    -- Move focus to the next window
-        , ("M-<Up>",            windows W.focusUp)      -- Move focus to the prev window
-        , ("M-S-<Up>",          windows W.swapDown)   -- Swap focused window with next window
-        , ("M-S-<Down>",        windows W.swapUp)     -- Swap focused window with prev window
-        , ("M-<Enter>",         promote)      -- Moves focused window to master, others maintain order
-        , ("M-S-<Tab>",         rotSlavesDown)    -- Rotate all windows except master and keep focus in place
-        , ("M-C-<Tab>",         rotAllDown)       -- Rotate all the windows in the current stack
+        , ("M-<Down>",          windows W.focusDown) -- Move focus to the next window
+        , ("M-<Up>",            windows W.focusUp) -- Move focus to the prev window
+        , ("M-S-<Up>",          windows W.swapDown) -- Swap focused window with next window
+        , ("M-S-<Down>",        windows W.swapUp) -- Swap focused window with prev window
+        , ("M-<Enter>",         promote) -- Moves focused window to master, others maintain order
+        , ("M-S-<Tab>",         rotSlavesDown) -- Rotate all windows except master and keep focus in place
+        , ("M-C-<Tab>",         rotAllDown) -- Rotate all the windows in the current stack
 
     -- Layouts
-        , ("M-<Tab>",           sendMessage NextLayout)           -- Switch to next layout
+        , ("M-<Tab>",           sendMessage NextLayout) -- Switch to next layout
         , ("M-C-M1-<Up>",       sendMessage Arrange)
         , ("M-C-M1-<Down>",     sendMessage DeArrange)
        
         , ("M-C-<Space>",       sendMessage (MT.Toggle NBFULL) >> sendMessage ToggleStruts) -- Toggles noborder/full
-        , ("M-S-<Space>",       sendMessage ToggleStruts)     -- Toggles struts
+        , ("M-S-<Space>",       sendMessage ToggleStruts) -- Toggles struts
         , ("M-S-n",             sendMessage $ MT.Toggle NOBORDERS)  -- Toggles noborder
 
     -- Increase/decrease windows in the master pane or the stack
-        , ("M-<KP_Add>",        sendMessage (IncMasterN 1))      -- Increase number of clients in master pane
+        , ("M-<KP_Add>",        sendMessage (IncMasterN 1)) -- Increase number of clients in master pane
         , ("M-<KP_Subtract>",   sendMessage (IncMasterN (-1))) -- Decrease number of clients in master pane
-        , ("M-S-<KP_Add>",      increaseLimit)                   -- Increase number of windows
-        , ("M-S-<KP_Subtract>", decreaseLimit)                 -- Decrease number of windows
+        , ("M-S-<KP_Add>",      increaseLimit) -- Increase number of windows
+        , ("M-S-<KP_Subtract>", decreaseLimit) -- Decrease number of windows
 
     -- Window resizing
-        , ("M-<Left>",          sendMessage Shrink)                   -- Shrink horiz window width
-        , ("M-<Right>",         sendMessage Expand)                   -- Expand horiz window width
-        , ("M-S-<Left>",        sendMessage MirrorShrink)          -- Shrink vert window width
-        , ("M-S-<Right>",       sendMessage MirrorExpand)          -- Exoand vert window width
+        , ("M-<Left>",          sendMessage Shrink) -- Shrink horiz window width
+        , ("M-<Right>",         sendMessage Expand) -- Expand horiz window width
+        , ("M-S-<Left>",        sendMessage MirrorShrink) -- Shrink vert window width
+        , ("M-S-<Right>",       sendMessage MirrorExpand) -- Exoand vert window width
 
     -- Sublayouts
     -- This is used to push windows to tabbed sublayouts, or pull them out of it.
@@ -383,28 +386,28 @@ myKeys =
         , ("M-C-m",             withFocused (sendMessage . MergeAll))
         , ("M-C-u",             withFocused (sendMessage . UnMerge))
         , ("M-C-/",             withFocused (sendMessage . UnMergeAll))
-        , ("M-C-,",             onGroup W.focusUp')    -- Switch focus to next tab
+        , ("M-C-,",             onGroup W.focusUp') -- Switch focus to next tab
         , ("M-C-.",             onGroup W.focusDown')  -- Switch focus to prev tab
 
     -- TODO, look into below Scratchpads
-        , ("M-C-<Return>",      namedScratchpadAction myScratchPads "terminal")
+        , ("M-`",               namedScratchpadAction myScratchPads "terminal")
         
     -- Screen Shots
-        , ("C-<Print>",         spawn "sleep 0.25; shot")
-        , ("S-<Print>",         spawn "sleep 0.25; shot focused")
-        , ("<Print>",           spawn "sleep 0.25; shot select")
-        , ("M-<Print>",         spawn "m-scrot")
+        , ("<Print>",           spawn ("sleep 0.25; shot select"))
+        , ("M-<Print>",         spawn ("m-scrot"))
+        , ("C-<Print>",         spawn ("sleep 0.25; shot"))
+        , ("S-<Print>",         spawn ("sleep 0.25; shot focused"))
 
     -- Multimedia Keys
-        , ("<XF86AudioPlay>",   spawn ("playerctl play-pause"))
-        , ("<XF86AudioStop>",   spawn ("playerctl stop"))
-        , ("<XF86AudioPrev>",   spawn ("playerctl previous"))
-        , ("<XF86AudioNext>",   spawn ("playerctl next"))
-        , ("<XF86AudioMute>",   spawn "amixer set Master toggle") 
-        , ("<XF86Launch8>",     spawn "amixer set Master 5%+ unmute")
-        , ("<XF86Launch7>",     spawn "amixer set Master 10%- unmute")
-        , ("<XF86AudioRaiseVolume>", spawn "amixer set Master 5%+ unmute")
-        , ("<XF86AudioLowerVolume>", spawn "amixer set Master 10%- unmute")
+        , ("<XF86AudioPlay>",        spawn ("playerctl play-pause"))
+        , ("<XF86AudioStop>",        spawn ("playerctl stop"))
+        , ("<XF86AudioPrev>",        spawn ("playerctl previous"))
+        , ("<XF86AudioNext>",        spawn ("playerctl next"))
+        , ("<XF86AudioMute>",        spawn ("amixer set Master toggle"))
+        , ("<XF86Launch8>",          spawn ("amixer set Master 5%+ unmute"))
+        , ("<XF86Launch7>",          spawn ("amixer set Master 10%- unmute"))
+        , ("<XF86AudioRaiseVolume>", spawn ("amixer set Master 5%+ unmute"))
+        , ("<XF86AudioLowerVolume>", spawn ("amixer set Master 10%- unmute"))
         ]
     
     -- The following lines are needed for named scratchpads.
