@@ -65,9 +65,9 @@ exec = pacupdate
 label = %output%
 
 ; Script is further delayed to every 12 hours.
-interval = 3600
+interval = 600
 format-prefix = "  "
-click-left = alacritty -e sudo pacman -Syu
+click-left = alacritty -e sudo pacman -Syu && rm update.count
 
 ; Format
 format-background = ${colors.background-1}
