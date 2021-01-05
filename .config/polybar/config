@@ -70,7 +70,7 @@ modules-right = eth-up eth-down temperature cpu memory script-disk xkeyboard dat
 ;tray-padding = 2
 ;tray-background = ${colors.background-1}
     
-[bar/right]
+[bar/left]
 inherit = bar/base
 monitor = ${monitors.left}
 width = 100%
@@ -79,7 +79,7 @@ modules-left = mem-bar
 modules-center = ${bar/main.modules-center}
 modules-right = date-secondary
 
-[bar/left]
+[bar/right]
 inherit = bar/base
 monitor = ${monitors.right}
 width = 100%
@@ -87,6 +87,16 @@ offset-x = 0%
 modules-left = mem-bar 
 modules-center = ${bar/main.modules-center}
 modules-right = date-secondary
+
+[bar/left-solo]
+; For single monitor mode
+inherit = bar/base
+monitor = ${monitors.left}
+width = 100%
+offset-x = 0%
+modules-left = menu dunst-script dunst-status script-updates script-mail alsa spotify-prev spotify-play-pause spotify-next spotify-git
+modules-center = ${bar/main.modules-center}
+modules-right = eth-up eth-down temperature cpu memory script-disk xkeyboard date-main
 
 [settings]
 screenchange-reload = true
