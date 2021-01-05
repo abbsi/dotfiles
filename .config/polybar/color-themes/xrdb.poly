@@ -23,19 +23,22 @@ c-13 = ${xrdb:color13:#92909E}
 c-14 = ${xrdb:color14:#9094A9}
 c-15 = ${xrdb:color15:#cecbd1}
 
-foreground-1 = ${colors.c-15}
+foreground = ${colors.c-15}
+background = ${colors.c-00}
+
+foreground-1 = ${colors.c-00}
 background-1 = ${colors.c-01}
 
-foreground-2 = ${colors.c-15}
+foreground-2 = ${colors.c-00}
 background-2 = ${colors.c-02}
 
-foreground-3 = ${colors.c-15}
-background-3 = ${colors.c-03}
+foreground-3 = ${colors.c-00}
+background-3 = ${colors.c-01}
 
 foreground-4 = ${colors.c-15}
-background-4 = ${colors.c-04}
+background-4 = ${colors.c-02}
 
-foreground-5 = ${colors.c-15}
-background-5 = ${colors.c-05}
+foreground-5 = ${colors.c-00}
+background-5 = ${colors.c-01}
 
-tags-fg = ${colors.c-01}
+tags-fg = ${colors.foreground}

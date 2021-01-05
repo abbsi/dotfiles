@@ -3,7 +3,8 @@ configuration {
   modi:                    "run,file-browser,ssh,drun,window,combi,keys";
   terminal:                "kitty";
   run-command:             "fish -c '{cmd}'";
-  run-list-command:        "fish -c functions";
+/*run-list-command:        "fish -c functions"; ** Slows down opening of rofi ** */
+/*run-list-command:        "tail /tmp/fish.functions -n +8";  */ /* Uupdate this occasionally as a cache */
   font:                    "JetBrainsMonoExtraBold Nerd Font 14";
   fixed-num-lines:         true;
   lines:                   20;
@@ -86,7 +87,9 @@ configuration {
   text-color:             @foreground;
 }
 
-@import "~/.cache/wal/colors-rofi-dark.rasi"
+@import "~/.cache/wal/colors-rofi-light.rasi"
+
+/* @import "~/.cache/wal/colors-rofi-dark.rasi" */
 
 window {
   children:                [inputbar, message, listview, sidebar];

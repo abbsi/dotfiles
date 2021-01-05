@@ -21,7 +21,7 @@ rm -rf /tmp/polybar_mqueue.* && echo ">> Removed mqueue" | tee -a /tmp/polybar-a
 killall -q polybar && echo ">> Killed All Bars" | tee -a /tmp/polybar-all.log
 
 # Load array of bars
-bars=(main1 main2 main3 left right)
+bars=(main left right)
 for bar in ${bars[@]}; do
   echo "==> Launching $bar" | tee -a /tmp/polybar-$bar.log
   $(polybar --reload $bar | tee -a /tmp/polybar-$bar.log) &

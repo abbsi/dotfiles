@@ -2,7 +2,7 @@
     ### Display ###
     monitor = 0                           # Which monitor should the notifications be displayed on.
     follow = none                         # [ mouse, keyboard, none ]
-    geometry = "1342x15+20+58"             # [{width}]x{height}[+/-{x}+/-{y}]
+    geometry = "1800x150+1020+65"             # [{width}]x{height}[+/-{x}+/-{y}]
     indicate_hidden = yes                 # Number of messages hidden
     shrink = no                           # Shrink window if it's smaller than the width.  Will be ignored if width is 0.
     transparency = 5                      # Range: [0; 100]
@@ -32,7 +32,7 @@
     max_icon_size = 32                    # Scale larger icons down to this size, set to 0 to disable
     sticky_history = no                   # Should a notification popped up from history be sticky or timeout as if it would normally do.
     history_length = 20                   # Maximum amount of notifications kept in history
-    dmenu = /usr/local/bin/dmenu -p dunst:
+    dmenu = "/usr/local/bin/dmenu -p dunst:"
     browser = /usr/bin/firefox -new-tab   # Browser for opening urls in context menu.
     always_run_script = true              # Always run rule-defined scripts, even if the notification is suppressed
     title = Dunst                         # Define the title of the windows spawned by dunst
@@ -65,7 +65,7 @@
     #   %n  progress value if set without any extra characters
     #   %%  Literal %
     # Markup is allowed
-    format = "%s | %b"
+    format = "<b>%s</b>\n%b"
 
 [shortcuts]
     # Available modifiers are "ctrl", "mod1" (the alt-key), "mod2", "mod3" and "mod4" (windows-key).
@@ -75,14 +75,14 @@
     context = ctrl+shift+period # Context menu.
 
 [urgency_low]
-    background =  "#333333"
-    foreground =  "#FFFFFF"
+    background =  "#AAAAAA"
+    foreground =  "#222222"
     timeout = 2
     #icon = /path/to/icon
 
 [urgency_normal]
-    background =  "#05293E"
-    foreground =  "#FFFFFF"
+    background =  "#FFFFFF"
+    foreground =  "#05293E"
     timeout = 5
     #icon = /path/to/icon
 
@@ -98,7 +98,7 @@
     background =  "#00A75F"
     foreground =  "#ffffff"
     frame_color = "#00A75F"
-    timeout = 3
+    timeout = 2
 
 [notify-send]
     appname = notify-send

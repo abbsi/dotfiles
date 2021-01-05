@@ -7,15 +7,15 @@ main  = ${env:MONITOR:DP-2}
 right = ${env:MONITOR:DP-0}
 
 [colors]
-include-file = $HOME/.config/polybar/color-themes/xrdb.poly
+include-file = $HOME/.config/polybar/color-themes/pywal.poly
 include-file = $HOME/.config/polybar/basic-colors.poly
 alert = ${colors.brgt-red}
 warn = ${colors.brgt-yellow}
 
 [module]
 format-padding = 2
-default-bg = ${colors.transparent}
-default-fg = ${colors.nrml-white}
+default-bg = ${colors.background}
+default-fg = ${colors.foreground}
 
 [bar/base]
 ; Values to inherit
@@ -23,7 +23,7 @@ monitor-strict = true
 enable-ipc = true
 offset-y = 0
 height = 50
-radius = 0
+radius = 10
 fixed-center = true
 background = ${module.default-bg}
 foreground = ${colors.foreground-1}
@@ -37,37 +37,38 @@ padding-right = 0
 module-margin-left = 0
 module-margin-right = 0
 font-0 = JetBrainsMonoExtraBold Nerd Font:size=13:antialias=true:autohint=true;1
-font-1 = JetBrainsMonoExtraBold Nerd Font:size=16:antialias=true:autohint=true;1
-font-2 = JetBrainsMonoExtraBold Nerd Font:size=18:antialias=true:autohint=true;1
+font-1 = JetBrainsMonoExtraBold Nerd Font:size=14:antialias=true:autohint=true;1
+font-2 = JetBrainsMonoExtraBold Nerd Font:size=15:antialias=true:autohint=true;1
 override-redirect = false
 cursor-click = pointer
 cursor-scroll = ns-resize
 
-[bar/main1]
-inherit = bar/base
-monitor = ${monitors.main}
-width = 35%
-offset-x = 0
-modules-left = menu dunst-script dunst-status script-updates script-mail firefox code alsa spotify-prev spotify-play-pause spotify-next spotify-git
+;[bar/main1]
+;inherit = bar/base
+;monitor = ${monitors.main}
+;width = 40%
+;offset-x = 0
+;modules-left = menu dunst-script dunst-status script-updates script-mail firefox code alsa spotify-prev spotify-play-pause spotify-next spotify-git
 
-[bar/main2]
+[bar/main]
 inherit = bar/base
 monitor = ${monitors.main}
-width = 20%
-offset-x = 40%
+width = 100%
+offset-x = 0%
 background = ${module.default-bg}
-
+modules-left = menu dunst-script dunst-status script-updates script-mail firefox code alsa spotify-prev spotify-play-pause spotify-next spotify-git
 modules-center = dwm-tags
-
-[bar/main3]
-inherit = bar/base
-monitor = ${monitors.main}
-width = 35%
-offset-x = 65%
 modules-right = eth-up eth-down temperature cpu memory script-disk xkeyboard date-main
-tray-position = right
-tray-padding = 2
-tray-background = ${colors.background-1}
+
+;[bar/main3]
+;inherit = bar/base
+;monitor = ${monitors.main}
+;width = 40%
+;offset-x = 60%
+;modules-right = eth-up eth-down temperature cpu memory script-disk xkeyboard date-main
+;tray-position = right
+;tray-padding = 2
+;tray-background = ${colors.background-1}
     
 [bar/right]
 inherit = bar/base
@@ -75,7 +76,7 @@ monitor = ${monitors.left}
 width = 100%
 offset-x = 0%
 modules-left = mem-bar 
-modules-center = ${bar/main2.modules-center}
+modules-center = ${bar/main.modules-center}
 modules-right = date-secondary
 
 [bar/left]
@@ -84,7 +85,7 @@ monitor = ${monitors.right}
 width = 100%
 offset-x = 0%
 modules-left = mem-bar 
-modules-center = ${bar/main2.modules-center}
+modules-center = ${bar/main.modules-center}
 modules-right = date-secondary
 
 [settings]
