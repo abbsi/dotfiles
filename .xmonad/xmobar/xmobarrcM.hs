@@ -13,7 +13,7 @@ Config { font            =   "xft:SauceCodePro Nerd Font:pixelsize=16:antialias=
        , hideOnStart = False
        , allDesktops = True
        , persistent = True
-       , iconRoot = "/home/nabil/.xmonad/xpm/"  -- default: "."
+       , iconRoot = "/home/abbsi/.xmonad/xpm/"  -- default: "."
        , commands = [ 
                       -- Time and date
                       Run Date "<fn=1>\xf133 </fn> %b %d %Y (%H:%M)" "date" 50
