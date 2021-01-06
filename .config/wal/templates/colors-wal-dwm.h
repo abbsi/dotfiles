@@ -1,14 +1,14 @@
-static const char wal_norm_fg[] = "{color15}";
-static const char wal_norm_bg[] = "{color0}";
-static const char wal_norm_border[] = "{color8}";
+static const char norm_fg[] = "{color15}";
+static const char norm_bg[] = "{color0}";
+static const char norm_border[] = "{color8}";
 
-static const char wal_sel_fg[] = "{color15}";
-static const char wal_sel_bg[] = "{color2}";
-static const char wal_sel_border[] = "{color1}";
+static const char sel_fg[] = "{color15}";
+static const char sel_bg[] = "{color2}";
+static const char sel_border[] = "{color1}";
 
-static const char wal_urg_fg[] = "{color15}";
-static const char wal_urg_bg[] = "{color1}";
-static const char wal_urg_border[] = "{color1}";
+static const char urg_fg[] = "{color15}";
+static const char urg_bg[] = "{color1}";
+static const char urg_border[] = "{color1}";
 
 static const char color00[] = "{color0}";
 static const char color01[] = "{color1}";
