@@ -1,0 +1,3 @@
+#!/bin/bash 
+cd /env/suckless/dwm
+make clean && make && sudo make install && sleep 3 && dwm-msg run_command quit 1
