@@ -52,7 +52,7 @@
 !/.SpaceVim.d/
 !/.SpaceVim.d/**
 !/.wallpapers/
-!/.wallpapers/**
+!/.wallpapers/*
 !/.xmonad/
 !/.xmonad/*.hs
 !/.xmonad/xmobar/
