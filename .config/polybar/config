@@ -1,5 +1,6 @@
 include-file = $HOME/.config/polybar/modules/modules.poly
 include-file = $HOME/.config/polybar/modules/dwm.poly
+include-file = $HOME/.config/polybar/modules/qtile.poly
 
 [monitors]
 left  = ${env:MONITOR:HDMI-0}
@@ -13,90 +14,65 @@ alert = ${colors.brgt-red}
 warn = ${colors.brgt-yellow}
 
 [module]
-format-padding = 2
+; general settings for all modules to inherit
 default-bg = ${colors.background}
 default-fg = ${colors.foreground}
+format-padding = 1
+prf-font = 2
+format-prefix-font = ${self.prf-font}
 
 [bar/base]
 ; Values to inherit
 monitor-strict = true
 enable-ipc = true
-offset-y = 0
-height = 50
-radius = 10
-fixed-center = true
+
 background = ${module.default-bg}
 foreground = ${colors.foreground-1}
+
+height = 40
+offset-y = 0
+offset-x = 0
+width = 100%
+
+radius = 20
+fixed-center = true
+
 line-size = 0
 line-color = ${colors.foreground-1}
+
 border-size = 15
 border-bottom-size = 0
 border-color = ${colors.transparent}
+
 padding-left = 0
 padding-right = 0
 module-margin-left = 0
 module-margin-right = 0
-font-0 = JetBrainsMonoExtraBold Nerd Font:size=13:antialias=true:autohint=true;1
+
+font-0 = JetBrainsMonoExtraBold Nerd Font:size=12:antialias=true:autohint=true;1
 font-1 = JetBrainsMonoExtraBold Nerd Font:size=14:antialias=true:autohint=true;1
-font-2 = JetBrainsMonoExtraBold Nerd Font:size=15:antialias=true:autohint=true;1
+font-2 = JetBrainsMonoExtraBold Nerd Font:size=16:antialias=true:autohint=true;1
+
 override-redirect = false
+
 cursor-click = pointer
 cursor-scroll = ns-resize
 
-;[bar/main1]
-;inherit = bar/base
-;monitor = ${monitors.main}
-;width = 40%
-;offset-x = 0
-;modules-left = menu dunst-script dunst-status script-updates script-mail firefox code alsa spotify-prev spotify-play-pause spotify-next spotify-git
+modules-left = menu dunst-script dunst-status script-updates script-mail firefox code alsa player-prev player-play-pause player-next player-status
+modules-center = dwm-tags
+modules-right = eth-up eth-down temperature cpu memory script-disk xkeyboard date-main
 
 [bar/main]
 inherit = bar/base
 monitor = ${monitors.main}
-width = 100%
-offset-x = 0%
-background = ${module.default-bg}
-modules-left = menu dunst-script dunst-status script-updates script-mail firefox code alsa spotify-prev spotify-play-pause spotify-next spotify-git
-modules-center = dwm-tags
-modules-right = eth-up eth-down temperature cpu memory script-disk xkeyboard date-main
-
-;[bar/main3]
-;inherit = bar/base
-;monitor = ${monitors.main}
-;width = 40%
-;offset-x = 60%
-;modules-right = eth-up eth-down temperature cpu memory script-disk xkeyboard date-main
-;tray-position = right
-;tray-padding = 2
-;tray-background = ${colors.background-1}
     
 [bar/left]
 inherit = bar/base
 monitor = ${monitors.left}
-width = 100%
-offset-x = 0%
-modules-left = mem-bar 
-modules-center = ${bar/main.modules-center}
-modules-right = date-secondary
 
 [bar/right]
 inherit = bar/base
 monitor = ${monitors.right}
-width = 100%
-offset-x = 0%
-modules-left = mem-bar 
-modules-center = ${bar/main.modules-center}
-modules-right = date-secondary
-
-[bar/left-solo]
-; For single monitor mode
-inherit = bar/base
-monitor = ${monitors.left}
-width = 100%
-offset-x = 0%
-modules-left = menu dunst-script dunst-status script-updates script-mail alsa spotify-prev spotify-play-pause spotify-next spotify-git
-modules-center = ${bar/main.modules-center}
-modules-right = eth-up eth-down temperature cpu memory script-disk xkeyboard date-main
 
 [settings]
 screenchange-reload = true

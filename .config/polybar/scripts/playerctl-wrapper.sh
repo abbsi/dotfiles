@@ -5,6 +5,6 @@ if [ $? -eq 0 ]
 then
   echo $(playerctl --player=playerctld status)
 else
-  echo "No Player"
+  echo "NoPlayer"
 fi
 

@@ -1,0 +1,49 @@
+col-bl = #000000
+col-wh = #FFFFFF
+
+transparent    = #00000000
+transparent-dk = #44000000
+transparent-lt = #44FFFFFF
+
+c-00 = {color0}
+c-0088 = #88{color0.strip}
+c-00DD = #DD{color0.strip}
+c-01 = #222222
+c-02 = #333333
+c-03 = #444444
+c-04 = #888888
+c-05 = #AAAAAA
+c-06 = #CCCCCC
+c-07 = {color15}
+
+c-08 = {color8}
+c-09 = #222222
+c-10 = #444444
+c-11 = #666666
+c-12 = #888888
+c-13 = #AAAAAA
+c-14 = #CCCCCC
+c-15 = {color15}
+
+foreground   = ${{colors.c-15}}
+background   = ${{colors.c-0088}}
+foreground-1 = ${{colors.c-15}}
+background-1 = ${{colors.c-01}}
+foreground-2 = ${{colors.c-15}}
+background-2 = ${{colors.c-02}}
+foreground-3 = ${{colors.c-15}}
+background-3 = ${{colors.c-03}}
+foreground-4 = ${{colors.c-15}}
+background-4 = ${{colors.c-02}}
+foreground-5 = ${{colors.c-15}}
+background-5 = ${{colors.c-01}}
+
+tags-fg        = {color7}
+prefix-fg-1    = {color3}
+prefix-fg-2    = {color2}
+prefix-fg-3    = {color6}
+prefix-fg-4    = {color1}
+prefix-fg-5    = {color5}
+prefix-fg-6    = {color4}
+prefix-fg      = #FFF000
+

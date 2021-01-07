@@ -5,30 +5,44 @@ transparent    = #00000000
 transparent-dk = #44000000
 transparent-lt = #44FFFFFF
 
-dk-01 = #1a1a40
-dk-02 = #21264c
-dk-03 = #273158
-dk-04 = #2e3c64
-dk-05 = #344770
-lt-01 = #4e73a0
-lt-02 = #718eb3
-lt-03 = #93a9c5
-lt-04 = #b5c4d8
-lt-05 = #d7dfea
+c-00 = #150015
+c-0088 = #88150015
+c-00DD = #DD150015
+c-01 = #ec3dbc
+c-02 = #cd62b2
+c-03 = #709dbc
+c-04 = #b480ba
+c-05 = #a89dc7
+c-06 = #bdb2d2
+c-07 = #cbc0c9
 
-foreground-1 = ${colors.lt-03}
-background-1 = ${colors.dk-01}
+c-08 = #65445e
+c-09 = #ec3dbc
+c-10 = #cd62b2
+c-11 = #709dbc
+c-12 = #b480ba
+c-13 = #a89dc7
+c-14 = #bdb2d2
+c-15 = #cbc0c9
 
-foreground-2 = ${colors.lt-03}
-background-2 = ${colors.dk-02}
+foreground   = ${colors.c-15}
+background   = ${colors.c-0088}
+foreground-1 = ${colors.c-00DD}
+background-1 = ${colors.c-01}
+foreground-2 = ${colors.c-00DD}
+background-2 = ${colors.c-02}
+foreground-3 = ${colors.c-00DD}
+background-3 = ${colors.c-03}
+foreground-4 = ${colors.c-00DD}
+background-4 = ${colors.c-02}
+foreground-5 = ${colors.c-00DD}
+background-5 = ${colors.c-01}
 
-foreground-3 = ${colors.lt-04}
-background-3 = ${colors.dk-03}
-
-foreground-4 = ${colors.lt-03}
-background-4 = ${colors.dk-02}
-
-foreground-5 = ${colors.lt-03}
-background-5 = ${colors.dk-01}
-
-tags-fg = ${colors.lt-03}
+tags-fg     = ${colors.foreground}
+prefix-fg-1 = ${colors.col-wh}
+prefix-fg-2 = ${colors.col-wh}
+prefix-fg-3 = ${colors.col-wh}
+prefix-fg-4 = ${colors.col-wh}
+prefix-fg-5 = ${colors.col-wh}
+prefix-fg-6 = ${colors.col-wh}
+prefix-fg   = ${colors.col-wh}

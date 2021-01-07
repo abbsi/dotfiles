@@ -24,5 +24,5 @@ killall -q polybar && echo ">> Killed All Bars" | tee -a /tmp/polybar-all.log
 bars=(main left right)
 for bar in ${bars[@]}; do
   echo "==> Launching $bar" | tee -a /tmp/polybar-$bar.log
-  $(polybar --reload $bar | tee -a /tmp/polybar-$bar.log) &
+  $(polybar --log=warning --reload $bar | tee -a /tmp/polybar-$bar.log) &
 done

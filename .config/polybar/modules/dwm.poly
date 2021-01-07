@@ -22,7 +22,7 @@ tags-scroll-wrap = true
 
 ; Separator in between shown tags
 label-separator = ""
-label-padding = 2
+label-padding = 1
 
 ; States: focused, unfocused, visible, urgent, empty
 ; Available tokens:
@@ -66,11 +66,6 @@ label-empty-background = ${self.bg}
 label-empty-padding = ${self.label-padding}
 label-empty-foreground = ${colors.tags-fg}
 
-;[module/dwm-layout]
-;inherit = module
-;type = internal/dwm
-;format = 
-
 ; Left-click to set secondary layout, right-click to switch to previous layout
 enable-layout-click = true
 ; Scroll to cycle between available layouts
@@ -94,14 +89,14 @@ label-layout-foreground = ${colors.tags-fg}
 
 ; Text to show when currently focused window is floating
 label-floating = [F]
+label-floating-foreground = ${colors.tags-fg}
 
 [module/dwm-title]
 inherit = module
 type = internal/dwm
 format = <label-title>
 
-; Path to dwm socket (default: /tmp/dwm.sock)
-; socket-path = /tmp/dwm.sock
+socket-path = /tmp/dwm.sock
 
 ; Title of currently focused window
 ; Available tokens:

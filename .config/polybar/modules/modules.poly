@@ -1,16 +1,21 @@
 [module/menu]
+inherit = module
 type = custom/menu
 expand-right = true
+
 label-open = "  "
+label-open-font = ${self.prf-font}
+label-open-foreground = ${colors.prefix-fg-1}
+
 label-close = "  "
-label-separator = " | "
+label-close-font = ${self.prf-font}
+label-close-foreground = ${colors.prefix-fg-1}
+
+label-separator = "  "
+label-separator-font = ${self.prf-font}
+label-separator-foreground = ${colors.prefix-fg-1}
 
 ; Format
-format-spacing = 1
-format-padding = 2
-label-open-foreground = ${colors.foreground-1}
-label-close-foreground = ${colors.alert}
-label-separator-foreground = ${colors.foreground-1}
 format-background = ${colors.background-1}
 
 ;;; Main
@@ -42,16 +47,17 @@ menu-3-1-exec = "if pgrep -x 'picom'; then killall picom; fi; notify-send 'Picom
 [module/dunst-status]
 inherit = module
 type = custom/ipc
-hook-0 = echo "  "
-hook-1 = echo "  " 
-hook-2 = echo " 罹 "
-initial = 0
 click-left = "dunstctl set-paused false; notify-send 'Notifications On' &"
 click-right = "notify-send 'Notifications Off'; sleep 2; dunstctl set-paused true &"
 
-; Formats
-format-foreground = ${colors.foreground-1}
-format-background = ${colors.background-1}
+initial = 0
+hook-0 = echo "  "
+hook-1 = echo "  "
+hook-2 = echo " 罹 "
+
+format-font = ${self.prf-font}
+format-foreground = ${colors.prefix-fg-2}
+format-background = ${colors.background-2}
 
 [module/dunst-script]
 type = custom/script
@@ -62,30 +68,30 @@ interval = 5
 inherit = module
 type = custom/script
 exec = pacupdate
-label = %output%
-
-; Script is further delayed to every 12 hours.
 interval = 600
-format-prefix = "  "
 click-left = alacritty -e sudo pacman -Syu && rm update.count
 
-; Format
-format-background = ${colors.background-1}
-format-foreground = ${colors.foreground-1}
+format-prefix = " "
+format-prefix-foreground = ${colors.prefix-fg-2}
+format-foreground = ${colors.foreground-2}
+format-background = ${colors.background-2}
 
+label = %output%
 
 [module/script-mail]
 inherit = module
 type = custom/script
 exec = mail-count
-label = %output%
 interval = 300
-format-prefix = "  "
 click-left = ~/.config/polybar/scripts/focus-app.sh thunderbird Thunderbird left
 
+format-prefix = "  "
+format-prefix-foreground = ${colors.prefix-fg-2}
+format-foreground = ${colors.foreground-2}
+format-background = ${colors.background-2}
+
+label = %output%
 ; Format
-format-foreground = ${colors.foreground-1}
-format-background = ${colors.background-1}
 
 [module/firefox]
 inherit = module
@@ -94,9 +100,9 @@ exec = echo '  '
 interval = 5000
 click-left = firefox
 
-; Format
-format-foreground = ${colors.foreground-1}
-format-background = ${colors.background-1}
+format-font = ${self.prf-font}
+format-foreground = ${colors.prefix-fg-2}
+format-background = ${colors.background-2}
 
 [module/code]
 inherit = module
@@ -105,58 +111,23 @@ exec = echo '  '
 interval = 5000
 click-left = code
 
-; Format
-format-foreground = ${colors.foreground-1}
-format-background = ${colors.background-1}
-
-[module/spotify-git]
-type = custom/script
-tail = true
-format-prefix = "  "
-format = "  <label>  "
-exec = ~/.config/polybar/scripts/scroll_spotify_status.sh
-
-; Formant
-format-foreground = ${colors.tags-fg}
-format-background = ${module.default-bg}
-
-[module/spotify-prev]
-type = custom/script
-exec = echo "  玲  "
-format = <label>
+format-font = ${self.prf-font}
+format-foreground = ${colors.prefix-fg-2}
 format-background = ${colors.background-2}
-click-left = playerctl previous spotify
-
-[module/spotify-play-pause]
-type = custom/ipc
-hook-0 = echo "    "
-hook-1 = echo "  契  "
-initial = 1
-format-background = ${colors.background-2}
-click-left = playerctl play-pause spotify
-margin-left = 0
-
-[module/spotify-next]
-type = custom/script
-exec = echo "  怜  "
-format = <label>
-format-background = ${colors.background-2}
-click-left = playerctl next spotify
 
 [module/alsa]
 inherit = module
 type = internal/alsa
 
-format-volume = " <label-volume> <bar-volume> "
-format-volume-background = ${colors.background-2}
-formar-volume-padding = 1
+format-volume = "<label-volume> <label-perc> <bar-volume> "
+format-volume-background = ${colors.background-3}
+label-volume = "  "
+label-volume-foreground = ${colors.prefix-fg-3}
 
-label-volume = "    %percentage:3%%"
-label-volume-foreground = ${colors.foreground-2}
-
-format-muted-foreground = ${colors.foreground-2}
-format-muted-background = ${colors.background-2}
-label-muted = "  婢  "
+format-muted = "<label-muted> <bar-volume>"
+format-muted-background = ${colors.background-3}
+label-muted = " 婢 "
+label-muted-foreground = ${colors.prefix-fg-3}
 
 bar-volume-width = 10
 bar-volume-foreground-0 = ${colors.nrml-green}
@@ -166,45 +137,95 @@ bar-volume-foreground-3 = ${colors.nrml-green}
 bar-volume-foreground-4 = ${colors.nrml-green}
 bar-volume-foreground-5 = ${colors.warn}
 bar-volume-foreground-6 = ${colors.alert}
-bar-volume-gradient = false
-bar-volume-indicator = "﨡"
-bar-volume-indicator-foreground =  ${colors.nrml-red}
-bar-volume-indicator-font = 1
+bar-volume-gradient = true
+bar-volume-indicator = ""
+bar-volume-indicator-foreground =  ${colors.prefix-fg-3}
+bar-volume-indicator-font = ${self.prf-font}
 bar-volume-fill = 絛
-bar-volume-fill-font = 1
+bar-volume-fill-font = ${self.prf-font}
 bar-volume-empty = 
-bar-volume-empty-font = 1
-bar-volume-empty-foreground = ${colors.foreground-2}
+bar-volume-empty-font = ${self.prf-font}
+bar-volume-empty-foreground = ${colors.foreground-3}
+
+[module/player-prev]
+inherit = module
+type = custom/script
+exec = echo "玲"
+click-left = playerctl previous
+
+format-foreground = ${colors.prefix-fg-3}
+format-background = ${colors.background-3}
+
+[module/player-play-pause]
+inherit = module
+type = custom/ipc
+initial = 1 
+hook-0 = echo ""
+hook-1 = echo "契"
+click-left = playerctl play-pause
+
+format-font = ${self.prf-font}
+format-foreground = ${colors.prefix-fg-3}
+format-background = ${colors.background-3}
+
+[module/player-next]
+inherit = module
+type = custom/script
+exec = echo "怜"
+click-left = playerctl next
+
+format-font = ${self.prf-font}
+format-foreground = ${colors.prefix-fg-3}
+format-background = ${colors.background-3}
+
+[module/player-status]
+inherit = module
+type = custom/script
+tail = true
+exec = ~/.config/polybar/scripts/player_scroll_status.sh
+
+format = " <label>"
+format-font = 4
+format-foreground = ${colors.tags-fg}
+format-background = ${module.default-bg}
 
 [module/eth-up]
 inherit = module
 type = internal/network
 interface = ${env:INET_IFACE}
-interval = 3.0
-format-connected-background = ${colors.background-3}
-label-connected = "%upspeed:8% "
-format-connected-prefix = "  "
-format-connected-prefix-foreground = ${colors.foreground-3}
+interval = 2
 
-label-disconnected = "  "
+label-connected = "%upspeed:8% "
+format-connected-prefix = " "
+format-connected-prefix-font = ${self.prf-font}
+format-connected-prefix-foreground = ${colors.prefix-fg-4}
+format-connected-background = ${colors.background-3}
+
+label-disconnected = "  "
 format-disconnected = <label-disconnected>
-format-disconnected-underline = ${colors.alert}
-label-disconnected-foreground = ${colors.alert}
+format-disconnected-padding = 10
+format-disconnected-font = ${self.prf-font}
+format-disconnected-background = ${colors.alert}
+format-disconnected-foreground = ${colors.prefix-fg-4}
 
 [module/eth-down]
 inherit = module
 type = internal/network
 interface = ${env:INET_IFACE}
-interval = 3.0
-format-connected-background = ${colors.background-3}
-label-connected = "%downspeed:8% "
-format-connected-prefix = "  "
-format-connected-prefix-foreground = ${colors.foreground-3}
+interval = 2
 
-label-disconnected = "  "
+label-connected = "%downspeed:8% "
+format-connected-prefix = " "
+format-connected-prefix-font = ${self.prf-font}
+format-connected-prefix-foreground = ${colors.prefix-fg-4}
+format-connected-background = ${colors.background-3}
+
+label-disconnected = "  "
 format-disconnected = <label-disconnected>
-format-disconnected-underline = ${colors.alert}
-label-disconnected-foreground = ${colors.alert}
+format-disconnected-padding = 10
+format-disconnected-font = ${self.prf-font}
+format-disconnected-background = ${colors.alert}
+format-disconnected-foreground = ${colors.prefix-fg-4}
 
 [module/temperature]
 inherit = module
@@ -215,9 +236,11 @@ warn-temperature = 60
 
 format = <ramp> <label>
 format-background = ${colors.background-4}
+
 format-warn = <ramp> <label-warn>
-format-warn-background = ${colors.alert}
 format-warn-padding = 10
+format-warn-background = ${colors.alert}
+
 label = %temperature-c%
 label-warn = %temperature-c%
 label-warn-foreground = ${colors.brgt-white}
@@ -225,7 +248,8 @@ label-warn-foreground = ${colors.brgt-white}
 ramp-0 = 
 ramp-1 = 
 ramp-2 = 
-ramp-foreground = ${colors.foreground-4}
+ramp-foreground = ${colors.prefix-fg-5}
+ramp-font = ${self.prf-font}
 
 [module/cpu]
 inherit = module
@@ -234,16 +258,18 @@ label = %percentage:2%%
 interval = 2
 format-background = ${colors.background-4}
 format-prefix = " "
-format-prefix-foreground = ${colors.foreground-4}
+format-prefix-font = ${self.prf-font}
+format-prefix-foreground = ${colors.prefix-fg-5}
 
 [module/memory]
 inherit = module
 type = internal/memory
 interval = 3
 label = %percentage_used:2%%
-format-prefix = " "
 format-background = ${colors.background-4}
-format-prefix-foreground = ${colors.foreground-4}
+format-prefix = " "
+format-prefix-font = ${self.prf-font}
+format-prefix-foreground = ${colors.prefix-fg-5}
 
 [module/mem-bar]
 inherit = module
@@ -275,7 +301,7 @@ label = %output:2%
 interval = 1800
 format-prefix = " "
 format-background = ${colors.background-4}
-format-prefix-foreground = ${colors.foreground-4}
+format-prefix-foreground = ${colors.prefix-fg-5}
 click-left = alacritty -e bpytop
 
 [module/filesystem]
@@ -293,14 +319,20 @@ inherit = module
 type = internal/xkeyboard
 format-prefix = " "
 format-background = ${colors.background-5}
-format-prefix-foreground = ${colors.foreground-5}
+format-prefix-foreground = ${colors.prefix-fg-6}
 format-foreground = ${colors.foreground-5}
-blacklist-0 = lock
 
-label-indicator-on-numlock   = "" 
-label-indicator-off-numlock  = " "
-label-indicator-on-capslock  = "וּ "
-label-indicator-off-capslock = "  "
+label-indicator-on-numlock   = "" 
+label-indicator-off-numlock  = " numlock off "
+;label-indicator-off-numlock-background  = ${colors.default-bg}
+label-indicator-off-numlock-foreground  = ${colors.alert}
+label-indicator-off-numlock-font = 3
+
+label-indicator-off-capslock = ""
+label-indicator-on-capslock  = " CAPS "
+;label-indicator-on-capslock-background  = ${colors.default-bg}
+label-indicator-on-capslock-foreground  = ${colors.alert}
+label-indicator-on-capslock-font = 3
 label-layout = ""
 
 [module/date-main]
@@ -309,13 +341,14 @@ type = internal/date
 interval = 5
 
 date = ""
-date-alt = "  %Y-%m-%d"
+date-alt = "%A, %B %e"
 
-time = %l:%M%P
-time-alt = %l:%M%P
+time = %I:%M%P
+time-alt = %I:%M%P
 
 format-prefix = " "
-format-prefix-foreground = ${colors.foreground-5}
+format-prefix-font = ${self.prf-font} 
+format-prefix-foreground = ${colors.prefix-fg-6}
 format-background = ${colors.background-5}
 format-foreground = ${colors.foreground-5}
 
@@ -329,8 +362,8 @@ interval = 5
 date = "%A, %B %e"
 date-alt = "%Y-%m-%d"
 
-time = %l:%M%P
-time-alt = %l:%M%P
+time = %I:%M%P
+time-alt = %I:%M%P
 
 format-prefix = " "
 format-prefix-foreground = ${colors.foreground-5}
