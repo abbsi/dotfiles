@@ -1,4 +1,4 @@
 #!/bin/bash 
 sleep 2
-wal -R
+wal -R -e
 

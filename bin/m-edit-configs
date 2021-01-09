@@ -16,8 +16,6 @@ Documents/.todo2
 .SpaceVim.d/init.toml
 --
 bin/m-edit-configs
-bin/m-quick-cmd
-bin/polybar-open
 --")
 
 choice=$(echo -e "${options[@]}" | rofi -dmenu -i -p ' ')
