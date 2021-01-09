@@ -5,7 +5,7 @@ configuration {
   run-command:             "fish -c '{cmd}'";
 /*run-list-command:        "fish -c functions"; ** Slows down opening of rofi ** */
 /*run-list-command:        "tail /tmp/fish.functions -n +8";  */ /* Uupdate this occasionally as a cache */
-  font:                    "JetBrainsMonoExtraBold Nerd Font 14";
+  font:                    "MesloLGS Nerd Font Bold 14";
   fixed-num-lines:         true;
   lines:                   20;
   columns:                 2;
@@ -15,7 +15,7 @@ configuration {
   icon-theme:              "Flat-Remix-Blue";
   show-icons:              true;
   window-thumbnail:        true;
-  drun-show-actions:       true;
+  drun-show-actions:       false;
   disable-history:         false;
   sidebar-mode:            true;
   hide-scrollbar:          true;

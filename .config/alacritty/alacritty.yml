@@ -23,16 +23,17 @@ scrolling:
 font:
   size: 13
   normal:
-    family: mononoki Nerd Font
+    family: MesloLGS Nerd Font
+    style: Bold
   bold:
-    family: Source Code Pro
-    # style: Bold
+    family: MesloLGS Nerd Font
+    style: Bold
   italic:
-    family: Source Code Pro
-    # style: Italic
+    family: MesloLGS Nerd Font
+    style: Italic
   bold_italic:
-    family: Source Code Pro
-    #style: Bold Italic
+    family: MesloLGS Nerd Font
+    style: Bold Italic
     size: 11.0
   offset:
     x: 0
