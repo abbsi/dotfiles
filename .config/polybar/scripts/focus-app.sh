@@ -1,4 +1,8 @@
 #! /bin/bash 
+##### Leaving this here as a todo and not relevant any more
+##### Patched dwm with focus active patch and warp
+##### This is replaced using `goto-app`
+
 # Note: I am on a 3 monitor setup and will almost always call this script from the main middle
 # middle monitor. Also with DWM setup, will always know which monitor the app I want to focus 
 # will be. 

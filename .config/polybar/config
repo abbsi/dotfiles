@@ -18,6 +18,7 @@ warn = ${colors.brgt-yellow}
 default-bg = ${colors.background}
 default-fg = ${colors.foreground}
 format-padding = 1
+content-padding = 1
 prf-font = 2
 format-prefix-font = ${self.prf-font}
 

@@ -83,7 +83,7 @@ inherit = module
 type = custom/script
 exec = mail-count
 interval = 300
-click-left = ~/.config/polybar/scripts/focus-app.sh thunderbird Thunderbird left
+click-left = ~/.config/polybar/scripts/goto-app.sh thunderbird Thunderbird
 
 format-prefix = "  "
 format-prefix-foreground = ${colors.prefix-fg-2}
@@ -95,25 +95,25 @@ label = %output%
 
 [module/firefox]
 inherit = module
-type = custom/script
-exec = echo '  '
-interval = 5000
-click-left = firefox
+type = custom/text
+content = "  "
+click-left = ~/.config/polybar/scripts/goto-app.sh firefox Firefox
+click-right = firefox
 
-format-font = ${self.prf-font}
-format-foreground = ${colors.prefix-fg-2}
-format-background = ${colors.background-2}
+content-font = ${self.prf-font}
+content-foreground = ${colors.prefix-fg-2}
+content-background = ${colors.background-2}
 
 [module/code]
 inherit = module
-type = custom/script
-exec = echo '  '
-interval = 5000
-click-left = code
+type = custom/text
+content = "  "
+click-left = ~/.config/polybar/scripts/goto-app.sh code Code
+click-right = code
 
-format-font = ${self.prf-font}
-format-foreground = ${colors.prefix-fg-2}
-format-background = ${colors.background-2}
+content-font = ${self.prf-font}
+content-foreground = ${colors.prefix-fg-2}
+content-background = ${colors.background-2}
 
 [module/alsa]
 inherit = module
