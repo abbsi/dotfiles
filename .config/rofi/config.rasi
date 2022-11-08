@@ -1,6 +1,6 @@
 /** Global Configuration **/
 configuration {
-  modi:                    "run,file-browser,ssh,drun,window,combi,keys";
+  modi:                    "run,filebrowser,ssh,drun,window,combi,keys";
   terminal:                "kitty";
   run-command:             "fish -c '{cmd}'";
 /*run-list-command:        "fish -c functions"; ** Slows down opening of rofi ** */

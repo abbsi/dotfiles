@@ -68,8 +68,8 @@ interval = 5
 inherit = module
 type = custom/script
 exec = pacupdate
-interval = 600
-click-left = alacritty -e sudo pacman -Syu && rm update.count
+interval = 60
+click-left = alacritty -e sudo pacman -Syu && rm /tmp/update.count
 
 format-prefix = " "
 format-prefix-foreground = ${colors.prefix-fg-2}
@@ -91,7 +91,6 @@ format-foreground = ${colors.foreground-2}
 format-background = ${colors.background-2}
 
 label = %output%
-; Format
 
 [module/firefox]
 inherit = module
@@ -118,6 +117,8 @@ content-background = ${colors.background-2}
 [module/alsa]
 inherit = module
 type = internal/alsa
+master-soundcard = default
+master-mixer = Master
 
 format-volume = "<label-volume> <label-perc> <bar-volume> "
 format-volume-background = ${colors.background-3}

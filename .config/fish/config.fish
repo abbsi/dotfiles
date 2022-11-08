@@ -6,15 +6,6 @@ set TERM "xterm-256color"
 set EDITOR "vim"
 set VISUAL "code"
 set -gx PATH $HOME/bin $HOME/.local/bin $PATH
-# Spark functions
-function letters
-    cat $argv | awk -vFS='' '{for(i=1;i<=NF;i++){ if($i~/[a-zA-Z]/) { w[tolower($i)]++} } }END{for(i in w) print i,w[i]}' | sort | cut -c 3- | spark | lolcat
-    printf  '%s\n' 'abcdefghijklmnopqrstuvwxyz'  ' ' | lolcat
-end
-
-function commits
-    git log --author="$argv" --format=format:%ad --date=short | uniq -c | awk '{print $1}' | spark | lolcat
-end
 
 # Functions needed for !! and !$
 function __history_previous_command
@@ -168,42 +159,4 @@ alias bld-tab="cd /env/suckless/tabbed; sudo make install && sudo make clean"
 alias bld-slock="cd /env/suckless/slock; sudo make install && sudo make clean"
 alias bld-st="cd /env/suckless/slock; sudo make install && sudo make clean"
 
-# Load PyWal Theme
-# cat ~/.cache/wal/sequences
-
-# starship init fish | source
-
-###### Bud Spencer Settings
-# set -U budspencer_nocmdhist c d ll ls m s la lt
-# set -U budspencer_no_cd_bookmark
-# set -U budspencer_night 000000 083743 D7005F fdf6e3 3792DD cb4b16 dc121f af005f 6c71c4 FFFFFF 2aa198 859900
-# set -U budspencer_day 000000 333333 666666 ffffff ffff00 ff6600 ff0000 ff0033 3300ff 00aaff 00ffff 00ff00
-# set -U budspencer_colors $budspencer_night
-
-######  Bob the fish Settings
-# set -g theme_display_git yes
-# set -g theme_display_git_untracked yes
-# set -g theme_display_git_ahead_verbose yes
-# set -g theme_git_worktree_support yes
-# set -g theme_display_vagrant yes
-# set -g theme_display_docker_machine yes
-# set -g theme_display_hg yes
-# set -g theme_display_virtualenv yes
-# set -g theme_display_ruby yes
-# set -g theme_display_user yes
-# set -g theme_display_vi yes
-# set -g theme_display_date no
-# set -g theme_display_cmd_duration yes
-# set -g theme_title_display_process yes
-# set -g theme_title_display_path no
-# set -g theme_title_use_abbreviated_path no
-# set -g theme_date_format "+%H:%M"
-# set -g theme_avoid_ambiguous_glyphs yes
-# set -g theme_powerline_fonts yes
-# set -g theme_nerd_fonts no
-# set -g theme_show_exit_status yes
-# set -g default_user nabil
-# set -g theme_color_scheme dark
-# set -g fish_prompt_pwd_dir_length 3
-# set -g theme_project_dir_length 1
-
+starship init fish | source

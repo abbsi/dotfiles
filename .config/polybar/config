@@ -3,9 +3,9 @@ include-file = $HOME/.config/polybar/modules/dwm.poly
 include-file = $HOME/.config/polybar/modules/qtile.poly
 
 [monitors]
-left  = ${env:MONITOR:HDMI-0}
-main  = ${env:MONITOR:DP-2}
-right = ${env:MONITOR:DP-0}
+left  = ${env:MONITOR:DP-2}
+main  = ${env:MONITOR:DP-0}
+right = ${env:MONITOR:HDMI-0}
 
 [colors]
 include-file = $HOME/.config/polybar/color-themes/pywal.poly
@@ -50,7 +50,7 @@ padding-right = 0
 module-margin-left = 0
 module-margin-right = 0
 
-font-0 = MesloLGS Nerd Font Mono:size=12:antialias=true:autohint=true;1
+font-0 = MesloLGS Nerd Font:size=12:antialias=true:autohint=true;1
 font-1 = MesloLGS Nerd Font:size=14:antialias=true:autohint=true;1
 font-2 = MesloLGS Nerd Font:size=16:antialias=true:autohint=true;1
 
@@ -59,13 +59,20 @@ override-redirect = false
 cursor-click = pointer
 cursor-scroll = ns-resize
 
-modules-left = menu dunst-script dunst-status script-updates script-mail firefox code alsa player-prev player-play-pause player-next player-status
+modules-left = menu script-updates player-prev player-play-pause player-next alsa 
 modules-center = dwm-tags
 modules-right = eth-up eth-down temperature cpu memory script-disk xkeyboard date-main
+
+;dunst-script dunst-status script-mail firefox code 
+;player-status
 
 [bar/main]
 inherit = bar/base
 monitor = ${monitors.main}
+tray-position = center
+tray-maxsize = 24
+tray-background = ${module.default-bg}
+tray-offset-x = 15%
     
 [bar/left]
 inherit = bar/base

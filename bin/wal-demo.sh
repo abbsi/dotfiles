@@ -13,3 +13,4 @@ for f in ~/.wallpapers/*; do
   xdotool key Escape
   let a=a+1
 done
+ 
