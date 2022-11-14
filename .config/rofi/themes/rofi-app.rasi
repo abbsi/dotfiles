@@ -1,7 +1,9 @@
-configuration {
+@import "~/.config/rofi/config.rasi"
+
+* {
   sidebar-mode:            false;
   lines:                   5;
-  columns:                 4;
+  columns:                 6;
   
 }
 
@@ -20,7 +22,7 @@ element-text {
 }
 
 element-icon {
-  size:                    64px;
+  size:                    40px;
 }
 
 sidebar {

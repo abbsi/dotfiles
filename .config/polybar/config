@@ -30,12 +30,12 @@ enable-ipc = true
 background = ${module.default-bg}
 foreground = ${colors.foreground-1}
 
-height = 40
+height = 35
 offset-y = 0
 offset-x = 0
 width = 100%
 
-radius = 20
+radius = 0
 fixed-center = true
 
 line-size = 0

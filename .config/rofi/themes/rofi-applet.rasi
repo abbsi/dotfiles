@@ -1,4 +1,6 @@
-configuration {
+@import "~/.config/rofi/config.rasi"
+
+* {
   sidebar-mode:            false;
   show-icons:              false;
 }
@@ -6,6 +8,7 @@ configuration {
 window {
   children:                [message, listview];
   width:                   30%;
+  height:                  50%;
 }
 
 message {
@@ -20,9 +23,9 @@ element {
   padding:                 40px 40px;
 }
 
-/* TODO: Fix text veritcal alignment */
+/* TODO: Fix text vertical alignment */
 element-text {
   horizontal-align:        0.5;
-  font:                    "JetBrainsMonoExtraBold Nerd Font 30";
+  font:                    "MesloLGS Nerd Font 16";
   padding:                 -1.5% 0 0 0; /* hack for now */
 }

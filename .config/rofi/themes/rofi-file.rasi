@@ -1,4 +1,6 @@
-configuration {
+@import "~/.config/rofi/config.rasi"
+
+* {
   sidebar-mode:            false;
   lines:                   3;
   columns:                 6;

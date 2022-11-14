@@ -32,9 +32,9 @@ $directory\
 [](fg:#9A348E bg:#06969A)\
 $git_branch\
 $git_status\
-[](fg:#06969A bg:#86BBD8)\
+[](fg:#06969A bg:#875203)\
 $nodejs\
-[ ](fg:#86BBD8)
+[ ](fg:#875203)
 """
 
 right_format = """
@@ -94,6 +94,7 @@ format = '[[ $symbol ($version) ](bg:#86BBD8)]($style)'
  
 [git_branch]
 symbol = "☊"
+only_attached = false
 style = "bg:#06969A"
 format = '[[ $symbol $branch ](bg:#06969A)]($style)'
  
@@ -123,8 +124,8 @@ format = '[[ $symbol ($version) ](bg:#86BBD8)]($style)'
  
 [nodejs]
 symbol = "🔷 "
-style = "bg:#86BBD8"
-format = '[[ $symbol ($version) ](bg:#86BBD8)]($style)'
+style = "bg:#875203"
+format = '[[ $symbol ($version) ](bg:#875203)]($style)'
  
 [nim]
 symbol = "👑 "
